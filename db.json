@@ -1,0 +1,221 @@
+{
+    "dishes": [
+        {
+            "id": 1,
+            "tenMon": "Cơm chiên dương châu",
+            "giaMon": 50000,
+            "idNhomMonAn": 1,
+            "linkAnh": "https://i.ytimg.com/vi/ZbSbc9Z8K6E/maxresdefault.jpg",
+            "thanhPhan": "Gạo, Tôm, Trứng"
+        },
+        {
+            "id": 2,
+            "tenMon": "Thịt kho tàu",
+            "giaMon": 60000,
+            "idNhomMonAn": 1,
+            "linkAnh": "https://afamilycdn.com/150157425591193600/2021/4/1/thit-kho-tau-1-1617264490364992329242.jpeg",
+            "thanhPhan": "Thịt ba chỉ, Nước cốt dừa"
+        },
+        {
+            "id": 3,
+            "tenMon": "Cá thu sốt cà chua",
+            "giaMon": 100000,
+            "idNhomMonAn": 1,
+            "linkAnh": "https://i.ytimg.com/vi/1MkRmNUf8u0/maxresdefault.jpg",
+            "thanhPhan": "Cá thu, Cà chua"
+        },
+        {
+            "id": 4,
+            "tenMon": "Canh khổ qua nhồi thịt",
+            "giaMon": 30000,
+            "idNhomMonAn": 1,
+            "linkAnh": "https://www.cleanipedia.com/images/5iwkm8ckyw6v/2FciKd8mcEB8eHRagNrRxy/9712f3adadc18f3da8d89d997fd32dc6/Y2FuaC1raF9fXy1xdWEtbmhfX19pLW1fX19jLXJlY2lwZS1tYWluLXBob3RvLmpwZw/751w-501h/c%C3%A1ch-n%E1%BA%A5u-v%C3%A0-b%E1%BA%A3o-qu%E1%BA%A3n-canh-kh%E1%BB%95-qua-nh%E1%BB%93i-th%E1%BB%8Bt-%C4%91%E1%BB%83-qua-%C4%91%C3%AAm-kh%C3%B4ng-thiu.jpg",
+            "thanhPhan": "Khổ qua, Thịt heo băm"
+        },
+        {
+            "id": 5,
+            "tenMon": "Gà quay me da giòn",
+            "giaMon": 120000,
+            "idNhomMonAn": 1,
+            "linkAnh": "https://file.hstatic.net/1000115147/file/ga-quay-me-2_9b641ecc4c4e454aad8ebb8074867c7d_grande.jpg",
+            "thanhPhan": "Nửa con gà"
+        },
+        {
+            "id": 6,
+            "tenMon": "Bò phi lê",
+            "giaMon": 80000,
+            "idNhomMonAn": 1,
+            "linkAnh": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9AshllInq59swBxCYrkOmKFbGLhqQsl6ZrQ&usqp=CAU",
+            "thanhPhan": "Bò,xốt"
+        },
+        {
+            "id": 7,
+            "tenMon": "Sò điệp xốt phô mai trứng muối",
+            "giaMon": 80000,
+            "idNhomMonAn": 1,
+            "linkAnh": "https://haisanmrd.com/wp-content/uploads/2021/12/coi-so-diep-sot-pho-mai-chung-muoi.jpg",
+            "thanhPhan": "Sò điệp, xốt, trứng muối"
+        },
+        {
+            "id": 8,
+            "tenMon": "Tôm chiên xù",
+            "giaMon": 80000,
+            "idNhomMonAn": 1,
+            "linkAnh": "https://cdn.tgdd.vn/Files/2019/11/01/1214316/bi-quyet-lam-tom-chien-xu-gion-ngon-hap-dan-202110041604468435.jpg",
+            "thanhPhan": "Tôm, rau"
+        },
+        {
+            "id": 9,
+            "tenMon": "Rượu vang Chateau",
+            "giaMon": 200000,
+            "idNhomMonAn": 2,
+            "linkAnh": "https://huyphonggroup.vn/wp-content/uploads/2022/11/trang-29a-1024x683.jpg",
+            "thanhPhan": ""
+        },
+        {
+            "id": 10,
+            "tenMon": "Sinh tố nho",
+            "giaMon": 50000,
+            "idNhomMonAn": 2,
+            "linkAnh": "https://songkhoe.medplus.vn/wp-content/uploads/2020/03/ba-bau-uong-sinh-to-nho-co-rat-nhieu-cong-dung.png",
+            "thanhPhan": ""
+        },
+        {
+            "id": 11,
+            "tenMon": "Bia Carlsberg",
+            "giaMon": 30000,
+            "idNhomMonAn": 2,
+            "linkAnh": "https://vpas.vn/data/image/8707ea3f86b190b264dd3e383bef3503.png",
+            "thanhPhan": ""
+        },
+        {
+            "id": 12,
+            "tenMon": "Soda bạc hà",
+            "giaMon": 40000,
+            "idNhomMonAn": 2,
+            "linkAnh": "https://dogily.vn/wp-content/uploads/2022/11/soda-bac-ha.png",
+            "thanhPhan": ""
+        }
+    ],
+    "Resource": [
+        {
+            "id": 1,
+            "tenNguyenLieu": "Cá chà bặt",
+            "soLuong": 5,
+            "donVi": "kg"
+        },
+        {
+            "id": 2,
+            "tenNguyenLieu": "Thịt heo",
+            "soLuong": 3,
+            "donVi": "kg"
+        },
+        {
+            "id": 3,
+            "tenNguyenLieu": "Thịt bò",
+            "soLuong": 10,
+            "donVi": "kg"
+        },
+        {
+            "id": 4,
+            "tenNguyenLieu": "Cà chua",
+            "soLuong": 5,
+            "donVi": "quả"
+        },
+        {
+            "id": 4,
+            "tenNguyenLieu": "Cà chua",
+            "soLuong": 5,
+            "donVi": "quả"
+        }
+    ],
+
+    "bill": [
+        {
+            "id": 1,
+            "thoiGian": "2021-12-23T00:00:00",
+            "taoBoi": 12,
+            "maNV": 0,
+            "thanhTien": 5000,
+            "donGia": 50000,
+            "items": [
+                {
+                    "tenMon": "Cơm chiên dương châu",
+                    "donGia": 50000,
+                    "soLuong": 3
+                },
+                {
+                    "tenMon": "Cá ",
+                    "donGia": 44440,
+                    "soLuong": 2
+                }
+            ],
+            "phanTramKhuyenMai": 50001,
+            "khuyenMai": 5000,
+            "tongCong": 500012,
+            "trangThai": "5002"
+        },
+        {
+            "id": 2,
+            "thoiGian": "2021-12-23T00:00:00",
+            "taoBoi": 12,
+            "maNV": 0,
+            "thanhTien": 5000,
+            "donGia": 50000,
+            "items": [
+                {
+                    "tenMon": "Cơm chiên dương châu",
+                    "donGia": 50000,
+                    "soLuong": 3
+                }
+            ],
+            "phanTramKhuyenMai": 50001,
+            "khuyenMai": 5000,
+            "tongCong": 500012,
+            "trangThai": "5002"
+        },
+        {
+            "id": 3,
+            "thoiGian": "2021-12-23T00:00:00",
+            "taoBoi": 12,
+            "maNV": 0,
+            "thanhTien": 5000,
+            "donGia": 50000,
+            "items": [
+                {
+                    "tenMon": "Cơm chiên dương châu",
+                    "donGia": 50000,
+                    "soLuong": 3
+                }
+            ],
+            "phanTramKhuyenMai": 50001,
+            "khuyenMai": 5000,
+            "tongCong": 500012,
+            "trangThai": "5002"
+        },
+        {
+            "id": 4,
+            "thoiGian": "2021-12-23T00:00:00",
+            "taoBoi": 12,
+            "maNV": 0,
+            "thanhTien": 5000,
+            "donGia": 50000,
+            "items": [
+                {
+                    "tenMon": "Cơm chiên dương châu",
+                    "donGia": 50000,
+                    "soLuong": 3
+                },
+                {
+                    "tenMon": "Cá ",
+                    "donGia": 44440,
+                    "soLuong": 2
+                }
+            ],
+            "phanTramKhuyenMai": 50001,
+            "khuyenMai": 5000,
+            "tongCong": 500012,
+            "trangThai": "5002"
+        }
+    ]
+}
