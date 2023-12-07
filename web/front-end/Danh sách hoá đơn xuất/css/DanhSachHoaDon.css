@@ -1,0 +1,49 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.new-layer {
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.new-layer div {
+    background-color: #fff;
+}
+.new-layer .bill-list {
+    margin: 0 12px;
+    min-height: 500px;
+}
+.detail-bill table {
+    width: 100%;
+}
+.bill {
+    margin: 2px;
+    font-size: 16px !important;
+    border: 2px solid #000;
+}
+.detail-bill-list {
+    padding: 30px 0;
+}
+.detail-bill {
+    padding-bottom: 30px;
+}
+.bill-img {
+    display: flex;
+    justify-content: center;
+}
+.bill-img img {
+    margin-top: 20px;
+    width: 60%;
+}
+.detail-bill h4 {
+    margin-top: 20px;
+    text-align: center;
+}
