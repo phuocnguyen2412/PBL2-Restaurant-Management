@@ -2,14 +2,17 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 function kiemtraDanhSachNhanVien(NhanVien) {
     return fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
-        .then(response => response.json())
-        .then(employee_list => {
-          
+        .then((response) => response.json())
+        .then((employee_list) => {
             // Sử dụng some() để kiểm tra nếu có ít nhất một nhân viên có mã trùng
-            
-            if(!employee_list.some(employee => employee.maNV == NhanVien.maNV)) throw "0"
-        })
-        
+
+            if (
+                !employee_list.some(
+                    (employee) => employee.maNV == NhanVien.maNV
+                )
+            )
+                throw "0";
+        });
 }
 
 fetch(
@@ -222,9 +225,8 @@ fetch(
                                         },
                                         body: JSON.stringify(order),
                                     }
-                                )
-                                .then((response) => {
-                                    console.log(response)
+                                ).then((response) => {
+                                    console.log(response);
                                     post(index);
                                 });
                             });
@@ -269,10 +271,8 @@ fetch(
                 };
 
                 if (data.soLuong > 0) {
-
                     kiemtraDanhSachNhanVien(data)
-                    
-                        .then((result)=>{
+                        .then((result) => {
                             orderItem_list.addOrderItem(data);
                             function showSuccessToast() {
                                 toast({
@@ -286,19 +286,19 @@ fetch(
                             orderItem_list.showOrderItem(data);
                             orderItem_list.saveOrderItem();
                         })
-                        .catch((error)=>{
+                        .catch((error) => {
                             function showSuccessToast() {
                                 toast({
                                     title: "Thất bại!",
-                                    message: "Đặt món thất bại do mã nhân viên không tồn tại!",
+                                    message:
+                                        "Đặt món thất bại do mã nhân viên không tồn tại!",
                                     type: "error",
                                     duration: 5000,
                                 });
                             }
                             showSuccessToast();
-                        })
+                        });
                 }
-                
             });
         }
 

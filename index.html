@@ -10,12 +10,16 @@
             integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
             crossorigin="anonymous"
         />
-
         <link
             rel="stylesheet"
             href="./web/front-end/Form đăngn nhâp/css/LoginForm.css"
         />
+        <link
+            rel="stylesheet"
+            href="./web/front-end/Form đăngn nhâp/css/AccountChange.css"
+        />
         <link rel="stylesheet" href="./web/front-end/toastMessage.css" />
+        <link rel="stylesheet" href="./web/front-end/layer.css" />
     </head>
     <body>
         <form>
@@ -32,8 +36,35 @@
                 current-password
             />
             <button id="submit-login-btn" type="submit">Login</button>
+            <button class="open">Đổi mật khẩu</button>
         </form>
+        <div class="new-layer accout-change">
+            <form id="accout-change">
+                <button class="close"></button>
+                <h2>Đổi mật khẩu</h2>
+                <label for="username-change">Username:</label>
+                <input
+                    type="text"
+                    id="username-change"
+                    name="username-change"
+                    required
+                />
+
+                <label for="password-change">Password:</label>
+                <input
+                    type="password"
+                    id="password-change"
+                    name="password-change"
+                    required
+                    current-password
+                />
+
+                <button class="changePassword">Đổi mật khẩu</button>
+            </form>
+        </div>
         <script src="./web/front-end/toatMessage.js"></script>
         <script src="./web/front-end/Form đăngn nhâp/Login.js"></script>
+        <script src="./web/front-end/closeBtn.js"></script>
+        <script src="./web/front-end/openBtn.js"></script>
     </body>
 </html>

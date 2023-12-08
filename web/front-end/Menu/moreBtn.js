@@ -5,16 +5,24 @@ moreButton.forEach(function (button) {
         $("#resource-input-table").innerHTML += `   
             <tr class="input-row">
                 <td>
-                    <input type="text" name="" id="idNguyenLieu" />
-                </td>
-                <td>
-                    <input type="number" name="soLuongNguyenLieu" id="" />
+                    <input
+                        type="text"
+                        name="idNguyenLieu"
+                        class="idNguyenLieu"
+                    />
                 </td>
                 <td>
                     <input
                         type="number"
-                        name=""
-                        id="donGia"
+                        name="soLuong"
+                        class="soLuong"
+                    />
+                </td>
+                <td>
+                    <input
+                        type="number"
+                        name="donGia"
+                        class="donGia"
                     />
                 </td>
             </tr>

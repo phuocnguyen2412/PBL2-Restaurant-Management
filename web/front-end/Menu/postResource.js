@@ -1,29 +1,70 @@
 function SubmitResourceBill(event) {
     event.preventDefault();
-    $$(".input-row").forEach(function (bill) {
+    let order = {
+        // id: $("#idHoaDonKho").value,
+        ngay: $("#NgayNhap").value,
+        gio: $("#gioNhap").value,
+        idNhaCC: $("#idNhaCungCap").value,
+        maNV: 1,
+        
+    }
+    console.log(order)
+    fetch(
+        "http://localhost:5225/api/OrderItems/PostOrderItems",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+                order
+            ),
+        }
+    )
+    .then((response) => {
+        if (!response.ok) {
+            throw "lỗi";
+        }
+        return response.json();
+    })
+    .then((orderItem) => {
+        function showSuccessToast() {
+            toast({
+                title: "Thành công!",
+                message: "Đã tạo hóa đơn thành công",
+                type: "success",
+                duration: 5000,
+            });
+        }
+        showSuccessToast();
+    })
+    .catch((orderItem) => {
+        function showSuccessToast() {
+            toast({
+                title: "Thất bại!",
+                message: "Tạo hóa đơn thất bại",
+                type: "error",
+                duration: 5000,
+            });
+        }
+        showSuccessToast();
+    });
+    // $$(".input-row").forEach(function (bill) {
         let inputElements = document.querySelectorAll(".input-row input");
         console.log(inputElements);
-        // Tạo một đối tượng chứa dữ liệu cần post
+     
         let postData = {
-            id: $("#idHoaDonKho").value,
-            ngayNhap: $("#NgayNhap").value,
-            gioNhap: $("#gioNhap").value,
-            idNhaCC: $("#idNhaCungCap").value,
-            soLuong: "",
-            donGia: "",
-            tongCong: "",
+            idHoaDonKho: $("#idHoaDonKho").value,
         };
         inputElements.forEach(function (inputElement) {
             let name = inputElement.getAttribute("name");
             let value = inputElement.value;
             postData[name] = value;
         });
-        postData.tongCong = postData.soLuong * postData.donGia;
+      
         console.log(postData);
-        // Định nghĩa URL mà bạn muốn gửi yêu cầu POST đến
-
-        // Sử dụng fetch để gửi yêu cầu POST
-        fetch(postUrl, {
+   
+        fetch("http://localhost:5225/api/HoaDonKhoItems/PostHoaDonKhoItems", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -59,7 +100,7 @@ function SubmitResourceBill(event) {
                 }
                 showSuccessToast();
             });
-    });
+    // });
 }
 
 $("#btn-submit-resource-bill").addEventListener("click", function (event) {
