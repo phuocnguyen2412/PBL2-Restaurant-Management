@@ -18,7 +18,7 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                             Ngày: ${bill.ngay} <br />
                             Giờ: ${bill.gio} <br />
                             Tạo bởi: ${bill.hoTen}<br />
-                            Mã NV: ${bill.maNV}<br />
+                            
                             Thành tiền: ${bill.thanhTien}<br />
                         </div>
                         <div class="card-footer d-grid">
@@ -40,14 +40,26 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                     class="card new-layer detail-bill"
                     style="display: none; z-index: 10"
                 >
-                    <div class="container">
-                        <div class="card-header">
-                            <button
-                                class="btn-close close float-end p-1 mt-3 close-${bill.id}"
-                            ></button>
-                            <h4 class="text-center">Hóa đơn nhập ID${bill.id}</h4>
+                    <div class="container ">
+                    <button
+                    class="btn-close close float-end close-${bill.id} mt-2"
+                    ></button>
+                        <div class="card-header ">
+                        
+                            
+                            <h4 class="text-center mt-2">Hóa đơn nhập ID${bill.id}</h4>
+                        
                         </div>
-                        <div class="card-body">
+                        <div class="card-body pb-3">
+                            Tên công ty: ${bill.tenNhaCC}</br>
+                            Địa chỉ: ${bill.sdt}</br>
+                            SĐT: ${bill.diaChi}</br>
+
+                            </br>
+                            Tên khách hành: Nhà hàng ... </br>
+                            Địa chỉ:...</br>
+                            SĐT:....</br>
+                            </br>
                             <table class="table">
                                 <thead>
                                     <tr class="table-success">
@@ -67,6 +79,12 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                                  
                                 </tbody>
                             </table>
+                            <span class="float-end text-center pb-3">
+                            ${bill.gio}, ${bill.ngay} </br>
+                            Người mua </br>
+                            ${bill.hoTen}
+                            </span>
+
                         </div>
                     </div>
                 </div>

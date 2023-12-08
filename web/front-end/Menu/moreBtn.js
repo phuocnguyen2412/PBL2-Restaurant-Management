@@ -1,5 +1,5 @@
 const moreButton = $$(".more");
-moreButton.forEach(function (button) {
+moreButton.forEach(function (button,index) {
     button.onclick = function (e) {
         e.preventDefault();
         $("#resource-input-table").innerHTML += `   
@@ -7,22 +7,22 @@ moreButton.forEach(function (button) {
                 <td>
                     <input
                         type="text"
-                        name="idNguyenLieu"
-                        class="idNguyenLieu"
+                        name="idNguyenLieu${index++}"
+                        class="idNguyenLieu${index}"
                     />
                 </td>
                 <td>
                     <input
                         type="number"
-                        name="soLuong"
-                        class="soLuong"
+                        name="soLuong${index}"
+                        class="soLuong${index}"
                     />
                 </td>
                 <td>
                     <input
                         type="number"
-                        name="donGia"
-                        class="donGia"
+                        name="donGia${index}"
+                        class="donGia${index}"
                     />
                 </td>
             </tr>

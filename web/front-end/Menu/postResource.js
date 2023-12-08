@@ -1,14 +1,14 @@
 function SubmitResourceBill(event) {
     event.preventDefault();
     let order = {
-        // id: $("#idHoaDonKho").value,
+        // id: 0,
         ngay: $("#NgayNhap").value,
         gio: $("#gioNhap").value,
         idNhaCC: $("#idNhaCungCap").value,
-        maNV: 1,
-        
+        maNV: $("#maNVResource").value,
     }
     console.log(order)
+    //POST HoaDon
     fetch(
         "http://localhost:5225/api/OrderItems/PostOrderItems",
         {
@@ -48,59 +48,63 @@ function SubmitResourceBill(event) {
             });
         }
         showSuccessToast();
-    });
-    // $$(".input-row").forEach(function (bill) {
-        let inputElements = document.querySelectorAll(".input-row input");
-        console.log(inputElements);
-     
-        let postData = {
-            idHoaDonKho: $("#idHoaDonKho").value,
-        };
-        inputElements.forEach(function (inputElement) {
-            let name = inputElement.getAttribute("name");
-            let value = inputElement.value;
-            postData[name] = value;
-        });
+    })
+    //PostHoaDonItem
+    .then(()=>{
+        $$(".input-row").forEach(function(row,index){
+    
+        
+                
+                    postData = {
+                        idHoaDonKho: $("#idHoaDonKho").value,
+                        idNguyenLieu: $(`.idNguyenLieu${index}`).value,
+                        soLuong: $(`.soLuong${index}`).value,
+                        donGia: $(`.donGia${index}`).value,
+                    }
+                    
+                    console.log(postData);
+            
+                    fetch("http://localhost:5225/api/HoaDonKhoItems/PostHoaDonKhoItems", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(postData),
+                    })
+                        .then((response) => response.json())
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw "lỗi";
+                            }
+                            return response.json();
+                        })
+                        .then((message) => {
+                            function showSuccessToast() {
+                                toast({
+                                    title: "Thành công!",
+                                    message: "Đã thêm hóa đơn thành công!",
+                                    type: "success",
+                                    duration: 5000,
+                                });
+                            }
+                            showSuccessToast();
+                        })
+                        .catch((message) => {
+                            function showSuccessToast() {
+                                toast({
+                                    title: "Thất bại!",
+                                    message: "Không thể thêm hóa đơn do lỗi API",
+                                    type: "error",
+                                    duration: 5000,
+                                });
+                            }
+                            showSuccessToast();
+                        });
+                
+            })
+    })
       
-        console.log(postData);
-   
-        fetch("http://localhost:5225/api/HoaDonKhoItems/PostHoaDonKhoItems", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(postData),
-        })
-            .then((response) => response.json())
-            .then((response) => {
-                if (!response.ok) {
-                    throw "lỗi";
-                }
-                return response.json();
-            })
-            .then((message) => {
-                function showSuccessToast() {
-                    toast({
-                        title: "Thành công!",
-                        message: "Đã thêm hóa đơn thành công!",
-                        type: "success",
-                        duration: 5000,
-                    });
-                }
-                showSuccessToast();
-            })
-            .catch((message) => {
-                function showSuccessToast() {
-                    toast({
-                        title: "Thất bại!",
-                        message: "Không thể thêm hóa đơn do lỗi API",
-                        type: "error",
-                        duration: 5000,
-                    });
-                }
-                showSuccessToast();
-            });
-    // });
+    
 }
 
 $("#btn-submit-resource-bill").addEventListener("click", function (event) {
