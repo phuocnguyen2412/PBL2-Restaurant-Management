@@ -6,7 +6,7 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
         return response.json();
     })
     .then(function (bills) {
-        console.log(bills.items)
+        console.log(bills.items);
         // bill
         let bill_list = bills.map(function (bill) {
             return `
@@ -14,11 +14,9 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                         <div class="card-header">ID hóa đơn nhập: ${bill.id}</div>
                         <div class="card-body">
                             Nhà cung cấp: ${bill.tenNhaCC}<br />
-                          
                             Ngày: ${bill.ngay} <br />
                             Giờ: ${bill.gio} <br />
-                            Tạo bởi: ${bill.hoTen}<br />
-                            
+                            Tạo bởi: ${bill.hoTen}<br />   
                             Thành tiền: ${bill.thanhTien}<br />
                         </div>
                         <div class="card-footer d-grid">
@@ -31,7 +29,7 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
         });
 
         $("#bill-list").innerHTML = bill_list.join("");
-        console.log(bills)
+        console.log(bills);
         // detail bill
         let detail_bill_list = bills.map(function (bill) {
             return `
@@ -73,16 +71,14 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                                         <th>Thành tiền</th>
                                     </tr>
                                 </thead>
-                                <tbody class=
-                                "table-detail-bill-${bill.id}">
-                                    
-                                 
+                                <tbody 
+                                    class="table-detail-bill-${bill.id}">
                                 </tbody>
                             </table>
                             <span class="float-end text-center pb-3">
-                            ${bill.gio}, ${bill.ngay} </br>
-                            Người mua </br>
-                            ${bill.hoTen}
+                                ${bill.gio}, ${bill.ngay} </br>
+                                Người mua </br>
+                                ${bill.hoTen}
                             </span>
 
                         </div>
@@ -92,7 +88,7 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
         });
 
         $(".detail-bill-list").innerHTML = detail_bill_list.join("");
-        console.log(bills.items)
+        console.log(bills.items);
         bills.forEach(function (bill) {
             let items = bill.items.map(function (i) {
                 return `
@@ -108,7 +104,7 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
             $(`.table-detail-bill-${bill.id}`).innerHTML = items.join("");
 
             $(`#open-detail-bill-id${bill.id}`).onclick = function () {
-               console.log(1);
+                console.log(1);
                 $(`#detail-bill-${bill.id}`).style.display = "flex";
             };
             $(`.close-${bill.id}`).onclick = function () {
