@@ -1,4 +1,5 @@
-
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
     .then(function (response) {
         return response.json();
@@ -9,7 +10,7 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
         let infors = infor_list.map(function (infor) {
             return `
                 <tr>
-                    <td class="text-center">${infor.maNV}</td>
+                    <td class="text-center">${infor.id}</td>
                     <td>${infor.hoTen}</td>
                     <td class="text-center">${infor.gioiTinh}</td>
                     <td class="text-center">${infor.cccd}</td>
@@ -22,8 +23,8 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
                     <td
                         class="d-flex align-items-center justify-content-center"
                     >
-                        <button id="update-${infor.maNV}" class="btn btn-info me-2"></button
-                        ><button id="delete-${infor.maNV}" class="btn btn-danger"></button>
+                        <button id="update-${infor.id}" class="btn btn-info me-2"></button
+                        ><button id="delete-${infor.id}" class="btn btn-danger"></button>
                     </td>
                 </tr>
             `;
@@ -38,13 +39,13 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
     // DELETE EMPLOYEE
     .then((infor_list) => {
         infor_list.forEach((infor, index) => {
-            $(`#delete-${infor.maNV}`).onclick = function () {
+            $(`#delete-${infor.id}`).onclick = function () {
                 console.log(index);
                 fetch(
-                    `http://localhost:5225/api/NhanVien/DeleteNhanVien/${index}`,
+                    `http://localhost:5225/api/NhanVien/DeleteNhanVien?id=${infor.id}`,
                     {
                         method: "DELETE",
-                        headers: {
+                        headers: {  
                             "Content-Type": "application/json",
                         },
                     }
@@ -83,7 +84,7 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
     // UPDATE EMPLOYEE
     .then((infor_list) => {
         infor_list.forEach((infor, index) => {
-            $(`#update-${infor.maNV}`).onclick = function () {
+            $(`#update-${infor.id}`).onclick = function () {
                 $(".update-employee").innerHTML = `
                 <div class="new-layer">
                     <div class="container">
@@ -173,7 +174,8 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
                                     placeholder="Nhập mã NV = Chức vụ + stt"
                                     name="maNV"
                                     id="maNV"
-                                    value="${infor.maNV}"
+                                    value="${infor.id}"
+                                    disable
                                 />
                                 <label class="ml-2" for="maNV">Mã Nhân viên</label>
                             </div>
@@ -200,7 +202,7 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
                     const job = $("#job").value;
                     console.log($("#hoVaTen"))
                     let employee_infor = {
-                        maNV: maNV,
+                        id: maNV,
                         hoTen: hoVaTen,
                         gioiTinh: gioiTinh,
                         email: email,

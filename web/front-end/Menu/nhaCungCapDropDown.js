@@ -4,7 +4,10 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
   })
   .then(function (infor_list) {
     infor_list.forEach(function (infor) {
-      makeEmployeeOption(idNhaCungCap, infor);
+      
+      $(`#idNhaCungCap`).innerHTML += `
+    <option value="${infor.id}">${infor.ten}</option>
+  `;
     });
   });
 

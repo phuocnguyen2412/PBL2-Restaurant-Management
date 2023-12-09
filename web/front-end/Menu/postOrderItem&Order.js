@@ -1,19 +1,19 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-function kiemtraDanhSachNhanVien(NhanVien) {
-    return fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
-        .then((response) => response.json())
-        .then((employee_list) => {
-            // Sử dụng some() để kiểm tra nếu có ít nhất một nhân viên có mã trùng
+// function kiemtraDanhSachNhanVien(NhanVien) {
+//     return fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
+//         .then((response) => response.json())
+//         .then((employee_list) => {
+//             // Sử dụng some() để kiểm tra nếu có ít nhất một nhân viên có mã trùng
 
-            if (
-                !employee_list.some(
-                    (employee) => employee.maNV == NhanVien.maNV
-                )
-            )
-                throw "0";
-        });
-}
+//             if (
+//                 !employee_list.some(
+//                     (employee) => employee.maNV == NhanVien.maNV
+//                 )
+//             )
+//                 throw "0";
+//         });
+// }
 
 fetch(
     "https://my-json-server.typicode.com/phuocnguyn/PBL_2-RESTAURANT-MANEGEMENT/dishes"
@@ -120,7 +120,7 @@ fetch(
                             orderItem_list.list.length - 1
                         }"class="btn-done" type="checkbox" />
                         <h4 class="text-center">Món ăn hóa đơn ${
-                            orderItem.idOrder
+                            orderItem.maHoaDon
                         }</h4>
                     </div>
                     <div class="card-body">
@@ -160,13 +160,15 @@ fetch(
 
             saveOrderItem: function () {
                 $$(".btn-done").forEach(function (btn, index) {
-                    function post(index) {
-                        console.log(orderItem_list.list[index]);
+                        
+                    
+                    
+                    btn.onclick = function () {
                         delete orderItem_list.list[index].tenMon;
                         orderItem_list.list[index].trangThaiMon = "done";
-
+                        console.log(orderItem_list.list[index]);
                         fetch(
-                            "http://localhost:5225/api/OrderItems/PostOrderItems",
+                            "http://localhost:5225/api/Order/PostOrder",
                             {
                                 method: "POST",
                                 headers: {
@@ -177,62 +179,7 @@ fetch(
                                 ),
                             }
                         )
-                            .then((response) => {
-                                if (!response.ok) {
-                                    function showSuccessToast() {
-                                        toast({
-                                            title: "Thông báo!",
-                                            message:
-                                                "Order chưa có, đang tạo Order",
-                                            type: "info",
-                                            duration: 5000,
-                                        });
-                                    }
-                                    showSuccessToast();
-                                    throw (order = {
-                                        id: orderItem_list.list[index].idOrder,
-                                        ngay: "null",
-                                        gio: "null",
-                                        maNV: orderItem_list.list[index].maNV,
-                                        hoTen: "string",
-                                        phanTramKhuyenMai:
-                                            orderItem_list.list[index]
-                                                .phanTramKhuyenMai,
-                                        trangThaiThanhToan: "Chưa Thanh Toán",
-                                    });
-                                }
-
-                                return response.json();
-                            })
-                            .then((orderItem) => {
-                                function showSuccessToast() {
-                                    toast({
-                                        title: "Thành công!",
-                                        message: "Đã thêm món ăn vào order",
-                                        type: "success",
-                                        duration: 5000,
-                                    });
-                                }
-                                showSuccessToast();
-                            })
-                            .catch((order) => {
-                                fetch(
-                                    "http://localhost:5225/api/Order/PostOrder",
-                                    {
-                                        method: "POST",
-                                        headers: {
-                                            "Content-Type": "application/json",
-                                        },
-                                        body: JSON.stringify(order),
-                                    }
-                                ).then((response) => {
-                                    console.log(response);
-                                    post(index);
-                                });
-                            });
-                    }
-                    btn.onclick = function () {
-                        post(index);
+                      
                     };
                 });
             },
@@ -248,31 +195,28 @@ fetch(
                 let soLuong = document.getElementById(
                     `soLuong-dish-${index + 1}`
                 ).value;
-                let success = false;
-                // Ngăn chặn form submit theo cách thông thường
 
-                // Dữ liệu để gửi lên API
+          
                 var data = {
                     tenMon: dish.tenMon,
-                    idOrder: idOrder,
+                    maHoaDon: idOrder,
                     maNV: maNV,
                     soBan: soBan,
                     trangThaiMon: "undone",
-                    giaMon: dish.giaMon,
+                    ngay: "null",
+                    gio: "null",
                     phanTramKhuyenMai: phanTramKhuyenMai,
                     ghiChu: ghiChu,
-                    thanhTien:
-                        dish.giaMon * soLuong +
-                        ((dish.giaMon * soLuong * phanTramKhuyenMai) % 100),
+                    thanhTien : 0,
                     idMonAn: dish.id,
                     soLuong: soLuong,
-
-                    // Thêm các trường dữ liệu khác nếu cần
+                    trangThaiThanhToan: "Chưa thanh toán"
+                 
                 };
 
                 if (data.soLuong > 0) {
-                    kiemtraDanhSachNhanVien(data)
-                        .then((result) => {
+                    // kiemtraDanhSachNhanVien(data)
+                       
                             orderItem_list.addOrderItem(data);
                             function showSuccessToast() {
                                 toast({
@@ -285,19 +229,19 @@ fetch(
                             showSuccessToast();
                             orderItem_list.showOrderItem(data);
                             orderItem_list.saveOrderItem();
-                        })
-                        .catch((error) => {
-                            function showSuccessToast() {
-                                toast({
-                                    title: "Thất bại!",
-                                    message:
-                                        "Đặt món thất bại do mã nhân viên không tồn tại!",
-                                    type: "error",
-                                    duration: 5000,
-                                });
-                            }
-                            showSuccessToast();
-                        });
+                       
+                        // .catch((error) => {
+                        //     function showSuccessToast() {
+                        //         toast({
+                        //             title: "Thất bại!",
+                        //             message:
+                        //                 "Đặt món thất bại do mã nhân viên không tồn tại!",
+                        //             type: "error",
+                        //             duration: 5000,
+                        //         });
+                        //     }
+                        //     showSuccessToast();
+                        // });
                 }
             });
         }

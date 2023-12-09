@@ -9,17 +9,18 @@ fetch("http://localhost:5225/api/HoaDonXuat/HoaDonXuat")
         // bill
         let bill_list = bills.map(function (bill) {
             return `
-                    <div id="bill-${bill.id}"class="col-3 card ">
-                        <div class="card-header">ID hóa đơn: ${bill.id}</div>
+                    <div id="bill-${bill.maHoaDon}"class="col-3 card ">
+                        <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
                         <div class="card-body">
-                            Thời gian: ${bill.thoiGian} <br />
+                            Ngày: ${bill.ngay} <br />
+                            Giờ: ${bill.gio} <br />
                             Tạo bởi: ${bill.hoTen}<br />
-                            Mã NV: ${bill.maNV} <br />
+                        
                             Thành tiền: ${bill.tongCong}<br />
                             Trạng thái: ${bill.trangThai}
                         </div>
                         <div class="card-footer d-grid">
-                            <button id="open-detail-bill-id${bill.id}"class="btn btn-outline-success">Chi tiết</button>
+                            <button id="open-detail-bill-id${bill.maHoaDon}"class="btn btn-outline-success">Chi tiết</button>
                         </div>
                     </div>
                 `;
@@ -31,17 +32,17 @@ fetch("http://localhost:5225/api/HoaDonXuat/HoaDonXuat")
         let detail_bill_list = bills.map(function (bill) {
             return `
             <div
-                id="detail-bill-${bill.id}"
+                id="detail-bill-${bill.maHoaDon}"
                 class="card new-layer detail-bill"
                 style="display: none;z-index: 10;"
             >
                 <div class="container">
                     <div class="card-header">
-                        <button class="btn btn-danger close-${bill.id} float-end p-1 m-1">
+                        <button class="btn btn-danger close-${bill.maHoaDon} float-end p-1 m-1">
                             <i class="ti-close"></i>
                         </button>
-                        <button id="${bill.id}" class="btn btn-success bill-finish float-end p-1 m-1">Xuất hoá đơn</button>
-                        <h4 class="text-center">Hóa đơn ID${bill.id}</h4>
+                        <button id="${bill.maHoaDon}" class="btn btn-success bill-finish float-end p-1 m-1">Xuất hoá đơn</button>
+                        <h4 class="text-center">Hóa đơn ID${bill.maHoaDon}</h4>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -56,7 +57,7 @@ fetch("http://localhost:5225/api/HoaDonXuat/HoaDonXuat")
                                 </tr>
                             </thead>
                             <tbody
-                                class="table-detail-bill-${bill.id}"
+                                class="table-detail-bill-${bill.maHoaDon}"
                             ></tbody>
                         </table>
                         <div class="row">
@@ -66,7 +67,7 @@ fetch("http://localhost:5225/api/HoaDonXuat/HoaDonXuat")
                             <div class="col-6">
                                 Thời gian: ${bill.thoiGian} <br />
                                 Tạo bởi: ${bill.hoTen}<br />
-                                Mã NV: ${bill.maNV} <br />
+                             
                                 Thành tiền: ${bill.thanhTien} <br />
                                 % Khuyến mãi: ${bill.phanTramKhuyenMai}<br />
                                 Khuyến mãi: ${bill.khuyenMai} <br />
@@ -98,16 +99,16 @@ fetch("http://localhost:5225/api/HoaDonXuat/HoaDonXuat")
                     </tr>
                 `;
             });
-            $(`.table-detail-bill-${bill.id}`).innerHTML = items.join("");
+            $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML = items.join("");
 
-            $(`#open-detail-bill-id${bill.id}`).onclick = function () {
-                $(`#detail-bill-${bill.id}`).style.display = "flex";
+            $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
+                $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";
             };
-            $(`.close-${bill.id}`).onclick = function () {
-                $(`#detail-bill-${bill.id}`).style.display = "none";
+            $(`.close-${bill.maHoaDon}`).onclick = function () {
+                $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
             };
         });
-        return bill;
+        return bills;
     })
 
     .then(function (bill_list) {
@@ -118,20 +119,22 @@ fetch("http://localhost:5225/api/HoaDonXuat/HoaDonXuat")
         let date = new Date();
         $$(".bill-finish").forEach(function (btn) {
             function handleUpdateBill(event) {
-                let bill = {
-                    id: btn.id,
-                    thoiGian: `${date.getDate()}/${
+                let order = {
+                    maHoaDon: btn.id,
+                    gio: `${date.getHours()}:${
+                        date.getMinutes()}`,
+                    ngay: `${date.getDate()}/${
                         date.getMonth() + 1
                     }/${date.getFullYear()}`,
                     trangThaiThanhToan: "Đã thanh toán",
                 };
-
+                console.log(order)
                 fetch("http://localhost:5225/api/UpdateTime/UpdateThoiGian", {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(bill),
+                    body: JSON.stringify(order),
                 })
                     .then((response) => {
                         if (!response.ok) {
