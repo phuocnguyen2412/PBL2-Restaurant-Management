@@ -9,7 +9,6 @@ function openPart(button, htmlNode) {
 }
 
 openPart($("#employee-part"), $("#employee"));
-
 openPart($("#orderItem-List-part"), $("#orderItem"));
 openPart($("#bill-part"), $("#bill"));
 openPart($("#storage-part"), $("#storage"));

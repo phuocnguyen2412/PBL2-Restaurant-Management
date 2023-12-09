@@ -1,0 +1,30 @@
+/* navigation */
+#nav {
+  height: 46px;
+  background-color: black;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+}
+#nav .list {
+  line-height: 46px;
+  display: flex;
+  justify-content: center;
+}
+#nav .list .content {
+  color: white;
+  padding: 0 30px;
+}
+#nav .list .content a {
+  color: white;
+  line-height: 46px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+#nav .list .content:hover {
+  background-color: #ccc;
+}
+#nav .list .content:hover {
+  color: #000;
+}

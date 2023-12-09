@@ -4,7 +4,7 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
         return response.json();
     })
     .then(function (infor_list) {
-        // bill
+        
         console.log(infor_list)
         let infors = infor_list.map(function (infor) {
             return `

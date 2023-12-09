@@ -1,0 +1,11 @@
+/* employee */
+#employee {
+  margin-top: 100px;
+  display: none;
+}
+
+#employee .row .col #male,
+#employee .row .col #female {
+  width: auto;
+  font-size: 30px;
+}
