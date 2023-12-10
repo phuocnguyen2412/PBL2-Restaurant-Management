@@ -1,13 +1,13 @@
-
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (infor_list) {
-        
-        console.log(infor_list)
-        let infors = infor_list.map(function (infor) {
-            return `
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (infor_list) {
+    console.log(infor_list);
+    let infors = infor_list.map(function (infor) {
+      return `
                 <tr>
                     <td class="text-center">${infor.maNV}</td>
                     <td>${infor.hoTen}</td>
@@ -27,64 +27,59 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
                     </td>
                 </tr>
             `;
-        });
+    });
 
-        $("#employee-info").innerHTML = infors.join("");
-        return infor_list;
-    })
+    $("#employee-info").innerHTML = infors.join("");
+    return infor_list;
+  })
 
+  // DELETE EMPLOYEE
+  .then((infor_list) => {
+    infor_list.forEach((infor, index) => {
+      $(`#delete-${infor.maNV}`).onclick = function () {
+        console.log(index);
+        fetch(`http://localhost:5225/api/NhanVien/DeleteNhanVien/${index}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Delete failed.");
+            }
+            location.reload();
+            function showSuccessToast() {
+              toast({
+                title: "Thành công!",
+                message: "Đã xóa nhân viên thành công!",
+                type: "success",
+                duration: 5000,
+              });
+            }
+            showSuccessToast();
+          })
+          .catch((error) => {
+            function showSuccessToast() {
+              toast({
+                title: "Thất bại!",
+                message: "Xóa nhân viên thất bại do lỗi API!",
+                type: "error",
+                duration: 5000,
+              });
+            }
+            showSuccessToast();
+          });
+      };
+    });
+    return infor_list;
+  })
 
-
-    // DELETE EMPLOYEE
-    .then((infor_list) => {
-        infor_list.forEach((infor, index) => {
-            $(`#delete-${infor.maNV}`).onclick = function () {
-                console.log(index);
-                fetch(
-                    `http://localhost:5225/api/NhanVien/DeleteNhanVien/${index}`,
-                    {
-                        method: "DELETE",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                    }
-                )
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Delete failed.");
-                        }
-                        location.reload();
-                        function showSuccessToast() {
-                            toast({
-                                title: "Thành công!",
-                                message: "Đã xóa nhân viên thành công!",
-                                type: "success",
-                                duration: 5000,
-                            });
-                        }
-                        showSuccessToast();
-                    })
-                    .catch((error) => {
-                        function showSuccessToast() {
-                            toast({
-                                title: "Thất bại!",
-                                message: "Xóa nhân viên thất bại do lỗi API!",
-                                type: "error",
-                                duration: 5000,
-                            });
-                        }
-                        showSuccessToast();
-                    });
-            };
-        });
-        return infor_list;
-    })
-
-    // UPDATE EMPLOYEE
-    .then((infor_list) => {
-        infor_list.forEach((infor, index) => {
-            $(`#update-${infor.maNV}`).onclick = function () {
-                $(".update-employee").innerHTML = `
+  // UPDATE EMPLOYEE
+  .then((infor_list) => {
+    infor_list.forEach((infor, index) => {
+      $(`#update-${infor.maNV}`).onclick = function () {
+        $(".update-employee").innerHTML = `
                 <div class="new-layer">
                     <div class="container">
                         <button class="btn btn-danger close-${infor.id} float-end p-1 m-1">
@@ -187,78 +182,72 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
                 </div>
                 `;
 
-                function handleSubmit(event) {
-                    
-                    event.preventDefault();
-                    const maNV = $("#maNV").value;
-                    const hoVaTen = $("#hoVaTen").value;
-                    const gioiTinh = $("#sex").value;
-                    const email = $("#email").value;
-                    const birthday = $("#birthday").value;
-                    const CCCD = $("#CCCD").value;
-                    const thuongTru = $("#thuongTru").value;
-                    const job = $("#job").value;
-                    console.log($("#hoVaTen"))
-                    let employee_infor = {
-                        maNV: maNV,
-                        hoTen: hoVaTen,
-                        gioiTinh: gioiTinh,
-                        email: email,
-                        ngaySinh: birthday,
-                        cccd: CCCD,
-                        thuongTru: thuongTru,
-                        chucVu: job,
-                    };
-                    console.log(employee_infor);
-                    fetch("http://localhost:5225/api/NhanVien/PutNhanVien", {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(employee_infor),
-                    })
-                        .then((response) => {
-                            if (!response.ok) {
-                                throw new Error("Network response was not ok");
-                            }
+        function handleSubmit(event) {
+          event.preventDefault();
+          const maNV = $("#maNV").value;
+          const hoVaTen = $("#hoVaTen").value;
+          const gioiTinh = $("#sex").value;
+          const email = $("#email").value;
+          const birthday = $("#birthday").value;
+          const CCCD = $("#CCCD").value;
+          const thuongTru = $("#thuongTru").value;
+          const job = $("#job").value;
+          console.log($("#hoVaTen"));
+          let employee_infor = {
+            maNV: maNV,
+            hoTen: hoVaTen,
+            gioiTinh: gioiTinh,
+            email: email,
+            ngaySinh: birthday,
+            cccd: CCCD,
+            thuongTru: thuongTru,
+            chucVu: job,
+          };
+          console.log(employee_infor);
+          fetch("http://localhost:5225/api/NhanVien/PutNhanVien", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(employee_infor),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
 
-                            return response.json();
-                        })
-                        .then((orderItem) => {
-                            location.reload();
-                            function showSuccessToast() {
-                                toast({
-                                    title: "Thành công!",
-                                    message:
-                                        "Thông tin nhân viên đã được cập nhật",
-                                    type: "success",
-                                    duration: 5000,
-                                });
-                            }
-                            showSuccessToast();
-                        })
-                        .catch((error) => {
-                            console.log(2);
-							
-                            function showSuccessToast() {
-                                toast({
-                                    title: "Thất bại!",
-                                    message:
-                                        "Thông tin nhân viên không thể cập nhật do lỗi API",
-                                    type: "error",
-                                    duration: 5000,
-                                });
-                            }
-                            showSuccessToast();
-                        });
-                }
+              return response.json();
+            })
+            .then((orderItem) => {
+              location.reload();
+              function showSuccessToast() {
+                toast({
+                  title: "Thành công!",
+                  message: "Thông tin nhân viên đã được cập nhật",
+                  type: "success",
+                  duration: 5000,
+                });
+              }
+              showSuccessToast();
+            })
+            .catch((error) => {
+              console.log(2);
 
-                $(".employee-confirm").addEventListener(
-                    "click",
-                    function (event) {
-                        handleSubmit(event);
-                    }
-                );
-            };
+              function showSuccessToast() {
+                toast({
+                  title: "Thất bại!",
+                  message: "Thông tin nhân viên không thể cập nhật do lỗi API",
+                  type: "error",
+                  duration: 5000,
+                });
+              }
+              showSuccessToast();
+            });
+        }
+
+        $(".employee-confirm").addEventListener("click", function (event) {
+          handleSubmit(event);
         });
+      };
     });
+  });
