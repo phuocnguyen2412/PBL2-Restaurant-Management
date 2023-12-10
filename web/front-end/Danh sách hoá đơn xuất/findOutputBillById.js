@@ -14,25 +14,25 @@ function findEmployeeByName(name) {
     })
     .then((infor) => {
       $("#employee-info").innerHTML = `
-          <tr>
-              <td class="text-center">${infor.maNV}</td>
-              <td>${infor.hoTen}</td>
-              <td class="text-center">${infor.gioiTinh}</td>
-              <td class="text-center">${infor.cccd}</td>
-  
-              <td>${infor.thuongTru}</td>
-              <td>${infor.email}</td>
-  
-              <td class="text-center">${infor.ngaySinh}</td>
-              <td class="text-center">${infor.chucVu}</td>
-              <td
-                  class="d-flex align-items-center justify-content-center"
-              >
-                  <button id="update-${infor.maNV}" class="btn btn-info me-2"></button
-                  ><button id="delete-${infor.maNV}" class="btn btn-danger"></button>
-              </td>
-          </tr>
-          `;
+        <tr>
+            <td class="text-center">${infor.maNV}</td>
+            <td>${infor.hoTen}</td>
+            <td class="text-center">${infor.gioiTinh}</td>
+            <td class="text-center">${infor.cccd}</td>
+
+            <td>${infor.thuongTru}</td>
+            <td>${infor.email}</td>
+
+            <td class="text-center">${infor.ngaySinh}</td>
+            <td class="text-center">${infor.chucVu}</td>
+            <td
+                class="d-flex align-items-center justify-content-center"
+            >
+                <button id="update-${infor.maNV}" class="btn btn-info me-2"></button
+                ><button id="delete-${infor.maNV}" class="btn btn-danger"></button>
+            </td>
+        </tr>
+        `;
     })
     .catch((error) => {
       function showSuccessToast() {

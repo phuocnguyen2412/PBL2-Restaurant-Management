@@ -1,15 +1,16 @@
 const moreButton = $$(".more");
-moreButton.forEach(function (button,index) {
-    button.onclick = function (e) {
-        e.preventDefault();
-        $("#resource-input-table").innerHTML += `   
+moreButton.forEach(function (button, index) {
+  button.onclick = function (e) {
+    e.preventDefault();
+    $("#resource-input-table").innerHTML += `   
             <tr class="input-row">
                 <td>
-                    <input
+                    <select
                         type="text"
                         name="idNguyenLieu${index++}"
                         class="idNguyenLieu${index}"
-                    />
+                    >
+                    </select>
                 </td>
                 <td>
                     <input
@@ -27,5 +28,5 @@ moreButton.forEach(function (button,index) {
                 </td>
             </tr>
         `;
-    };
+  };
 });

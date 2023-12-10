@@ -9,7 +9,7 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
     let infors = infor_list.map(function (infor) {
       return `
                 <tr>
-                    <td class="text-center">${infor.maNV}</td>
+                    <td class="text-center">${infor.id}</td>
                     <td>${infor.hoTen}</td>
                     <td class="text-center">${infor.gioiTinh}</td>
                     <td class="text-center">${infor.cccd}</td>
@@ -22,8 +22,8 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
                     <td
                         class="d-flex align-items-center justify-content-center"
                     >
-                        <button id="update-${infor.maNV}" class="btn btn-info me-2"></button
-                        ><button id="delete-${infor.maNV}" class="btn btn-danger"></button>
+                        <button id="update-${infor.id}" class="btn btn-info me-2"></button
+                        ><button id="delete-${infor.id}" class="btn btn-danger"></button>
                     </td>
                 </tr>
             `;
@@ -168,7 +168,8 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
                                     placeholder="Nhập mã NV = Chức vụ + stt"
                                     name="maNV"
                                     id="maNV"
-                                    value="${infor.maNV}"
+                                    value="${infor.id}"
+                                    disabled
                                 />
                                 <label class="ml-2" for="maNV">Mã Nhân viên</label>
                             </div>

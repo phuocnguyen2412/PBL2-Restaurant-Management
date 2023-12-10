@@ -106,8 +106,8 @@
             </div>
             <div class="col-6 mb-2 form-floating">
               <select class="form-select" name="sex" id="sex">
-                <option value="male">Nam</option>
-                <option value="female">Nữ</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
               </select>
               <label class="ml-2" for="sex">Giới tính</label>
             </div>
@@ -161,6 +161,7 @@
                 placeholder="Nhập mã NV = Chức vụ + stt"
                 name="maNV"
                 id="maNV"
+                disabled
               />
               <label class="ml-2" for="maNV">Mã Nhân viên</label>
             </div>
@@ -262,7 +263,7 @@
         <br />
         <button class="btn btn-dark output-bill-list-btn open float-end">
           <a href="../Danh sách hoá đơn xuất/DanhSachHoaDonXuat.html">
-            >Danh sách hóa đơn</a
+            Danh sách hóa đơn</a
           >
         </button>
       </div>
@@ -274,7 +275,6 @@
           id="resource-list"
         >
           <tr class="table-success">
-            <td class="text-center">Mã nguyên liệu</td>
             <td>Tên nguyên liệu</td>
             <td class="text-center">Số lượng</td>
             <td class="text-center">Đơn vị</td>
@@ -341,7 +341,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <td style="padding-left: 10px">Mã nguyên liệu</td>
+                    <td style="padding-left: 10px">Tên nguyên liệu</td>
                     <td align="center">Số lượng</td>
                     <td align="center">Đơn giá</td>
                   </tr>
@@ -349,11 +349,11 @@
                 <tbody id="resource-input-table">
                   <tr class="input-row">
                     <td>
-                      <input
+                      <select
                         type="text"
                         name="idNguyenLieu0"
                         class="idNguyenLieu0"
-                      />
+                      ></select>
                     </td>
                     <td>
                       <input type="number" name="soLuong0" class="soLuong0" />
@@ -386,5 +386,7 @@
     <script src="./openPart.js"></script>
     <script src="./moreBtn.js"></script>
     <script src="./postResource.js"></script>
+    <script src="./employeeDropDown.js"></script>
+    <!-- <script src="./nhaCungCapDropDown.js"></script> -->
   </body>
 </html>

@@ -1,11 +1,12 @@
-function findEmployeeById(id) {
+function findEmployeeByName(name) {
+ 
   // Kiểm tra xem id có tồn tại không
   if (!id) {
     console.error("ID is required");
     return;
   }
 
-  fetch(`url_of_your_api/employees/${id}`)
+  fetch(`url_of_your_api/employees/${name}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
@@ -37,9 +38,9 @@ function findEmployeeById(id) {
     .catch((error) => {
         function showSuccessToast() {
             toast({
-                title: "Đăng kí thành công!",
-                message: "Thông tin nhân viên đã được thêm vào danh sách",
-                type: "success",
+                title: "Thất bại thành công!",
+                message: "Không tồn tại tên nhân viên đã nhập",
+                type: "error",
                 duration: 5000,
             });
         }
@@ -47,7 +48,7 @@ function findEmployeeById(id) {
     });
 }
 
-$("#findEmployeeById").onclick = function (event) {
+$("#findEmployeeByName").onclick = function (event) {
   event.preventDefault();
-  findEmployeeById($(".idNV").value);
+  findInputBillById($("#billID").value);
 };
