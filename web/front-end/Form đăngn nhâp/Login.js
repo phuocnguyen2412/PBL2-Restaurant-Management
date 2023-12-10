@@ -4,7 +4,7 @@ const $$ = document.querySelectorAll.bind(document);
 function User(username, password) {
   this.username = username;
   this.password = password;
-  this.maNV = this.checkUser;
+  this.maNV = "";
   this.Login = function () {
     fetch("http://localhost:5225/api/Auth/Login", {
       method: "POST",
@@ -34,31 +34,8 @@ function User(username, password) {
       });
   };
   this.checkUser = function () {
-    return fetch("http://localhost:5225/api/Auth/Login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: this.username,
-        password: this.password,
-      }),
-    }).then((response) => response.json());
-  };
-  this.changePassword = function () {
-    if (this.maNV && this.maNV != 0) {
-      $("#accout-change").innerHTML = `
-                <label for="new-password-change">Password mới:</label>
-                <input
-                    type="password"
-                    id="new-password-change"
-                    name="new-password-change"
-                    required
-                />
-            `;
-    }
-    this.password = $("#new-password-change").value;
-    fetch("http://localhost:5225/api/Auth/Login", {
+    that = this;
+    return fetch("http://localhost:5225/api/Auth/Auth", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,23 +45,88 @@ function User(username, password) {
         password: this.password,
       }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        toast({
-          title: "Thành công!",
-          message: "Đổi mật khẩu thành công!",
-          type: "error",
-          duration: 5000,
-        });
-      })
-      .catch((error) => {
-        toast({
-          title: "Thất bại!",
-          message: "Tài khoản hoặc mật khẩu không đúng!",
-          type: "error",
-          duration: 5000,
-        });
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response.message)
+      if (!response.ok) {
+        throw new Error("Server response is not OK");
+      }
+      return response;
+    })
+    .then((data)=>{
+      
+      this.maNV = data.maNV;
+      this.changePassword();
+    })
+    .catch((error) => {
+      toast({
+        title: "Thất bại!",
+        message: "Mật khẩu cũ không đúng!",
+        type: "error",
+        duration: 5000,
       });
+    });
+  };
+  
+  this.changePassword = function () {
+    
+    if (this.maNV) {
+      $("#accout-change").innerHTML += `
+                <label for="new-password-change">Password mới:</label>
+                <input
+                    type="password"
+                    id="new-password-change"
+                    name="new-password-change"
+                    required
+                />
+                <button class="submit" type="submit">Submit</button>
+            `;
+    }
+    that = this;
+    $(".submit").onclick = function(event){
+      event.preventDefault();
+      that.password = $("#new-password-change").value;
+      console.log({
+        username: that.username,
+        password: that.password,
+        maNV: that.maNV,
+      })
+      fetch("http://localhost:5225/api/Auth/ChangePassword", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: that.username,
+          password: that.password,
+          maNV: that.maNV,
+        }),
+      })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response.message)
+        if (response.message != "Đổi mật khẩu thành công!") {
+          throw new Error("Server response is not OK");
+        }
+        return response;
+      })
+        .then((data) => {
+          toast({
+            title: "Thành công!",
+            message: "Đổi mật khẩu thành công!",
+            type: "success",
+            duration: 5000,
+          });
+        })
+        .catch((error) => {
+          toast({
+            title: "Thất bại!",
+            message: "Mật khẩu phải tối thiếu 8 kí tự!",
+            type: "error",
+            duration: 5000,
+          });
+        });
+    }
   };
 }
 
