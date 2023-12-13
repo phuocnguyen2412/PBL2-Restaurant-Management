@@ -181,9 +181,9 @@
         <div id="orderItem-list" class="row"></div>
       </div>
 
-      <div id="bill" class="container part">
-        <h2>Tạo hoá đơn</h2>
-        <div class="tabs">
+      <div id="bill" class="part">
+        <div class="row d-flex">
+          <!-- <div class="tabs">
           <div class="all tab-item active">
             <i class="tab-icon fas fa-code"></i>
             Tất cả
@@ -197,11 +197,14 @@
             Nước uống
           </div>
           <div class="line"></div>
-        </div>
-        <form id="orderForm" action="">
-          <div class="row" id="dish-list"></div>
-          <div class="row">
-            <div class="col-6 form-floating mt-2">
+        </div> -->
+
+          <div class="col-6">
+            <h2>Tạo hoá đơn</h2>
+            <form id="orderForm" action="">
+              <div class="row" id="dish-list"></div>
+              <div class="row">
+                <!-- <div class="col-6 form-floating mt-2">
               <input
                 class="form-control"
                 type="text"
@@ -209,63 +212,229 @@
                 name="idOrder"
                 placeholder="Nhập mã order"
               />
-              <label class="ml-2" for="idOrder">Mã order</label><br />
-            </div>
-            <div class="col-6 form-floating mt-2">
-              <select
-                class="form-control"
-                id="maNVorder"
-                name="maNVorder"
-                type="number"
-                placeholder="Nhập mã nhân viên"
-              ></select>
-              <label class="ml-2" for="maNVorder">Tên nhân viên Order</label
-              ><br />
-            </div>
-            <div class="col-6 form-floating mt-2">
-              <input
-                class="form-control"
-                id="soBan"
-                name="soBan"
-                type="number"
-                placeholder="Nhập số bàn"
-              />
-              <label class="ml-2" for="soBan">Số bàn</label><br />
-            </div>
-            <div class="col-6 form-floating mt-2">
-              <input
-                class="form-control"
-                id="phanTramKhuyenMai"
-                name="phanTramKhuyenMai"
-                type="number"
-                placeholder="Nhập % khuyến mãi"
-                value="0"
-              />
-              <label class="ml-2" for="phanTramKhuyenMai">% khuyến mãi</label>
-            </div>
-            <div class="col l-12 form-floating mt-2">
-              <textarea
-                class="form-control"
-                id="ghiChu"
-                name="ghiChu"
-                type="textarea"
-                placeholder="Nhập ghi chú"
-                rows="5"
-              ></textarea>
-              <label class="ml-2" for="ghiChu">Ghi chú </label><br />
+              <label class="ml-2" for="idOrder">Mã order</label><br /> -->
+                <!-- </div> -->
+                <div class="col-6 form-floating mt-2">
+                  <select
+                    class="form-control"
+                    id="maNVorder"
+                    name="maNVorder"
+                    type="number"
+                    placeholder="Nhập mã nhân viên"
+                  ></select>
+                  <label class="ml-2" for="maNVorder">Tên nhân viên Order</label
+                  ><br />
+                </div>
+                <div class="col-6 form-floating mt-2">
+                  <select
+                    class="form-control"
+                    id="soBan"
+                    name="soBan"
+                    type="number"
+                    placeholder="Nhập số bàn"
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                  </select>
+                  <label class="ml-2" for="soBan">Số bàn</label><br />
+                </div>
+
+                <div class="col-12">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <td style="padding-left: 10px">Tên món ăn</td>
+                        <td align="center">Số lượng</td>
+                        <td align="center">% khuyến mãi</td>
+                        <td align="center">Ghi chú</td>
+                      </tr>
+                    </thead>
+                    <tbody id="dish-input-table">
+                      <tr class="input-row-dish">
+                        <td>
+                          <select
+                            type="text"
+                            name="idMonAn0"
+                            class="idMonAn0"
+                          ></select>
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            name="soLuongMonAn0"
+                            class="soLuongMonAn0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value="0"
+                            type="number"
+                            name="phanTramKhuyenMai0"
+                            class="phanTramKhuyenMai0"
+                          />
+                        </td>
+                        <td>
+                          <input type="textarea" name="ghiChu0" id="ghiChu0" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </form>
+            <button class="more-dish btn btn-dark">Thêm món ăn</button>
+            <button
+              class="btn btn-dark orderForm-submit-btn float-end"
+              type="submit"
+            >
+              Xác nhận
+            </button>
+            <br />
+            <br />
+            <button class="btn btn-dark output-bill-list-btn open float-end">
+              <a href="../Danh sách hoá đơn xuất/DanhSachHoaDonXuat.html">
+                Danh sách hóa đơn</a
+              >
+            </button>
+          </div>
+          <div class="col-6">
+            <h2 class="title text-center mt-4 mb-4">Danh sách bàn ăn</h2>
+            <div id="bill-list" class="row">
+              <div id="bill-${bill.maHoaDon}" class="col-3 card">
+                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
+                <div class="card-body">
+                  Ngày: ${bill.ngay} <br />
+                  Giờ: ${bill.gio} <br />
+                  Tạo bởi: ${bill.hoTen}<br />
+                  Thành tiền: ${bill.tongCong}<br />
+                  Trạng thái: ${bill.trangThai}
+                </div>
+                <div class="card-footer d-grid">
+                  <button
+                    id="open-detail-bill-id${bill.maHoaDon}"
+                    class="btn btn-outline-success"
+                  >
+                    Chi tiết
+                  </button>
+                </div>
+              </div>
+              <div id="bill-${bill.maHoaDon}" class="col-3 card">
+                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
+                <div class="card-body">
+                  Ngày: ${bill.ngay} <br />
+                  Giờ: ${bill.gio} <br />
+                  Tạo bởi: ${bill.hoTen}<br />
+                  Thành tiền: ${bill.tongCong}<br />
+                  Trạng thái: ${bill.trangThai}
+                </div>
+                <div class="card-footer d-grid">
+                  <button
+                    id="open-detail-bill-id${bill.maHoaDon}"
+                    class="btn btn-outline-success"
+                  >
+                    Chi tiết
+                  </button>
+                </div>
+              </div>
+              <div id="bill-${bill.maHoaDon}" class="col-3 card">
+                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
+                <div class="card-body">
+                  Ngày: ${bill.ngay} <br />
+                  Giờ: ${bill.gio} <br />
+                  Tạo bởi: ${bill.hoTen}<br />
+                  Thành tiền: ${bill.tongCong}<br />
+                  Trạng thái: ${bill.trangThai}
+                </div>
+                <div class="card-footer d-grid">
+                  <button
+                    id="open-detail-bill-id${bill.maHoaDon}"
+                    class="btn btn-outline-success"
+                  >
+                    Chi tiết
+                  </button>
+                </div>
+              </div>
+              <div id="bill-${bill.maHoaDon}" class="col-3 card">
+                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
+                <div class="card-body">
+                  Ngày: ${bill.ngay} <br />
+                  Giờ: ${bill.gio} <br />
+                  Tạo bởi: ${bill.hoTen}<br />
+                  Thành tiền: ${bill.tongCong}<br />
+                  Trạng thái: ${bill.trangThai}
+                </div>
+                <div class="card-footer d-grid">
+                  <button
+                    id="open-detail-bill-id${bill.maHoaDon}"
+                    class="btn btn-outline-success"
+                  >
+                    Chi tiết
+                  </button>
+                </div>
+              </div>
+              <div id="bill-${bill.maHoaDon}" class="col-3 card">
+                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
+                <div class="card-body">
+                  Ngày: ${bill.ngay} <br />
+                  Giờ: ${bill.gio} <br />
+                  Tạo bởi: ${bill.hoTen}<br />
+                  Thành tiền: ${bill.tongCong}<br />
+                  Trạng thái: ${bill.trangThai}
+                </div>
+                <div class="card-footer d-grid">
+                  <button
+                    id="open-detail-bill-id${bill.maHoaDon}"
+                    class="btn btn-outline-success"
+                  >
+                    Chi tiết
+                  </button>
+                </div>
+              </div>
+              <div id="bill-${bill.maHoaDon}" class="col-3 card">
+                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
+                <div class="card-body">
+                  Ngày: ${bill.ngay} <br />
+                  Giờ: ${bill.gio} <br />
+                  Tạo bởi: ${bill.hoTen}<br />
+                  Thành tiền: ${bill.tongCong}<br />
+                  Trạng thái: ${bill.trangThai}
+                </div>
+                <div class="card-footer d-grid">
+                  <button
+                    id="open-detail-bill-id${bill.maHoaDon}"
+                    class="btn btn-outline-success"
+                  >
+                    Chi tiết
+                  </button>
+                </div>
+              </div>
+              <div id="bill-${bill.maHoaDon}" class="col-3 card">
+                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
+                <div class="card-body">
+                  Ngày: ${bill.ngay} <br />
+                  Giờ: ${bill.gio} <br />
+                  Tạo bởi: ${bill.hoTen}<br />
+                  Thành tiền: ${bill.tongCong}<br />
+                  Trạng thái: ${bill.trangThai}
+                </div>
+                <div class="card-footer d-grid">
+                  <button
+                    id="open-detail-bill-id${bill.maHoaDon}"
+                    class="btn btn-outline-success"
+                  >
+                    Chi tiết
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </form>
-
-        <button class="btn btn-dark orderForm-submit-btn" type="submit">
-          Xác nhận
-        </button>
-        <br />
-        <button class="btn btn-dark output-bill-list-btn open float-end">
-          <a href="../Danh sách hoá đơn xuất/DanhSachHoaDonXuat.html">
-            Danh sách hóa đơn</a
-          >
-        </button>
+        </div>
       </div>
 
       <div id="storage" class="container part">
@@ -296,26 +465,7 @@
               />
               <label class="ml-2" for="idHoaDonKho">Mã hoá đơn</label>
             </div>
-            <div class="col-6 form-floating mb-2">
-              <input
-                class="form-control"
-                type="date"
-                name="NgayNhap"
-                id="NgayNhap"
-                placeholder="Nhập ngày nhập"
-              />
-              <label class="ml-2" for="NgayNhap">Ngày nhập</label>
-            </div>
-            <div class="col-6 form-floating mb-2">
-              <input
-                class="form-control"
-                type="text"
-                name="gioNhap"
-                id="gioNhap"
-                placeholder="Nhập giờ nhập"
-              />
-              <label class="ml-2" for="gioNhap">Giờ nhập</label>
-            </div>
+
             <div class="col-6 form-floating mb-2">
               <select
                 class="form-control"
@@ -388,5 +538,6 @@
     <script src="./postResource.js"></script>
     <script src="./employeeDropDown.js"></script>
     <script src="./nhaCungCapDropDown.js"></script>
+    <script src="./moreDish.js"></script>
   </body>
 </html>
