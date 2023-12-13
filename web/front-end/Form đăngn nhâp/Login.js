@@ -45,31 +45,33 @@ function User(username, password) {
         password: this.password,
       }),
     })
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response.message)
-      if (!response.ok) {
-        throw new Error("Server response is not OK");
-      }
-      return response;
-    })
-    .then((data)=>{
-      
-      this.maNV = data.maNV;
-      this.changePassword();
-    })
-    .catch((error) => {
-      toast({
-        title: "Thất bại!",
-        message: "Mật khẩu cũ không đúng!",
-        type: "error",
-        duration: 5000,
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response.message);
+        if (!response.ok) {
+          throw new Error("Server response is not OK");
+        }
+        return response;
+      })
+      .then((data) => {
+        this.maNV = data.maNV;
+        this.changePassword();
+      })
+      .catch((error) => {
+        toast({
+          title: "Thất bại!",
+          message: "Mật khẩu cũ không đúng!",
+          type: "error",
+          duration: 5000,
+        });
       });
-    });
   };
-  
+  this.openEmployee = function () {
+    if ((this.maNV = 1164)) {
+      openPart($("#employee-part"), $("#employee"));
+    }
+  };
   this.changePassword = function () {
-    
     if (this.maNV) {
       $("#accout-change").innerHTML += `
                 <label for="new-password-change">Password mới:</label>
@@ -83,14 +85,14 @@ function User(username, password) {
             `;
     }
     that = this;
-    $(".submit").onclick = function(event){
+    $(".submit").onclick = function (event) {
       event.preventDefault();
       that.password = $("#new-password-change").value;
       console.log({
         username: that.username,
         password: that.password,
         maNV: that.maNV,
-      })
+      });
       fetch("http://localhost:5225/api/Auth/ChangePassword", {
         method: "POST",
         headers: {
@@ -102,14 +104,14 @@ function User(username, password) {
           maNV: that.maNV,
         }),
       })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response.message)
-        if (response.message != "Đổi mật khẩu thành công!") {
-          throw new Error("Server response is not OK");
-        }
-        return response;
-      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response.message);
+          if (response.message != "Đổi mật khẩu thành công!") {
+            throw new Error("Server response is not OK");
+          }
+          return response;
+        })
         .then((data) => {
           toast({
             title: "Thành công!",
@@ -126,7 +128,7 @@ function User(username, password) {
             duration: 5000,
           });
         });
-    }
+    };
   };
 }
 
@@ -134,4 +136,21 @@ $("#submit-login-btn").onclick = function (event) {
   event.preventDefault();
   const user = new User($("#username").value, $("#password").value);
   user.Login();
+  user.openPart();
 };
+
+function openPart(button, htmlNode) {
+  button.onclick = function (e) {
+    $$(".part").forEach(function (part) {
+      part.style.display = "none";
+    });
+    e.preventDefault();
+    htmlNode.style.display = "block";
+  };
+}
+
+openPart($("#orderItem-List-part"), $("#orderItem"));
+openPart($("#bill-part"), $("#bill"));
+openPart($("#storage-part"), $("#storage"));
+openPart($("#resource-input-part"), $("#resource-input"));
+openPart($("#home-part"), $("#home"));

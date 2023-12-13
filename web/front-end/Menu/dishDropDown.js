@@ -8,18 +8,13 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
             <option value="${dish.id}">${dish.tenMon}</option>
           `;
     });
-    dishes = dishes.join("")
+    dishes = dishes.join("");
     $$(".input-row-dish").forEach(function (input, index) {
-      
-
-         $(`.idMonAn${index}`).innerHTML = dishes;
-       })
-    $$(".idMonAn").forEach( function(input){
-      input.onchange = function(){
-
+      $(`.idMonAn${index}`).innerHTML = dishes;
+    });
+    $$(".idMonAn").forEach(function (input) {
+      input.onchange = function () {
         input.innerHTML = dishes;
-      }
-    })
+      };
+    });
   });
-
- 
