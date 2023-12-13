@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="./css/Storage.css" />
     <link rel="stylesheet" href="./css/ResourceInput.css" />
     <link rel="stylesheet" href="../toastMessage.css" />
+    <link rel="stylesheet" href="../layer.css">
+    <link rel="stylesheet" href="../closeBtn.js">
   </head>
   <body>
     <div id="main">
@@ -202,7 +204,7 @@
           <div class="col-6">
             <h2>Tạo hoá đơn</h2>
             <form id="orderForm" action="">
-              <div class="row" id="dish-list"></div>
+              
               <div class="row">
                 <!-- <div class="col-6 form-floating mt-2">
               <input
@@ -261,7 +263,7 @@
                           <select
                             type="text"
                             name="idMonAn0"
-                            class="idMonAn0"
+                            class="idMonAn0 idmonAn"
                           ></select>
                         </td>
                         <td>
@@ -306,134 +308,17 @@
           <div class="col-6">
             <h2 class="title text-center mt-4 mb-4">Danh sách bàn ăn</h2>
             <div id="bill-list" class="row">
-              <div id="bill-${bill.maHoaDon}" class="col-3 card">
-                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
-                <div class="card-body">
-                  Ngày: ${bill.ngay} <br />
-                  Giờ: ${bill.gio} <br />
-                  Tạo bởi: ${bill.hoTen}<br />
-                  Thành tiền: ${bill.tongCong}<br />
-                  Trạng thái: ${bill.trangThai}
-                </div>
-                <div class="card-footer d-grid">
-                  <button
-                    id="open-detail-bill-id${bill.maHoaDon}"
-                    class="btn btn-outline-success"
-                  >
-                    Chi tiết
-                  </button>
-                </div>
-              </div>
-              <div id="bill-${bill.maHoaDon}" class="col-3 card">
-                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
-                <div class="card-body">
-                  Ngày: ${bill.ngay} <br />
-                  Giờ: ${bill.gio} <br />
-                  Tạo bởi: ${bill.hoTen}<br />
-                  Thành tiền: ${bill.tongCong}<br />
-                  Trạng thái: ${bill.trangThai}
-                </div>
-                <div class="card-footer d-grid">
-                  <button
-                    id="open-detail-bill-id${bill.maHoaDon}"
-                    class="btn btn-outline-success"
-                  >
-                    Chi tiết
-                  </button>
-                </div>
-              </div>
-              <div id="bill-${bill.maHoaDon}" class="col-3 card">
-                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
-                <div class="card-body">
-                  Ngày: ${bill.ngay} <br />
-                  Giờ: ${bill.gio} <br />
-                  Tạo bởi: ${bill.hoTen}<br />
-                  Thành tiền: ${bill.tongCong}<br />
-                  Trạng thái: ${bill.trangThai}
-                </div>
-                <div class="card-footer d-grid">
-                  <button
-                    id="open-detail-bill-id${bill.maHoaDon}"
-                    class="btn btn-outline-success"
-                  >
-                    Chi tiết
-                  </button>
-                </div>
-              </div>
-              <div id="bill-${bill.maHoaDon}" class="col-3 card">
-                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
-                <div class="card-body">
-                  Ngày: ${bill.ngay} <br />
-                  Giờ: ${bill.gio} <br />
-                  Tạo bởi: ${bill.hoTen}<br />
-                  Thành tiền: ${bill.tongCong}<br />
-                  Trạng thái: ${bill.trangThai}
-                </div>
-                <div class="card-footer d-grid">
-                  <button
-                    id="open-detail-bill-id${bill.maHoaDon}"
-                    class="btn btn-outline-success"
-                  >
-                    Chi tiết
-                  </button>
-                </div>
-              </div>
-              <div id="bill-${bill.maHoaDon}" class="col-3 card">
-                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
-                <div class="card-body">
-                  Ngày: ${bill.ngay} <br />
-                  Giờ: ${bill.gio} <br />
-                  Tạo bởi: ${bill.hoTen}<br />
-                  Thành tiền: ${bill.tongCong}<br />
-                  Trạng thái: ${bill.trangThai}
-                </div>
-                <div class="card-footer d-grid">
-                  <button
-                    id="open-detail-bill-id${bill.maHoaDon}"
-                    class="btn btn-outline-success"
-                  >
-                    Chi tiết
-                  </button>
-                </div>
-              </div>
-              <div id="bill-${bill.maHoaDon}" class="col-3 card">
-                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
-                <div class="card-body">
-                  Ngày: ${bill.ngay} <br />
-                  Giờ: ${bill.gio} <br />
-                  Tạo bởi: ${bill.hoTen}<br />
-                  Thành tiền: ${bill.tongCong}<br />
-                  Trạng thái: ${bill.trangThai}
-                </div>
-                <div class="card-footer d-grid">
-                  <button
-                    id="open-detail-bill-id${bill.maHoaDon}"
-                    class="btn btn-outline-success"
-                  >
-                    Chi tiết
-                  </button>
-                </div>
-              </div>
-              <div id="bill-${bill.maHoaDon}" class="col-3 card">
-                <div class="card-header">ID hóa đơn: ${bill.maHoaDon}</div>
-                <div class="card-body">
-                  Ngày: ${bill.ngay} <br />
-                  Giờ: ${bill.gio} <br />
-                  Tạo bởi: ${bill.hoTen}<br />
-                  Thành tiền: ${bill.tongCong}<br />
-                  Trạng thái: ${bill.trangThai}
-                </div>
-                <div class="card-footer d-grid">
-                  <button
-                    id="open-detail-bill-id${bill.maHoaDon}"
-                    class="btn btn-outline-success"
-                  >
-                    Chi tiết
-                  </button>
-                </div>
-              </div>
+      
+         
+             
+             
+              
+       
+  
+           
             </div>
           </div>
+          <div class="detail-bill-list"></div>
         </div>
       </div>
 
@@ -539,5 +424,8 @@
     <script src="./employeeDropDown.js"></script>
     <script src="./nhaCungCapDropDown.js"></script>
     <script src="./moreDish.js"></script>
+    <script src="./dishDropDown.js"></script>
+    <script src="./getTable.js"></script>
+    
   </body>
 </html>

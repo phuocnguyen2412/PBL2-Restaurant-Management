@@ -1,16 +1,25 @@
-fetch(`http://localhost:5225/api/NhaCC/GetNguyenLieuByNhaCC/${id}`)
+fetch(`http://localhost:5225/api/MonAn/MonAn`)
   .then(function (response) {
     return response.json();
   })
   .then(function (dish_list) {
     let dishes = dish_list.map(function (dish) {
       return `
-            <option value="${dish.id}">${dish.tenMonAn}</option>
+            <option value="${dish.id}">${dish.tenMon}</option>
           `;
     });
+    dishes = dishes.join("")
     $$(".input-row-dish").forEach(function (input, index) {
-      dish.forEach(function (infor) {
-        $(`.idMonAn${index}`).innerHTML = dish.join("");
-      });
-    });
+      
+
+         $(`.idMonAn${index}`).innerHTML = dishes;
+       })
+    $$(".idMonAn").forEach( function(input){
+      input.onchange = function(){
+
+        input.innerHTML = dishes;
+      }
+    })
   });
+
+ 

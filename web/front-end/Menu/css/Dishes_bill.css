@@ -86,3 +86,8 @@
 .dish-info .giaMon {
   display: none;
 }
+.bill-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
