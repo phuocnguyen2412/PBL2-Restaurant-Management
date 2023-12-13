@@ -27,10 +27,10 @@ function postHoaDon() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response)
-        if (!response.ok) {
-          throw "lỗi";
-        }
+        console.log(response.message)
+        // if (response.message != "Đã tạo bản ghi!") {
+        //   throw "lỗi";
+        // }
         return response.json();
       })
       .then((message) => {
@@ -48,7 +48,7 @@ function postHoaDon() {
         function showSuccessToast() {
           toast({
             title: "Thất bại!",
-            message: "Không thể thêm hóa đơn do lỗi API",
+            message: "Không thể thêm hóa đơn do lỗi API!!!!",
             type: "error",
             duration: 5000,
           });

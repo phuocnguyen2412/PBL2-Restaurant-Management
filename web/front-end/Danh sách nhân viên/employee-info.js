@@ -1,4 +1,4 @@
-const $ = document.querySelector.bind(document);
+  const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
   .then(function (response) {
@@ -36,9 +36,9 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
   // DELETE EMPLOYEE
   .then((infor_list) => {
     infor_list.forEach((infor, index) => {
-      $(`#delete-${infor.maNV}`).onclick = function () {
-        console.log(index);
-        fetch(`http://localhost:5225/api/NhanVien/DeleteNhanVien/${index}`, {
+      $(`#delete-${infor.id}`).onclick = function () {
+        console.log(infor.id);
+        fetch(`http://localhost:5225/api/NhanVien/DeleteNhanVien/${infor.id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -78,7 +78,7 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
   // UPDATE EMPLOYEE
   .then((infor_list) => {
     infor_list.forEach((infor, index) => {
-      $(`#update-${infor.maNV}`).onclick = function () {
+      $(`#update-${infor.id}`).onclick = function () {
         $(".update-employee").innerHTML = `
                 <div class="new-layer">
                     <div class="container">
@@ -166,12 +166,12 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
                                     class="form-control"
                                     type="text"
                                     placeholder="Nhập mã NV = Chức vụ + stt"
-                                    name="maNV"
-                                    id="maNV"
+                                    name="id"
+                                    id="id"
                                     value="${infor.id}"
                                     disabled
                                 />
-                                <label class="ml-2" for="maNV">Mã Nhân viên</label>
+                                <label class="ml-2" for="id">Mã Nhân viên</label>
                             </div>
                         </div>
                         <button
@@ -185,7 +185,7 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
 
         function handleSubmit(event) {
           event.preventDefault();
-          const maNV = $("#maNV").value;
+          const maNV = $("#id").value;
           const hoVaTen = $("#hoVaTen").value;
           const gioiTinh = $("#sex").value;
           const email = $("#email").value;
@@ -195,7 +195,7 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
           const job = $("#job").value;
           console.log($("#hoVaTen"));
           let employee_infor = {
-            maNV: maNV,
+            id: maNV,
             hoTen: hoVaTen,
             gioiTinh: gioiTinh,
             email: email,

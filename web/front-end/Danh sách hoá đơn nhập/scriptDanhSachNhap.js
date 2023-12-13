@@ -11,7 +11,7 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
         let bill_list = bills.map(function (bill) {
             return `
                     <div class="col-3 card">
-                        <div class="card-header">ID hóa đơn nhập: ${bill.id}</div>
+                        <div class="card-header">ID hóa đơn nhập: ${bill.maHoaDon}</div>
                         <div class="card-body">
                             Nhà cung cấp: ${bill.tenNhaCC}<br />
                             Ngày: ${bill.ngay} <br />
@@ -20,7 +20,7 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                             Thành tiền: ${bill.thanhTien}<br />
                         </div>
                         <div class="card-footer d-grid">
-                        <button id="open-detail-bill-id${bill.id}" class="btn btn-outline-success">
+                        <button id="open-detail-bill-id${bill.maHoaDon}" class="btn btn-outline-success">
                                 Chi tiết
                             </button>
                         </div>
@@ -34,18 +34,18 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
         let detail_bill_list = bills.map(function (bill) {
             return `
                 <div
-                    id="detail-bill-${bill.id}"
+                    id="detail-bill-${bill.maHoaDon}"
                     class="card new-layer detail-bill"
                     style="display: none; z-index: 10"
                 >
                     <div class="container ">
                     <button
-                    class="btn-close close float-end close-${bill.id} mt-2"
+                    class="btn-close close float-end close-${bill.maHoaDon} mt-2"
                     ></button>
                         <div class="card-header ">
                         
                             
-                            <h4 class="text-center mt-2">Hóa đơn nhập ID${bill.id}</h4>
+                            <h4 class="text-center mt-2">Hóa đơn nhập ID${bill.maHoaDon}</h4>
                         
                         </div>
                         <div class="card-body pb-3">
@@ -72,7 +72,7 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                                     </tr>
                                 </thead>
                                 <tbody 
-                                    class="table-detail-bill-${bill.id}">
+                                    class="table-detail-bill-${bill.maHoaDon}">
                                 </tbody>
                             </table>
                             <span class="float-end text-center pb-3">
@@ -101,14 +101,14 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                     </tr>
                 `;
             });
-            $(`.table-detail-bill-${bill.id}`).innerHTML = items.join("");
+            $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML = items.join("");
 
-            $(`#open-detail-bill-id${bill.id}`).onclick = function () {
+            $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
                 console.log(1);
-                $(`#detail-bill-${bill.id}`).style.display = "flex";
+                $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";
             };
-            $(`.close-${bill.id}`).onclick = function () {
-                $(`#detail-bill-${bill.id}`).style.display = "none";
+            $(`.close-${bill.maHoaDon}`).onclick = function () {
+                $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
             };
         });
         // return bill;
