@@ -2,14 +2,14 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (bills) {
-        console.log(bills.items);
-        // bill
-        let bill_list = bills.map(function (bill) {
-            return `
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (bills) {
+    console.log(bills.items);
+    // bill
+    let bill_list = bills.map(function (bill) {
+      return `
                     <div class="col-3 card">
                         <div class="card-header">ID hóa đơn nhập: ${bill.maHoaDon}</div>
                         <div class="card-body">
@@ -26,13 +26,12 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                         </div>
                     </div>
                 `;
-        });
+    });
 
-        $("#bill-list").innerHTML = bill_list.join("");
-        console.log(bills);
-        // detail bill
-        let detail_bill_list = bills.map(function (bill) {
-            return `
+    $("#bill-list").innerHTML = bill_list.join("");
+    // detail bill
+    let detail_bill_list = bills.map(function (bill) {
+      return `
                 <div
                     id="detail-bill-${bill.maHoaDon}"
                     class="card new-layer detail-bill"
@@ -85,13 +84,13 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                     </div>
                 </div>
             `;
-        });
+    });
 
-        $(".detail-bill-list").innerHTML = detail_bill_list.join("");
-        console.log(bills.items);
-        bills.forEach(function (bill) {
-            let items = bill.items.map(function (i) {
-                return `
+    $(".detail-bill-list").innerHTML = detail_bill_list.join("");
+    console.log(bills.items);
+    bills.forEach(function (bill) {
+      let items = bill.items.map(function (i) {
+        return `
                     <tr>
                         <td style="padding-left: 10px">${i.tenNguyenLieu}</td>
                         <td>${i.soLuong}</td>
@@ -100,16 +99,15 @@ fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
                         <td>${i.thanhTienItem}</td>
                     </tr>
                 `;
-            });
-            $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML = items.join("");
+      });
+      $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML = items.join("");
 
-            $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
-                console.log(1);
-                $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";
-            };
-            $(`.close-${bill.maHoaDon}`).onclick = function () {
-                $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
-            };
-        });
-        // return bill;
+      $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
+        $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";
+      };
+      $(`.close-${bill.maHoaDon}`).onclick = function () {
+        $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
+      };
     });
+    // return bill;
+  });
