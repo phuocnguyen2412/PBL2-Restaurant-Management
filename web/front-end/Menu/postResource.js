@@ -7,7 +7,7 @@ function postHoaDon() {
                 date.getMonth() + 1
             }/${date.getFullYear()}`,
             idNhaCC: $("#idNhaCungCap").value,
-            maNV: $("#maNVResource").value,
+            tenNV: $("#maNVResource").value,
             maHoaDon: $("#idHoaDonKho").value,
             idNguyenLieu: $(`.idNguyenLieu${index}`).value,
             soLuong: $(`.soLuong${index}`).value,

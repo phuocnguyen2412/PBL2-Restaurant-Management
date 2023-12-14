@@ -1,3 +1,4 @@
+showBill();
 function showBill() {
     fetch("http://localhost:5225/api/HoaDonXuat/HoaDon")
         .then(function (response) {
@@ -9,7 +10,7 @@ function showBill() {
                             <div id="bill-${bill.maHoaDon}"class="col-3 card ">
                                 <div class="card-header">${bill.soBan}</div>
                                 <div class="card-body">
-                                    Tạo bởi: ${bill.hoTen}<br />
+                                    Tạo bởi: ${bill.tenNV}<br />
                                     Trạng thái: ${bill.trangThai}
                                 </div>
                                 <div class="card-footer d-grid">
@@ -126,14 +127,11 @@ function showBill() {
                         },
                         body: JSON.stringify(order),
                     })
-                        .then((response) => {
-                            if (!response.ok) {
-                                throw new Error("Network response was not ok");
-                            }
-                            return response.json();
-                        })
+                         
+                      
                         .then(() => {
-                            showTable();
+                            $(`#detail-bill-${btn.id}`).remove()
+                            showBill();
                             toast({
                                 title: "Thành công!",
                                 message: "Đã xuất hóa đơn thành công ",
@@ -141,14 +139,7 @@ function showBill() {
                                 duration: 5000,
                             });
                         })
-                        .catch((error) => {
-                            toast({
-                                title: "Thất bại!",
-                                message: "Xuất hóa đơn thất bại do lỗi API",
-                                type: "error",
-                                duration: 5000,
-                            });
-                        });
+               
                 }
                 btn.onclick = function (event) {
                     event.preventDefault();

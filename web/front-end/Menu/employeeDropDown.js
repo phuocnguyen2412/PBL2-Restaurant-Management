@@ -6,19 +6,12 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
     console.log(infor_list)
     infor_list.forEach(function (infor) {
       $(`#maNVorder`).innerHTML += `
-        <option value="${infor.id}">${infor.hoTen}</option>
+        <option value="${infor.hoTen}">${infor.hoTen}</option>
       `;
       $(`#maNVResource`).innerHTML += `
-        <option value="${infor.id}">${infor.hoTen}</option>
+        <option value="${infor.hoTen}">${infor.hoTen}</option>
       `;
-      // makeEmployeeOption(maNVorder, infor);
-      // makeEmployeeOption(maNVResource, infor);
+     
     });
   });
 
-function makeEmployeeOption(select, infor) {
-  console.log($(`#${select}`))
-  $(`#${select}`).innerHTML += `
-    <option value="${infor.id}">${infor.hoTen}</option>
-  `;
-}

@@ -86,7 +86,7 @@ fetch(
             maHoaDon: `${date.getDate()}${
               date.getMonth() + 1
             }${date.getFullYear()}${date.getHours()}${date.getMinutes()}`,
-            maNV: $("#maNVorder").value,
+            tenNV: $("#maNVorder").value,
             soBan: $("#soBan").value,
             trangThaiMon: "undone",
             ngay: "null",
@@ -99,13 +99,52 @@ fetch(
            
           };
           console.log(data);
-          fetch("http://localhost:5225/api/Order/PostOrder", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data),
+          if (data.soLuong > 0) {
+
+            fetch("http://localhost:5225/api/Order/PostOrder", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              })
+              .then((orderItem) => {
+                console.log(1);
+                function showSuccessToast() {
+                    toast({
+                        title: "Đăng kí thành công!",
+                        message: "Thông tin nhân viên đã được thêm vào danh sách",
+                        type: "success",
+                        duration: 5000,
+                    });
+                }
+                showBill();
+                showSuccessToast();
             })
+            .catch((error) => {
+                console.log(2);
+    
+                function showSuccessToast() {
+                    toast({
+                        title: "Thất bại!",
+                        message:
+                            "Thông tin nhân viên không thể được thêm vào do lỗi API",
+                        type: "error",
+                        duration: 5000,
+                    });
+                }
+                showSuccessToast();
+            });
+          }
+          else{
+            toast({
+              title: "Thất bại!",
+              message:
+                  "Số lượng phải lớn hơn 0!",
+              type: "error",
+              duration: 5000,
+          });
+          }
         })
   
         

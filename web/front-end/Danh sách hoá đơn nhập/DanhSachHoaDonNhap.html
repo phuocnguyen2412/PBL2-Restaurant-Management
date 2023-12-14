@@ -15,6 +15,7 @@
       rel="stylesheet"
       href="../Menu/icon/themify-icons/themify-icons.css"
     />
+    <link rel="stylesheet" href="../toastMessage.css">
   </head>
   <body>
     <form class="container mt-4">
@@ -49,7 +50,7 @@
             />
             <label for="billID">Tìm kiếm bằng mã hóa đơn</label>
             <button
-              id="findEmployeeByName"
+              id="findBillByID"
               class="btn btn-success"
               type="submit"
             >
@@ -60,7 +61,7 @@
       </div>
     </form>
     <div id="output-bill-list" class="container">
-      <h2 class="title text-center mt-4 mb-4">Danh sách hóa đơn xuất nhập</h2>
+      <h2 class="title text-center mt-4 mb-4">Danh sách hóa đơn nhập</h2>
 
       <div id="bill-list" class="row"></div>
     </div>
@@ -68,5 +69,8 @@
     <div class="detail-bill-list container"></div>
     <script src="./scriptDanhSachNhap.js"></script>
     <script src="../closeBtn.js"></script>
+    <script src="./findInputBillById.js"></script>
+    <script src="./findInputBillByDate.js"></script>
+    <script src="../toatMessage.js"></script>
   </body>
 </html>

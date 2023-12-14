@@ -41,17 +41,23 @@ function showInfor() {
       infor_list.forEach((infor, index) => {
         $(`#delete-${infor.id}`).onclick = function () {
           console.log(infor.id);
+          let data = {
+            Id: infor.id,
+            MaNV: infor.id, 
+          }
+          console.log(data)
           fetch(
-            `http://localhost:5225/api/NhanVien/DeleteNhanVien/${infor.id}`,
+            `http://localhost:5225/api/NhanVien/DeleteNhanVien?Id=${infor.id}&MaNV=${infor.id}`,
             {
               method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ maNV: infor.id, Id: infor.id }),
+              body: JSON.stringify(data),
             }
           )
             .then((response) => {
+              console.log(response.ok)
               if (!response.ok) {
                 throw new Error("Delete failed.");
               }
@@ -229,6 +235,7 @@ function showInfor() {
                   type: "success",
                   duration: 5000,
                 });
+                $(".new-layer").remove();
               })
               .catch((error) => {
                 toast({

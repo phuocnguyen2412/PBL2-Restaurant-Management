@@ -30,6 +30,7 @@
                               type="number"
                               name="soLuongMonAn${index}"
                               class="soLuongMonAn${index}"
+                              value="0"
                           />
                       </td>
                       <td>
