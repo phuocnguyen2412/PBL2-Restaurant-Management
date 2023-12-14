@@ -1,11 +1,11 @@
 function showBill() {
-  fetch("http://localhost:5225/api/HoaDonXuat/HoaDon")
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (bills) {
-      let bill_list = bills.map(function (bill) {
-        return `
+    fetch("http://localhost:5225/api/HoaDonXuat/HoaDon")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (bills) {
+            let bill_list = bills.map(function (bill) {
+                return `
                             <div id="bill-${bill.maHoaDon}"class="col-3 card ">
                                 <div class="card-header">${bill.soBan}</div>
                                 <div class="card-body">
@@ -17,13 +17,13 @@ function showBill() {
                                 </div>
                             </div>
                         `;
-      });
+            });
 
-      $("#bill-list").innerHTML = bill_list.join("");
+            $("#bill-list").innerHTML = bill_list.join("");
 
-      // detail bill
-      let detail_bill_list = bills.map(function (bill) {
-        return `
+            // detail bill
+            let detail_bill_list = bills.map(function (bill) {
+                return `
                     <div
                         id="detail-bill-${bill.maHoaDon}"
                         class="card new-layer detail-bill"
@@ -60,7 +60,7 @@ function showBill() {
                                         <img src="../Danh sách hoá đơn xuất/img/QRcode.jpg" alt="">
                                     </div>
                                     <div class="col-6">
-                                       <h4> Tổng tiền: </h4> <h2>${bill.tongCong} VNĐ </h2> <br />
+                                        <h4> Tổng tiền: </h4> <h2>${bill.tongCong} VNĐ </h2> <br />
                                     </div>
                                 </div>
                             </div>
@@ -72,13 +72,13 @@ function showBill() {
                         </div>
                     </div>
                     `;
-      });
+            });
 
-      $(".detail-bill-list").innerHTML = detail_bill_list.join("");
+            $(".detail-bill-list").innerHTML = detail_bill_list.join("");
 
-      bills.forEach(function (bill) {
-        let items = bill.items.map(function (i) {
-          return `
+            bills.forEach(function (bill) {
+                let items = bill.items.map(function (i) {
+                    return `
                             <tr>
                                 <td style="padding-left: 10px">${i.tenMonAn}</td>
                                 <td>${i.soLuong}</td>
@@ -89,69 +89,71 @@ function showBill() {
         
                             </tr>
                         `;
-        });
-        $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
-          items.join("") +
-          ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.tongCong}</td></tr>`;
+                });
+                $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
+                    items.join("") +
+                    ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.tongCong}</td></tr>`;
 
-        $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
-          $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";
-        };
-        $(`.close-${bill.maHoaDon}`).onclick = function () {
-          $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
-        };
-      });
-
-      return bills;
-    })
-
-    .then(function (bills) {
-      let date = new Date();
-      $$(".bill-finish").forEach(function (btn) {
-        function handleUpdateBill(event) {
-          let order = {
-            maHoaDon: btn.id,
-            gio: `${date.getHours()}:${date.getMinutes()}`,
-            ngay: `${date.getDate()}/${
-              date.getMonth() + 1
-            }/${date.getFullYear()}`,
-          };
-          console.log(order);
-          fetch("http://localhost:5225/api/Order/Xuathoadonbutton", {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(order),
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error("Network response was not ok");
-              }
-              return response.json();
-            })
-            .then(() => {
-              showTable();
-              toast({
-                title: "Thành công!",
-                message: "Đã xuất hóa đơn thành công ",
-                type: "success",
-                duration: 5000,
-              });
-            })
-            .catch((error) => {
-              toast({
-                title: "Thất bại!",
-                message: "Xuất hóa đơn thất bại do lỗi API",
-                type: "error",
-                duration: 5000,
-              });
+                $(`#open-detail-bill-id${bill.maHoaDon}`).onclick =
+                    function () {
+                        $(`#detail-bill-${bill.maHoaDon}`).style.display =
+                            "flex";
+                    };
+                $(`.close-${bill.maHoaDon}`).onclick = function () {
+                    $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
+                };
             });
-        }
-        btn.onclick = function (event) {
-          event.preventDefault();
-          handleUpdateBill();
-        };
-      });
-    });
+
+            return bills;
+        })
+
+        .then(function (bills) {
+            let date = new Date();
+            $$(".bill-finish").forEach(function (btn) {
+                function handleUpdateBill(event) {
+                    let order = {
+                        maHoaDon: btn.id,
+                        gio: `${date.getHours()}:${date.getMinutes()}`,
+                        ngay: `${date.getDate()}/${
+                            date.getMonth() + 1
+                        }/${date.getFullYear()}`,
+                    };
+                    console.log(order);
+                    fetch("http://localhost:5225/api/Order/Xuathoadonbutton", {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(order),
+                    })
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw new Error("Network response was not ok");
+                            }
+                            return response.json();
+                        })
+                        .then(() => {
+                            showTable();
+                            toast({
+                                title: "Thành công!",
+                                message: "Đã xuất hóa đơn thành công ",
+                                type: "success",
+                                duration: 5000,
+                            });
+                        })
+                        .catch((error) => {
+                            toast({
+                                title: "Thất bại!",
+                                message: "Xuất hóa đơn thất bại do lỗi API",
+                                type: "error",
+                                duration: 5000,
+                            });
+                        });
+                }
+                btn.onclick = function (event) {
+                    event.preventDefault();
+                    handleUpdateBill();
+                };
+            });
+        });
 }

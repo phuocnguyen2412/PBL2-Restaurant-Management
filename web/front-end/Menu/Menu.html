@@ -1,192 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Quản lí nhà hàng</title>
-    <link rel="stylesheet" href="./icon/themify-icons/themify-icons.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/Menu.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/Dishes_bill.css" />
-    <link rel="stylesheet" href="./css/Employee.css" />
-    <link rel="stylesheet" href="./css/Image_restaurant_slider.css" />
-    <link rel="stylesheet" href="./css/Navigation.css" />
-    <link rel="stylesheet" href="./css/Storage.css" />
-    <link rel="stylesheet" href="./css/ResourceInput.css" />
-    <link rel="stylesheet" href="../toastMessage.css" />
-    <link rel="stylesheet" href="../layer.css">
-    <link rel="stylesheet" href="../closeBtn.js">
+        <title>Quản lí nhà hàng</title>
+        <link rel="stylesheet" href="./icon/themify-icons/themify-icons.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+            integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+            integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./css/Menu.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./css/Dishes_bill.css" />
+        <link rel="stylesheet" href="./css/Employee.css" />
+        <link rel="stylesheet" href="./css/Image_restaurant_slider.css" />
+        <link rel="stylesheet" href="./css/Navigation.css" />
+        <link rel="stylesheet" href="./css/Storage.css" />
+        <link rel="stylesheet" href="./css/ResourceInput.css" />
+        <link rel="stylesheet" href="../toastMessage.css" />
+        <link rel="stylesheet" href="../layer.css" />
+        <link rel="stylesheet" href="../closeBtn.js" />
+    </head>
+    <body>
+        <div id="main">
+            <div id="nav">
+                <div class="list">
+                    <div class="content" id="home-part">Home</div>
+                    <div class="content" id="employee-part">Nhân viên</div>
 
-  </head>
-  <body>
-    <div id="main">
-      <div id="nav">
-        <div class="list">
-          <div class="content" id="home-part">Home</div>
-          <div class="content" id="employee-part">Nhân viên</div>
-
-          <div class="content" id="orderItem-List-part">Món đã đặt</div>
-          <div class="content" id="bill-part">Hoá đơn</div>
-          <div class="content" id="storage-part">Nguyên vật liệu</div>
-          <div class="content" id="resource-input-part">Đơn hàng nhập</div>
-        </div>
-      </div>
-
-      <div id="home" class="container part">
-        <div id="image-restaurant-list">
-          <div class="image-restaurant">
-            <img
-              src="https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg"
-              alt=""
-            />
-          </div>
-          <div class="image-restaurant">
-            <img
-              src="https://assets.cntraveller.in/photos/62975dd66a6d562435831f90/16:9/w_1920,h_1080,c_limit/new-restaurants-delhi-lead.jpg"
-              alt=""
-            />
-          </div>
-          <div class="image-restaurant">
-            <img
-              src="https://assets.cntraveller.in/photos/63d8e5103d7229d4cf308f01/16:9/w_1920,h_1080,c_limit/Prequel-lead.jpg"
-              alt=""
-            />
-          </div>
-          <div class="image-restaurant">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-wzxpjdr3k2ctP0-WaBoh9LK3iR4UI6AmJ11cuUpPvlsnzs113DEnI4Hy-G0OU-kpuP8&usqp=CAU"
-              alt=""
-            />
-          </div>
-          <div class="image-restaurant">
-            <img
-              src="https://res.cloudinary.com/the-infatuation/image/upload/f_auto/q_auto/v1657764092/cms/guides/chicagos-best-new-restaurants-of-2019/Cabra_2520_25281_2529.jpg"
-              alt=""
-            />
-          </div>
-          <div class="image-restaurant">
-            <img
-              src="https://static.wixstatic.com/media/2dd004_dd1145a0be1b4170a469f50e39d2adef~mv2.webp"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
-
-      <div id="employee" class="container part">
-        <h2>Thông tin nhân viên</h2>
-        <form>
-          <div class="row">
-            <div class="col-6 mb-2 form-floating">
-              <input
-                class="form-control"
-                id="hoVaTen"
-                type="text"
-                placeholder="Nhập họ và tên"
-              />
-              <label class="ml-2" for="hoVaTen">Họ và tên</label>
-            </div>
-            <div class="col-6 mb-2 form-floating">
-              <select class="form-select" name="sex" id="sex">
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-              </select>
-              <label class="ml-2" for="sex">Giới tính</label>
+                    <div class="content" id="orderItem-List-part">
+                        Món đã đặt
+                    </div>
+                    <div class="content" id="bill-part">Hoá đơn</div>
+                    <div class="content" id="storage-part">Nguyên vật liệu</div>
+                    <div class="content" id="resource-input-part">
+                        Đơn hàng nhập
+                    </div>
+                </div>
             </div>
 
-            <div class="col-6 mb-2 form-floating">
-              <input
-                id="email"
-                class="form-control"
-                type="email"
-                placeholder="Nhập địa chỉ gmail"
-              />
-              <label class="ml-2" for="email">Địa chỉ email</label>
-            </div>
-            <div class="col-6 mb-2 form-floating">
-              <input id="birthday" class="form-control" type="date" />
-              <label class="ml-2" for="birthday">Ngày sinh</label>
+            <div id="home" class="container part">
+                <div id="image-restaurant-list">
+                    <div class="image-restaurant">
+                        <img
+                            src="https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div class="image-restaurant">
+                        <img
+                            src="https://assets.cntraveller.in/photos/62975dd66a6d562435831f90/16:9/w_1920,h_1080,c_limit/new-restaurants-delhi-lead.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div class="image-restaurant">
+                        <img
+                            src="https://assets.cntraveller.in/photos/63d8e5103d7229d4cf308f01/16:9/w_1920,h_1080,c_limit/Prequel-lead.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div class="image-restaurant">
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-wzxpjdr3k2ctP0-WaBoh9LK3iR4UI6AmJ11cuUpPvlsnzs113DEnI4Hy-G0OU-kpuP8&usqp=CAU"
+                            alt=""
+                        />
+                    </div>
+                    <div class="image-restaurant">
+                        <img
+                            src="https://res.cloudinary.com/the-infatuation/image/upload/f_auto/q_auto/v1657764092/cms/guides/chicagos-best-new-restaurants-of-2019/Cabra_2520_25281_2529.jpg"
+                            alt=""
+                        />
+                    </div>
+                    <div class="image-restaurant">
+                        <img
+                            src="https://static.wixstatic.com/media/2dd004_dd1145a0be1b4170a469f50e39d2adef~mv2.webp"
+                            alt=""
+                        />
+                    </div>
+                </div>
             </div>
 
-            <div class="col-6 mb-2 form-floating">
-              <input
-                id="CCCD"
-                class="form-control"
-                type="text"
-                placeholder="Nhập số Căn cước công dân"
-              />
-              <label class="ml-2" for="CCCD">CCCD</label>
-            </div>
-            <div class="col-6 mb-2 form-floating">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="Nhập địa chỉ thường trú"
-                id="thuongTru"
-                name="thuongTru"
-              />
-              <label class="ml-2" for="thuongTru">Thường trú</label>
+            <div id="employee" class="container part">
+                <h2>Thông tin nhân viên</h2>
+                <form>
+                    <div class="row">
+                        <div class="col-6 mb-2 form-floating">
+                            <input
+                                class="form-control"
+                                id="hoVaTen"
+                                type="text"
+                                placeholder="Nhập họ và tên"
+                            />
+                            <label class="ml-2" for="hoVaTen">Họ và tên</label>
+                        </div>
+                        <div class="col-6 mb-2 form-floating">
+                            <select class="form-select" name="sex" id="sex">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                            <label class="ml-2" for="sex">Giới tính</label>
+                        </div>
+
+                        <div class="col-6 mb-2 form-floating">
+                            <input
+                                id="email"
+                                class="form-control"
+                                type="email"
+                                placeholder="Nhập địa chỉ gmail"
+                            />
+                            <label class="ml-2" for="email"
+                                >Địa chỉ email</label
+                            >
+                        </div>
+                        <div class="col-6 mb-2 form-floating">
+                            <input
+                                id="birthday"
+                                class="form-control"
+                                type="date"
+                            />
+                            <label class="ml-2" for="birthday">Ngày sinh</label>
+                        </div>
+
+                        <div class="col-6 mb-2 form-floating">
+                            <input
+                                id="CCCD"
+                                class="form-control"
+                                type="text"
+                                placeholder="Nhập số Căn cước công dân"
+                            />
+                            <label class="ml-2" for="CCCD">CCCD</label>
+                        </div>
+                        <div class="col-6 mb-2 form-floating">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Nhập địa chỉ thường trú"
+                                id="thuongTru"
+                                name="thuongTru"
+                            />
+                            <label class="ml-2" for="thuongTru"
+                                >Thường trú</label
+                            >
+                        </div>
+
+                        <div class="col-6 mb-2 form-floating">
+                            <select class="form-select" name="job" id="job">
+                                <option value="Nhân viên phục vụ">
+                                    Nhân viên phục vụ
+                                </option>
+                                <option value="Đầu bếp">Đầu bếp</option>
+                                <option value="Thu ngân">Thu ngân</option>
+                            </select>
+                            <label class="ml-2" for="job">Vị trí</label>
+                        </div>
+                        <div class="col-6 mb-2 form-floating">
+                            <input
+                                class="form-control"
+                                type="text"
+                                placeholder="Nhập mã NV = Chức vụ + stt"
+                                name="maNV"
+                                id="maNV"
+                                disabled
+                            />
+                            <label class="ml-2" for="maNV">Mã Nhân viên</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark employee-confirm">
+                        Xác nhận
+                    </button>
+                    <br />
+                    <button class="btn btn-success employee-info float-end">
+                        <a href="../Danh sách nhân viên/DanhSachNhanVien.html"
+                            >Danh sách nhân viên</a
+                        >
+                    </button>
+                </form>
             </div>
 
-            <div class="col-6 mb-2 form-floating">
-              <select class="form-select" name="job" id="job">
-                <option value="Nhân viên phục vụ">Nhân viên phục vụ</option>
-                <option value="Đầu bếp">Đầu bếp</option>
-                <option value="Thu ngân">Thu ngân</option>
-              </select>
-              <label class="ml-2" for="job">Vị trí</label>
+            <div id="orderItem" class="container part">
+                <h2>Danh sách món ăn được đặt</h2>
+                <div id="orderItem-list" class="row"></div>
             </div>
-            <div class="col-6 mb-2 form-floating">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="Nhập mã NV = Chức vụ + stt"
-                name="maNV"
-                id="maNV"
-                disabled
-              />
-              <label class="ml-2" for="maNV">Mã Nhân viên</label>
-            </div>
-          </div>
-          <button class="btn btn-dark employee-confirm">Xác nhận</button>
-          <br />
-          <button class="btn btn-success employee-info float-end">
-            <a href="../Danh sách nhân viên/DanhSachNhanVien.html"
-              >Danh sách nhân viên</a
-            >
-          </button>
-        </form>
-      </div>
 
-      <div id="orderItem" class="container part">
-        <h2>Danh sách món ăn được đặt</h2>
-        <div id="orderItem-list" class="row"></div>
-      </div>
-
-      <div id="bill" class="part">
-        <div class="row d-flex">
-          <!-- <div class="tabs">
+            <div id="bill" class="part">
+                <div class="row d-flex">
+                    <!-- <div class="tabs">
           <div class="all tab-item active">
             <i class="tab-icon fas fa-code"></i>
             Tất cả
@@ -202,231 +217,271 @@
           <div class="line"></div>
         </div> -->
 
-          <div class="col-6">
-            <h2>Tạo hoá đơn</h2>
-            <form id="orderForm" action="">
-              
-              <div class="row">
-                <!-- <div class="col-6 form-floating mt-2">
-              <input
-                class="form-control"
-                type="text"
-                id="idOrder"
-                name="idOrder"
-                placeholder="Nhập mã order"
-              />
-              <label class="ml-2" for="idOrder">Mã order</label><br /> -->
-                <!-- </div> -->
-                <div class="col-6 form-floating mt-2">
-                  <select
-                    class="form-control"
-                    id="maNVorder"
-                    name="maNVorder"
-                    type="number"
-                    placeholder="Nhập mã nhân viên"
-                  ></select>
-                  <label class="ml-2" for="maNVorder">Tên nhân viên Order</label
-                  ><br />
-                </div>
-                <div class="col-6 form-floating mt-2">
-                  <select
-                    class="form-control"
-                    id="soBan"
-                    name="soBan"
-                    type="number"
-                    placeholder="Nhập số bàn"
-                  >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                  </select>
-                  <label class="ml-2" for="soBan">Số bàn</label><br />
-                </div>
+                    <div class="col-6">
+                        <div class="container">
+                            <h2>Tạo hoá đơn</h2>
+                            <form id="orderForm" action="">
+                                <div class="row">
+                                    <!-- <div class="col-6 form-floating mt-2">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="idOrder"
+                  name="idOrder"
+                  placeholder="Nhập mã order"
+                />
+                <label class="ml-2" for="idOrder">Mã order</label><br /> -->
+                                    <!-- </div> -->
+                                    <div class="col-6 form-floating mt-2">
+                                        <select
+                                            class="form-control"
+                                            id="maNVorder"
+                                            name="maNVorder"
+                                            type="number"
+                                            placeholder="Nhập mã nhân viên"
+                                        ></select>
+                                        <label class="ml-2" for="maNVorder"
+                                            >Tên nhân viên Order</label
+                                        ><br />
+                                    </div>
+                                    <div class="col-6 form-floating mt-2">
+                                        <select
+                                            class="form-control"
+                                            id="soBan"
+                                            name="soBan"
+                                            type="number"
+                                            placeholder="Nhập số bàn"
+                                        >
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                        </select>
+                                        <label class="ml-2" for="soBan"
+                                            >Số bàn</label
+                                        ><br />
+                                    </div>
 
-                <div class="col-12">
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <td style="padding-left: 10px">Tên món ăn</td>
-                        <td align="center">Số lượng</td>
-                        <td align="center">% khuyến mãi</td>
-                        <td align="center">Ghi chú</td>
-                      </tr>
-                    </thead>
-                    <tbody id="dish-input-table">
-                      <tr class="input-row-dish">
-                        <td>
-                          <select
-                            type="text"
-                            name="idMonAn0"
-                            class="idMonAn0 idmonAn"
-                          ></select>
-                        </td>
-                        <td>
-                          <input
-                            type="number"
-                            name="soLuongMonAn0"
-                            class="soLuongMonAn0"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            value="0"
-                            type="number"
-                            name="phanTramKhuyenMai0"
-                            class="phanTramKhuyenMai0"
-                          />
-                        </td>
-                        <td>
-                          <input type="textarea" name="ghiChu0" id="ghiChu0" />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                                    <div class="col-12">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td
+                                                        style="
+                                                            padding-left: 10px;
+                                                        "
+                                                    >
+                                                        Tên món ăn
+                                                    </td>
+                                                    <td align="center">
+                                                        Số lượng
+                                                    </td>
+                                                    <td align="center">
+                                                        % khuyến mãi
+                                                    </td>
+                                                    <td align="center">
+                                                        Ghi chú
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="dish-input-table">
+                                                <tr class="input-row-dish">
+                                                    <td>
+                                                        <select
+                                                            type="text"
+                                                            name="idMonAn0"
+                                                            class="idMonAn0 idmonAn"
+                                                        ></select>
+                                                    </td>
+                                                    <td>
+                                                        <input
+                                                            type="number"
+                                                            name="soLuongMonAn0"
+                                                            class="soLuongMonAn0"
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <input
+                                                            value="0"
+                                                            type="number"
+                                                            name="phanTramKhuyenMai0"
+                                                            class="phanTramKhuyenMai0"
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <input
+                                                            type="textarea"
+                                                            name="ghiChu0"
+                                                            id="ghiChu0"
+                                                        />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                            <button class="more-dish btn btn-dark">
+                                Thêm món ăn
+                            </button>
+                            <button
+                                class="btn btn-dark orderForm-submit-btn float-end"
+                                type="submit"
+                            >
+                                Xác nhận
+                            </button>
+                            <br />
+                            <br />
+                            <button
+                                class="btn btn-dark output-bill-list-btn open float-end"
+                            >
+                                <a
+                                    href="../Danh sách hoá đơn xuất/DanhSachHoaDonXuat.html"
+                                >
+                                    Danh sách hóa đơn</a
+                                >
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="container">
+                            <h2 class="title text-center mt-4 mb-4">
+                                Danh sách bàn ăn
+                            </h2>
+                            <div id="bill-list" class="row"></div>
+                        </div>
+                    </div>
+                    <div class="detail-bill-list"></div>
                 </div>
-              </div>
-            </form>
-            <button class="more-dish btn btn-dark">Thêm món ăn</button>
-            <button
-              class="btn btn-dark orderForm-submit-btn float-end"
-              type="submit"
-            >
-              Xác nhận
-            </button>
-            <br />
-            <br />
-            <button class="btn btn-dark output-bill-list-btn open float-end">
-              <a href="../Danh sách hoá đơn xuất/DanhSachHoaDonXuat.html">
-                Danh sách hóa đơn</a
-              >
-            </button>
-          </div>
-          <div class="col-6">
-            <h2 class="title text-center mt-4 mb-4">Danh sách bàn ăn</h2>
-            <div id="bill-list" class="row">
-      
-         
-             
-             
-              
-       
-  
-           
             </div>
-          </div>
-          <div class="detail-bill-list"></div>
+
+            <div id="storage" class="container part">
+                <h2>Danh sách nguyên liệu tồn kho</h2>
+                <table
+                    class="table table-bordered table-striped table-hover"
+                    id="resource-list"
+                >
+                    <tr class="table-success">
+                        <td>Tên nguyên liệu</td>
+                        <td class="text-center">Số lượng</td>
+                        <td class="text-center">Đơn vị</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="resource-input" class="container part">
+                <h2>Nhập nguyên liệu</h2>
+                <form action="">
+                    <div class="row">
+                        <div class="col-6 form-floating mb-2">
+                            <input
+                                class="form-control"
+                                type="text"
+                                id="idHoaDonKho"
+                                name="idHoaDonKho"
+                                placeholder="Nhập ID hóa đơn kho"
+                            />
+                            <label class="ml-2" for="idHoaDonKho"
+                                >Mã hoá đơn</label
+                            >
+                        </div>
+
+                        <div class="col-6 form-floating mb-2">
+                            <select
+                                class="form-control"
+                                type="text"
+                                name="maNVResource"
+                                id="maNVResource"
+                                placeholder="Nhập ID nhà cung cấp"
+                            ></select>
+                            <label class="ml-2" for="maNVResource"
+                                >Tên nhân viên</label
+                            >
+                        </div>
+                        <div class="col-12 form-floating mb-2">
+                            <select
+                                class="form-control"
+                                type="text"
+                                name="idNhaCungCap"
+                                id="idNhaCungCap"
+                                placeholder="Nhập ID nhà cung cấp"
+                            ></select>
+                            <label class="ml-2" for="idNhaCungCap"
+                                >Tên nhà cung cấp</label
+                            >
+                        </div>
+
+                        <div class="col-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td style="padding-left: 10px">
+                                            Tên nguyên liệu
+                                        </td>
+                                        <td align="center">Số lượng</td>
+                                        <td align="center">Đơn giá</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="resource-input-table">
+                                    <tr class="input-row">
+                                        <td>
+                                            <select
+                                                type="text"
+                                                name="idNguyenLieu0"
+                                                class="idNguyenLieu0"
+                                            ></select>
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                name="soLuong0"
+                                                class="soLuong0"
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                name="donGia0"
+                                                class="donGia0"
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark more">Thêm nguyên liệu</button>
+                    <button id="btn-submit-resource-bill" class="btn btn-dark">
+                        Xác nhận
+                    </button>
+                    <br />
+                    <button
+                        class="btn btn-dark open resource-bill-list float-end"
+                    >
+                        <a
+                            href="../Danh sách hoá đơn nhập/DanhSachHoaDonNhap.html"
+                            >Danh sách hóa đơn</a
+                        >
+                    </button>
+                </form>
+            </div>
         </div>
-      </div>
-
-      <div id="storage" class="container part">
-        <h2>Danh sách nguyên liệu tồn kho</h2>
-        <table
-          class="table table-bordered table-striped table-hover"
-          id="resource-list"
-        >
-          <tr class="table-success">
-            <td>Tên nguyên liệu</td>
-            <td class="text-center">Số lượng</td>
-            <td class="text-center">Đơn vị</td>
-          </tr>
-        </table>
-      </div>
-
-      <div id="resource-input" class="container part">
-        <h2>Nhập nguyên liệu</h2>
-        <form action="">
-          <div class="row">
-            <div class="col-6 form-floating mb-2">
-              <input
-                class="form-control"
-                type="text"
-                id="idHoaDonKho"
-                name="idHoaDonKho"
-                placeholder="Nhập ID hóa đơn kho"
-              />
-              <label class="ml-2" for="idHoaDonKho">Mã hoá đơn</label>
-            </div>
-
-            <div class="col-6 form-floating mb-2">
-              <select
-                class="form-control"
-                type="text"
-                name="maNVResource"
-                id="maNVResource"
-                placeholder="Nhập ID nhà cung cấp"
-              ></select>
-              <label class="ml-2" for="maNVResource">Tên nhân viên</label>
-            </div>
-            <div class="col-12 form-floating mb-2">
-              <select
-                class="form-control"
-                type="text"
-                name="idNhaCungCap"
-                id="idNhaCungCap"
-                placeholder="Nhập ID nhà cung cấp"
-              ></select>
-              <label class="ml-2" for="idNhaCungCap">Tên nhà cung cấp</label>
-            </div>
-
-            <div class="col-12">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <td style="padding-left: 10px">Tên nguyên liệu</td>
-                    <td align="center">Số lượng</td>
-                    <td align="center">Đơn giá</td>
-                  </tr>
-                </thead>
-                <tbody id="resource-input-table">
-                  <tr class="input-row">
-                    <td>
-                      <select
-                        type="text"
-                        name="idNguyenLieu0"
-                        class="idNguyenLieu0"
-                      ></select>
-                    </td>
-                    <td>
-                      <input type="number" name="soLuong0" class="soLuong0" />
-                    </td>
-                    <td>
-                      <input type="number" name="donGia0" class="donGia0" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <button class="btn btn-dark more">Thêm nguyên liệu</button>
-          <button id="btn-submit-resource-bill" class="btn btn-dark">
-            Xác nhận
-          </button>
-          <br />
-          <button class="btn btn-dark open resource-bill-list float-end">
-            <a href="../Danh sách hoá đơn nhập/DanhSachHoaDonNhap.html"
-              >Danh sách hóa đơn</a
-            >
-          </button>
-        </form>
-      </div>
-    </div>
-    <script src="../toatMessage.js"></script>
-    <script src="./postOrderItem&Order.js"></script>
-    <script src="./postEmployee.js"></script>
-    <script src="./getResource.js"></script>
-    <script src="./openPart.js"></script>
-    <script src="./moreBtn.js"></script>
-    <script src="./postResource.js"></script>
-    <script src="./employeeDropDown.js"></script>
-    <script src="./nhaCungCapDropDown.js"></script>
-    <script src="./moreDish.js"></script>
-    <script src="./dishDropDown.js"></script>
-    <script src="./getTable.js"></script>
-    <script src="../Form đăngn nhâp/Login.js"></script>
-  </body>
+        <script src="../toatMessage.js"></script>
+        <script src="./postOrderItem&Order.js"></script>
+        <script src="./postEmployee.js"></script>
+        <script src="./getResource.js"></script>
+        <script src="./openPart.js"></script>
+        <script src="./moreBtn.js"></script>
+        <script src="./postResource.js"></script>
+        <script src="./employeeDropDown.js"></script>
+        <script src="./nhaCungCapDropDown.js"></script>
+        <script src="./moreDish.js"></script>
+        <script src="./dishDropDown.js"></script>
+        <script src="./getTable.js"></script>
+        <script src="../Form đăngn nhâp/Login.js"></script>
+    </body>
 </html>
