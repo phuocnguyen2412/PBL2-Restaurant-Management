@@ -20,16 +20,10 @@ h2 {
     color: #fff;
 }
 .close {
-    color: #000;
-    display: inline-block;
-    margin-right: 24px;
     font-size: 20px;
 }
 .title {
     padding-top: 30px;
     font-size: 40px;
     text-align: center;
-}
-img {
-    width: 50%;
 }

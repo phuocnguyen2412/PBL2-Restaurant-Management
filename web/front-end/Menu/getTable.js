@@ -146,12 +146,73 @@ function showBill() {
             });
             $$(".inputDish").forEach(function (btn) {
                 btn.onclick = function (event) {
-                    
                     event.preventDefault();
-                    const inputMoreDish = document.createElement("div");
-                    inputMoreDish.id = "new-layer";
-                    inputMoreDish.innerHTML = `
-                        
+                    document.body.innerHTML += `
+                    <div class="new-layer d-flex">
+                        <div class="container">
+                            <button
+                                class="close btn btn-dark float-end btn-close mt-2"
+                            ></button>
+                            <h3 class="text-center m-4">Thêm món ăn vào hóa đơn ...</h3>
+                            <input
+                                name=""
+                                id="idHoaDonMoreDish"
+                                value="${btn.id}"
+                                style="display: none;"
+                            />
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td style="padding-left: 10px">Tên món ăn</td>
+                                        <td align="center">Số lượng</td>
+                                        <td align="center">% khuyến mãi</td>
+                                        <td align="center">Ghi chú</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="dish-input-table">
+                                    <tr class="input-row-dish MoreDish">
+                                        <td>
+                                            <select
+                                                type="text"
+                                                name="idMonAn0"
+                                                class="idMonAnMoreDish0 idmonAn"
+                                            ></select>
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="number"
+                                                name="soLuongMonAnMoreDish0"
+                                                class="soLuongMonAnMoreDish0"
+                                                value="0"
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                value="0"
+                                                type="number"
+                                                name="phanTramKhuyenMaiMoreDish0"
+                                                class="phanTramKhuyenMaiMoreDish0"
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                type="textarea"
+                                                name="ghiChuMoreDish0"
+                                                id="ghiChuMoreDish0"
+                                            />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="more-dish btn btn-dark">Thêm món ăn</button>
+                            <button
+                                id="confirm-moreDishInput"
+                                class="btn btn-dark float-end mb-3"
+                            >
+                                Xác nhận
+                            </button>
+                        </div>
+                    </div>
                     `;
                 };
             });

@@ -1,21 +1,19 @@
-
-
-  fetch(`http://localhost:5225/api/MonAn/MonAn`)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (dish_list) {
-    let dishes = dish_list.map(function (dish) {
-      return `
+fetch(`http://localhost:5225/api/MonAn/MonAn`)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (dish_list) {
+        let dishes = dish_list.map(function (dish) {
+            return `
             <option value="${dish.id}">${dish.tenMon}</option>
           `;
-    });
+        });
 
-    dishes = dishes.join("")
-    $$(".more-dish").forEach(function (button, index) {
-        button.onclick = function (e) {
-          e.preventDefault();
-          $("#dish-input-table").innerHTML += `   
+        dishes = dishes.join("");
+        $$(".more-dish").forEach(function (button, index) {
+            button.onclick = function (e) {
+                e.preventDefault();
+                $("#dish-input-table").innerHTML += `   
                   <tr class="input-row-dish">
                       <td>
                           <select
@@ -46,21 +44,9 @@
                               </td>
                   </tr>
               `;
-              $$(".input-row-dish").forEach(function (input, index) {
-      
-                console.log(index)
-                 $(`.idMonAn${index}`).innerHTML = dishes;
-            })
-        };
-
-
-
-
-
-    
-    
-    
-  });
-
- 
-});
+                $$(".input-row-dish").forEach(function (input, index) {
+                    $(`.idMonAn${index}`).innerHTML = dishes;
+                });
+            };
+        });
+    });

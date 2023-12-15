@@ -19,7 +19,12 @@ function User(username, password) {
             .then((response) => response.json())
             .then((data) => {
                 if (data.message == "1") {
-                    window.location.href = "./web/front-end/Menu/Menu.html";
+                    window.location.href =
+                        "./web/front-end/Menu/MenuAdmin.html";
+                }
+                if (data.message == "2") {
+                    window.location.href =
+                        "./web/front-end/Menu/MenuEmployee.html";
                 } else {
                     throw data.message;
                 }
