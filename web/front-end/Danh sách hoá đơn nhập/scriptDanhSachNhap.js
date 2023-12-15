@@ -21,7 +21,7 @@ function showBill(bills) {
                                 Thành tiền: ${bill.thanhTien}<br />
                             </div>
                             <div class="card-footer d-grid">
-                            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-bill-id${bill.maHoaDon}">
+                            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-bill-${bill.maHoaDon}">
                                     Chi tiết
                                 </button>
                             </div>
@@ -33,7 +33,66 @@ function showBill(bills) {
     // detail bill
     let detail_bill_list = bills.map(function (bill) {
         return `
+        <div
+        id="detail-bill-${bill.maHoaDon}"
+        class="modal detail-bill fade"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    
+                     
+                        <div class="modal-header text-center">
+                        
+                            <h4 class="text-center mt-2">
+                                Hóa đơn nhập ID${bill.maHoaDon}
+                            </h4>
+                        </div>
+                        <div class="modal-body pb-3">
+                            Tên công ty: ${bill.tenNhaCC} <br />
+                            Địa chỉ: ${bill.sdt} <br />
+                            SĐT: ${bill.diaChi} <br />
+
+                            <br />
+                            Tên khách hành: Nhà hàng ... <br />
+                            Địa chỉ:... <br />
+                            SĐT:.... <br />
+                            <br />
+                            <table class="table">
+                                <thead>
+                                    <tr class="table-success">
+                                        <th style="padding-left: 10px">
+                                            Tên Nguyên liệu
+                                        </th>
+
+                                        <th>Số lượng</th>
+                                        <th>Đơn vị</th>
+                                        <th>Đơn giá</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    class="table-detail-bill-${bill.maHoaDon}"
+                                ></tbody>
+                            </table>
+                            <div class="float-end text-center pb-3">
+                                ${bill.gio}, ${bill.ngay} <br />
+                                Người mua <br />
+                                ${bill.tenNV}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
                 
+            </div>
+        </div>
             `;
     });
 

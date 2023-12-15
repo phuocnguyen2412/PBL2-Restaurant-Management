@@ -1,19 +1,19 @@
-function findInputBillById() {
+function findOutputBillById() {
     const id = $("#id").value;
 
     if (!id) {
         toast({
             title: "Thất bại!",
-            message: "Vui lòng nhập ngày! ",
+            message: "Vui lòng nhập mã hóa đơn! ",
             type: "error",
             duration: 5000,
         });
 
         return;
     }
-
+    console.log(id)
     fetch(
-        `http://localhost:5225/api/HoaDonNhap/FindHoaDonNhapByMaHoaDon?MaHoaDon=${id}`,
+        `http://localhost:5225/api/HoaDonXuat/FindHoaDonXuatByMaHoaDon?MaHoaDon=${id}`,
         {
             method: "GET",
             headers: {
@@ -48,5 +48,5 @@ function findInputBillById() {
 
 $("#findOutputBillByID").onclick = function (event) {
     event.preventDefault();
-    findInputBillById();
+    findOutputBillById();
 };

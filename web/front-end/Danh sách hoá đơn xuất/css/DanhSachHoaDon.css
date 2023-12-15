@@ -3,6 +3,10 @@
     margin: 0;
     box-sizing: border-box;
 }
+.modal-header{
+    display: block;
+}
+
 
 .new-layer {
     align-items: center;

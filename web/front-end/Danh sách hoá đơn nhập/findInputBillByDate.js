@@ -1,5 +1,5 @@
-function findInputBillById() {
-    const id = $("#findInputBillByDate").value;
+function findInputBillByDate() {
+    const id = $("#date").value;
 
     if (!id) {
         toast({
@@ -11,9 +11,10 @@ function findInputBillById() {
 
         return;
     }
+    console.log(id)
 
     fetch(
-        `http://localhost:5225/api/HoaDonNhap/FindHoaDonNhapByMaHoaDon?MaHoaDon=${id}`,
+        `http://localhost:5225/api/HoaDonNhap/FindHoaDonNhapByDate?Ngay=${id}`,
         {
             method: "GET",
             headers: {
@@ -47,6 +48,7 @@ function findInputBillById() {
 }
 
 $("#findInputBillByDate").onclick = function (event) {
+    console.log(1)
     event.preventDefault();
-    findInputBillById();
+    findInputBillByDate();
 };

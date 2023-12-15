@@ -14,7 +14,7 @@ function showBill() {
                                     Trạng thái: ${bill.trangThai}
                                 </div>
                                 <div class="card-footer d-grid">
-                                <button id="${bill.maHoaDon}" class="btn btn-outline-success inputDish mb-2 ">Thêm món ăn</button>
+                                <button id="${bill.maHoaDon}" class="btn btn-outline-success inputDish mb-2" data-bs-toggle="modal" data-bs-target="#modal-${bill.maHoaDon}">Thêm món ăn</button>
 
                                     <button id="open-detail-bill-id${bill.maHoaDon}"class="btn btn-outline-success">Chi tiết</button>
                                 </div>
@@ -69,7 +69,7 @@ function showBill() {
                             </div>
                             <div class="card-footer">
                                 <h4 class="text-center">
-                                    Cảm ơn quý khánh đã ủng hộ nhà hàng của chúng tôi!
+                                    Cảm ơn quý khách đã ủng hộ nhà hàng của chúng tôi!
                                 </h4>
                             </div>
                         </div>
@@ -95,7 +95,7 @@ function showBill() {
                 });
                 $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
                     items.join("") +
-                    ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.tongCong}</td></tr>`;
+                    ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.khuyenMai}</td></tr>`;
 
                 $(`#open-detail-bill-id${bill.maHoaDon}`).onclick =
                     function () {
@@ -107,6 +107,92 @@ function showBill() {
                 };
             });
 
+
+            //MoreDish
+            bills.forEach(function(bill){
+                $(".moreDishBill").innerHTML +=`
+                    <div class="modal" id="modal-${bill.maHoaDon}">
+                        <div class="modal-dialog modal-dialog-centered modal-xl ">
+                            <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">${bill.soBan}</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <input
+                                name=""
+                                id="idHoaDonMoreDish"
+                                value="${bill.maHoaDon}"
+                                style="display: none;"
+                                />
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <td style="padding-left: 10px">Tên món ăn</td>
+                                            <td align="center">Số lượng</td>
+                                            <td align="center">% khuyến mãi</td>
+                                            <td align="center">Ghi chú</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dish-input-table">
+                                        <tr class="input-row-dish MoreDish${bill.maHoaDon}">
+                                            <td>
+                                                <select
+                                                    type="text"
+                                                    name="idMonAn0"
+                                                    class="idMonAnMoreDish${bill.maHoaDon}-0 idmonAn"
+                                                ></select>
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    name="soLuongMonAnMoreDish0"
+                                                    class="soLuongMonAnMoreDish${bill.maHoaDon}-0"
+                                                    value="0"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    value="0"
+                                                    type="number"
+                                                    name="phanTramKhuyenMaiMoreDish0"
+                                                    class="phanTramKhuyenMaiMoreDish${bill.maHoaDon}-0"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="textarea"
+                                                    name="ghiChuMoreDish0"
+                                                    id="ghiChuMoreDish${bill.maHoaDon}-0"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button class="more-dish btn btn-dark">Thêm món ăn</button>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button
+                                    id="${bill.maHoaDon}"
+                                    class="btn btn-dark float-end confirm-moreDishInput"
+                                >
+                                    Xác nhận
+                                </button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+                `;
+                    
+            })
             return bills;
         })
 
@@ -144,77 +230,60 @@ function showBill() {
                     handleUpdateBill();
                 };
             });
-            $$(".inputDish").forEach(function (btn) {
-                btn.onclick = function (event) {
-                    event.preventDefault();
-                    document.body.innerHTML += `
-                    <div class="new-layer d-flex">
-                        <div class="container">
-                            <button
-                                class="close btn btn-dark float-end btn-close mt-2"
-                            ></button>
-                            <h3 class="text-center m-4">Thêm món ăn vào hóa đơn ...</h3>
-                            <input
-                                name=""
-                                id="idHoaDonMoreDish"
-                                value="${btn.id}"
-                                style="display: none;"
-                            />
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <td style="padding-left: 10px">Tên món ăn</td>
-                                        <td align="center">Số lượng</td>
-                                        <td align="center">% khuyến mãi</td>
-                                        <td align="center">Ghi chú</td>
-                                    </tr>
-                                </thead>
-                                <tbody id="dish-input-table">
-                                    <tr class="input-row-dish MoreDish">
-                                        <td>
-                                            <select
-                                                type="text"
-                                                name="idMonAn0"
-                                                class="idMonAnMoreDish0 idmonAn"
-                                            ></select>
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="number"
-                                                name="soLuongMonAnMoreDish0"
-                                                class="soLuongMonAnMoreDish0"
-                                                value="0"
-                                            />
-                                        </td>
-                                        <td>
-                                            <input
-                                                value="0"
-                                                type="number"
-                                                name="phanTramKhuyenMaiMoreDish0"
-                                                class="phanTramKhuyenMaiMoreDish0"
-                                            />
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="textarea"
-                                                name="ghiChuMoreDish0"
-                                                id="ghiChuMoreDish0"
-                                            />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button class="more-dish btn btn-dark">Thêm món ăn</button>
-                            <button
-                                id="confirm-moreDishInput"
-                                class="btn btn-dark float-end mb-3"
-                            >
-                                Xác nhận
-                            </button>
-                        </div>
-                    </div>
-                    `;
-                };
-            });
+           
+        })
+        .then(()=>{
+            console.log(document.querySelectorAll(".confirm-moreDishInput"))
+$$(".confirm-moreDishInput").forEach(function(btn){
+ 
+    btn.onclick = function (event) {
+        
+        event.preventDefault();
+        $$(`.MoreDish${btn.id}`).forEach(function (dish, index) {
+            
+            console.log(data)
+            if (data.soLuong > 0) {
+                fetch("http://localhost:5225/api/Order/PostOrder", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                })
+                    .then((orderItem) => {
+                        toast({
+                            title: "thành công!",
+                            message:
+                                "Thêm món thành công!",
+                            type: "success",
+                            duration: 5000,
+                        });
+    
+                        showBill();
+                        const modal = new bootstrap.Modal(document.getElementById(`modal-${btn.id}`));
+modal.hide();
+                    })
+                    .catch((error) => {
+                        toast({
+                            title: "Thất bại!",
+                            message:
+                                "Thêm món thất bại",
+                            type: "error",
+                            duration: 5000,
+                        });
+                    });
+            } else {
+                toast({
+                    title: "Thất bại!",
+                    message: "Số lượng phải lớn hơn 0!",
+                    type: "error",
+                    duration: 5000,
+                });
+            }
         });
+    };
+    
+})
+
+        })
 }

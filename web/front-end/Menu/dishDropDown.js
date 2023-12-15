@@ -14,6 +14,11 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
         a.innerHTML = dishes;
         
       })
+
+      $$(`.idmonAn`).forEach(function(a,index){
+        a.innerHTML = dishes;
+        
+      })
     });
     $$(".idMonAn").forEach(function (input) {
       input.onchange = function () {
