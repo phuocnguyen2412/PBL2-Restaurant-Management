@@ -2,34 +2,34 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
 fetch(
-  "https://my-json-server.typicode.com/phuocnguyn/PBL_2-RESTAURANT-MANEGEMENT/dishes"
+    "https://my-json-server.typicode.com/phuocnguyn/PBL_2-RESTAURANT-MANEGEMENT/dishes"
 )
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (dishes) {
-    const orderItem_list = {
-      list: [],
-      addOrderItem: function (orderItem) {
-        orderItem_list.list[orderItem_list.list.length] = orderItem;
-      },
-      showOrderItem: function (orderItem) {
-        $("#orderItem-list").innerHTML += `
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (dishes) {
+        const orderItem_list = {
+            list: [],
+            addOrderItem: function (orderItem) {
+                orderItem_list.list[orderItem_list.list.length] = orderItem;
+            },
+            showOrderItem: function (orderItem) {
+                $("#orderItem-list").innerHTML += `
                     <div id="orderItem-${orderItem_list.list.length - 1}"
                         class="col-4 card">
                     <div class="card-header">
                         <input id="btn-done-${
-                          orderItem_list.list.length - 1
+                            orderItem_list.list.length - 1
                         }"class="btn-done" type="checkbox" />
                         <h4 class="text-center">Món ăn hóa đơn ${
-                          orderItem.maHoaDon
+                            orderItem.maHoaDon
                         }</h4>
                     </div>
                     <div class="card-body">
                         Bàn số: ${orderItem.soBan} <br />
                         Tên món ăn: ${orderItem.tenMon} <br /> Số lượng: ${
-          orderItem.soLuong
-        }  <br />
+                    orderItem.soLuong
+                }  <br />
                         Ghi chú: ${orderItem.ghiChu} 
                     </div>
                     <div class="card-footer">
@@ -58,117 +58,107 @@ fetch(
                     </div>
                 </div>
                     `;
-      },
+            },
 
-      saveOrderItem: function () {
-        $$(".btn-done").forEach(function (btn, index) {
-          btn.onclick = function () {
-            delete orderItem_list.list[index].tenMon;
-            orderItem_list.list[index].trangThaiMon = "done";
-            console.log(orderItem_list.list[index]);
-            fetch("http://localhost:5225/api/Order/PostOrder", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(orderItem_list.list[index]),
-            });
-          };
-        });
-      },
-    };
-    function handleSubmit(event) {
-      
-        $$(".input-row-dish").forEach(function(input,index){
-          const date = new Date();
-          let data = {
-       
-            maHoaDon: `${date.getDate()}${
-              date.getMonth() + 1
-            }${date.getFullYear()}${date.getHours()}${date.getMinutes()}`,
-            tenNV: $("#maNVorder").value,
-            soBan: $("#soBan").value,
-            trangThaiMon: "undone",
-            ngay: "null",
-            gio: "null",
-            phanTramKhuyenMai: $(`.phanTramKhuyenMai${index}`).value,
-            ghiChu: $(`#ghiChu${index}`).value,
-           
-            idMonAn: $(`.idMonAn${index}`).value,
-            soLuong: $(`.soLuongMonAn${index}`).value,
-           
-          };
-          console.log(data);
-          if (data.soLuong > 0) {
+            saveOrderItem: function () {
+                $$(".btn-done").forEach(function (btn, index) {
+                    btn.onclick = function () {
+                        delete orderItem_list.list[index].tenMon;
+                        orderItem_list.list[index].trangThaiMon = "done";
+                        console.log(orderItem_list.list[index]);
+                        fetch("http://localhost:5225/api/Order/PostOrder", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(orderItem_list.list[index]),
+                        });
+                    };
+                });
+            },
+        };
+        function handleSubmit(event) {
+            $$(".input-row-dish").forEach(function (input, index) {
+                const date = new Date();
+                let data = {
+                    maHoaDon: `${date.getDate()}${
+                        date.getMonth() + 1
+                    }${date.getFullYear()}${date.getHours()}${date.getMinutes()}`,
+                    tenNV: $("#maNVorder").value,
+                    soBan: $("#soBan").value,
+                    trangThaiMon: "undone",
+                    ngay: "null",
+                    gio: "null",
+                    phanTramKhuyenMai: $(`.phanTramKhuyenMai${index}`).value,
+                    ghiChu: $(`#ghiChu${index}`).value,
 
-            fetch("http://localhost:5225/api/Order/PostOrder", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-              })
-              .then((orderItem) => {
-                console.log(1);
-                function showSuccessToast() {
-                    toast({
-                        title: "Đăng kí thành công!",
-                        message: "Thông tin nhân viên đã được thêm vào danh sách",
-                        type: "success",
-                        duration: 5000,
-                    });
-                }
-                showBill();
-                showSuccessToast();
-            })
-            .catch((error) => {
-                console.log(2);
-    
-                function showSuccessToast() {
+                    idMonAn: $(`.idMonAn${index}`).value,
+                    soLuong: $(`.soLuongMonAn${index}`).value,
+                };
+                console.log(data);
+                if (data.soLuong > 0) {
+                    fetch("http://localhost:5225/api/Order/PostOrder", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    })
+                        .then((orderItem) => {
+                            console.log(1);
+                            function showSuccessToast() {
+                                toast({
+                                    title: "Đăng kí thành công!",
+                                    message:
+                                        "Thông tin nhân viên đã được thêm vào danh sách",
+                                    type: "success",
+                                    duration: 5000,
+                                });
+                            }
+                            showBill();
+                            showSuccessToast();
+                        })
+                        .catch((error) => {
+                            console.log(2);
+
+                            function showSuccessToast() {
+                                toast({
+                                    title: "Thất bại!",
+                                    message:
+                                        "Thông tin nhân viên không thể được thêm vào do lỗi API",
+                                    type: "error",
+                                    duration: 5000,
+                                });
+                            }
+                            showSuccessToast();
+                        });
+                } else {
                     toast({
                         title: "Thất bại!",
-                        message:
-                            "Thông tin nhân viên không thể được thêm vào do lỗi API",
+                        message: "Số lượng phải lớn hơn 0!",
                         type: "error",
                         duration: 5000,
                     });
                 }
-                showSuccessToast();
             });
-          }
-          else{
-            toast({
-              title: "Thất bại!",
-              message:
-                  "Số lượng phải lớn hơn 0!",
-              type: "error",
-              duration: 5000,
-          });
-          }
-        })
-  
-        
-        
-        
-        if (data.soLuong > 0) {
-          
-          orderItem_list.addOrderItem(data);
-          function showSuccessToast() {
-            toast({
-              title: "Thành công!",
-              message: "Đã đặt món thành công!",
-              type: "success",
-              duration: 5000,
-            });
-          }
-          showSuccessToast();
-          orderItem_list.showOrderItem(data);
-          orderItem_list.saveOrderItem();
-        }
-      
-    }
 
-    $(".orderForm-submit-btn").addEventListener("click", function () {
-      handleSubmit();
+            if (data.soLuong > 0) {
+                orderItem_list.addOrderItem(data);
+                function showSuccessToast() {
+                    toast({
+                        title: "Thành công!",
+                        message: "Đã đặt món thành công!",
+                        type: "success",
+                        duration: 5000,
+                    });
+                }
+                showSuccessToast();
+                orderItem_list.showOrderItem(data);
+                orderItem_list.saveOrderItem();
+            }
+        }
+
+        $(".orderForm-submit-btn").addEventListener("click", function () {
+            handleSubmit();
+        });
     });
-  });

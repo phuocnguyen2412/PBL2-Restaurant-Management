@@ -1,5 +1,4 @@
 function handleSubmit(event) {
-    event.preventDefault();
     const maNV = $("#maNV").value;
     const hoVaTen = $("#hoVaTen").value;
     const gioiTinh = $("#sex").value;
@@ -35,32 +34,25 @@ function handleSubmit(event) {
             return response.json();
         })
         .then((orderItem) => {
-           
-            function showSuccessToast() {
-                toast({
-                    title: "Đăng kí thành công!",
-                    message: "Thông tin nhân viên đã được thêm vào danh sách",
-                    type: "success",
-                    duration: 5000,
-                });
-            }
-            showSuccessToast();
+            toast({
+                title: "Đăng kí thành công!",
+                message: "Thông tin nhân viên đã được thêm vào danh sách",
+                type: "success",
+                duration: 5000,
+            });
         })
         .catch((error) => {
-
-            function showSuccessToast() {
-                toast({
-                    title: "Thất bại!",
-                    message:
-                        "Thông tin nhân viên không thể được thêm vào do lỗi API",
-                    type: "error",
-                    duration: 5000,
-                });
-            }
-            showSuccessToast();
+            toast({
+                title: "Thất bại!",
+                message:
+                    "Thông tin nhân viên không thể được thêm vào do lỗi API",
+                type: "error",
+                duration: 5000,
+            });
         });
 }
 
 $(".employee-confirm").addEventListener("click", function (event) {
-    handleSubmit(event);
+    event.preventDefault();
+    handleSubmit();
 });

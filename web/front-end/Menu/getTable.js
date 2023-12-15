@@ -36,6 +36,7 @@ function showBill() {
                                     <i class="ti-close"></i>
                                 </button>
                                 <button id="${bill.maHoaDon}" class="btn btn-success bill-finish float-end p-1 m-1">Xuất hoá đơn</button>
+                                <button id="${bill.maHoaDon}" class="btn btn-success inputDish float-end p-1 m-1">Thêm món ăn</button>
                                 <h4 class="text-center">Hóa đơn ID${bill.maHoaDon}</h4>
                             </div>
                             <div class="card-body">
@@ -126,24 +127,30 @@ function showBill() {
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify(order),
-                    })
-                         
-                      
-                        .then(() => {
-                            $(`#detail-bill-${btn.id}`).remove()
-                            showBill();
-                            toast({
-                                title: "Thành công!",
-                                message: "Đã xuất hóa đơn thành công ",
-                                type: "success",
-                                duration: 5000,
-                            });
-                        })
-               
+                    }).then(() => {
+                        $(`#detail-bill-${btn.id}`).remove();
+                        showBill();
+                        toast({
+                            title: "Thành công!",
+                            message: "Đã xuất hóa đơn thành công ",
+                            type: "success",
+                            duration: 5000,
+                        });
+                    });
                 }
                 btn.onclick = function (event) {
                     event.preventDefault();
                     handleUpdateBill();
+                };
+            });
+            $$(".inputDish").forEach(function (btn) {
+                btn.onclick = function (event) {
+                    event.preventDefault();
+                    const inputMoreDish = document.createElement("div");
+                    inputMoreDish.id = "new-layer";
+                    inputMoreDish.innerHTML = `
+                        
+                    `;
                 };
             });
         });

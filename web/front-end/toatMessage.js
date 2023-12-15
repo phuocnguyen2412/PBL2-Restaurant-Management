@@ -1,4 +1,3 @@
-// Toast function
 const toastDiv = document.createElement("div");
 toastDiv.id = "toast";
 document.body.appendChild(toastDiv);
@@ -6,12 +5,10 @@ document.body.appendChild(toastDiv);
 function toast({ title = "", message = "", type = "info", duration = 3000 }) {
     const toast = document.createElement("div");
 
-    // Auto remove toast
     const autoRemoveId = setTimeout(function () {
         toastDiv.removeChild(toast);
     }, duration + 1000);
 
-    // Remove toast when clicked
     toast.onclick = function (e) {
         if (e.target.closest(".toast__close")) {
             main.removeChild(toast);
@@ -25,6 +22,7 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
         warning: "fas fa-exclamation-circle",
         error: "fas fa-exclamation-circle",
     };
+
     const icon = icons[type];
     const delay = (duration / 1000).toFixed(2);
 
@@ -43,6 +41,5 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
                             <i class="fas fa-times"></i>
                         </div>
                     `;
-
     toastDiv.appendChild(toast);
 }

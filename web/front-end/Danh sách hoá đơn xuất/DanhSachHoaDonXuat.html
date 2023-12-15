@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="../toastMessage.css" />
     </head>
     <body>
-        
         <form class="container mt-4">
             <div class="row">
                 <div class="col-6">
@@ -30,7 +29,11 @@
                             id="date"
                         />
                         <label for="date">Tìm kiếm bằng ngày/tháng/năm:</label>
-                        <button class="btn btn-success" type="submit">
+                        <button
+                            id="findOutputBillByDate "
+                            class="btn btn-success"
+                            type="submit"
+                        >
                             Go
                         </button>
                     </div>
@@ -38,13 +41,18 @@
                 <div class="col-6">
                     <div class="input-group form-floating">
                         <input
+                            id="id"
                             type="text"
                             class="form-control"
                             placeholder="Nhập mã hóa đơn"
                             name="billID"
                         />
                         <label for="billID">Tìm kiếm bằng mã hóa đơn</label>
-                        <button class="btn btn-success" type="submit">
+                        <button
+                            id="findOutputBillByID"
+                            class="btn btn-success"
+                            type="submit"
+                        >
                             Go
                         </button>
                     </div>

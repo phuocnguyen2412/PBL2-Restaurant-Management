@@ -1,53 +1,52 @@
-function findEmployeeById(id) {
-  // Kiểm tra xem id có tồn tại không
-  if (!id) {
-    console.error("ID is required");
-    return;
-  }
+function findInputBillById() {
+    const id = $("#id").value;
 
-  fetch(`url_of_your_api/employees/${id}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((infor) => {
-      $("#employee-info").innerHTML = `
-        <tr>
-            <td class="text-center">${infor.maNV}</td>
-            <td>${infor.hoTen}</td>
-            <td class="text-center">${infor.gioiTinh}</td>
-            <td class="text-center">${infor.cccd}</td>
+    if (!id) {
+        toast({
+            title: "Thất bại!",
+            message: "Vui lòng nhập ngày! ",
+            type: "error",
+            duration: 5000,
+        });
 
-            <td>${infor.thuongTru}</td>
-            <td>${infor.email}</td>
+        return;
+    }
 
-            <td class="text-center">${infor.ngaySinh}</td>
-            <td class="text-center">${infor.chucVu}</td>
-            <td
-                class="d-flex align-items-center justify-content-center"
-            >
-                <button id="update-${infor.maNV}" class="btn btn-info me-2"></button
-                ><button id="delete-${infor.maNV}" class="btn btn-danger"></button>
-            </td>
-        </tr>
-        `;
-    })
-    .catch((error) => {
-        function showSuccessToast() {
+    fetch(
+        `http://localhost:5225/api/HoaDonNhap/FindHoaDonNhapByMaHoaDon?MaHoaDon=${id}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+    )
+        .then((response) => {
+            return response.json();
+        })
+        .then((infor) => {
+            if (infor.length == 0) {
+                throw new Error(`Error: ${response.status}`);
+            }
+            showBill(infor);
             toast({
-                title: "Đăng kí thành công!",
-                message: "Thông tin nhân viên đã được thêm vào danh sách",
+                title: "Thành công!",
+                message: "Đã tìm được hóa đơn!",
                 type: "success",
                 duration: 5000,
             });
-        }
-        showSuccessToast();
-    });
+        })
+        .catch((error) => {
+            toast({
+                title: "Thất bại!",
+                message: "Không tồn tại hóa đơn đã nhập",
+                type: "error",
+                duration: 5000,
+            });
+        });
 }
 
-$("#findEmployeeById").onclick = function (event) {
-  event.preventDefault();
-  findEmployeeById($(".idNV").value);
+$("#findOutputBillByID").onclick = function (event) {
+    event.preventDefault();
+    findInputBillById();
 };
