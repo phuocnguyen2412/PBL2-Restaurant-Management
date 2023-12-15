@@ -444,6 +444,75 @@
                     </button>
                 </form>
             </div>
+            
+        </div>
+        <div class="new-layer d-flex" >
+            <div class="container">
+                <button class="btn btn-dark  float-end btn-close mt-2"></button>
+                <h3 class=" text-center m-4">
+                    Thêm món ăn vào hóa đơn ...
+                </h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td
+                                style="
+                                    padding-left: 10px;
+                                "
+                            >
+                                Tên món ăn
+                            </td>
+                            <td align="center">
+                                Số lượng
+                            </td>
+                            <td align="center">
+                                % khuyến mãi
+                            </td>
+                            <td align="center">
+                                Ghi chú
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="dish-input-table">
+                        <tr class="input-row-dish">
+                            <td>
+                                <select
+                                    type="text"
+                                    name="idMonAn0"
+                                    class="idMonAn0 idmonAn"
+                                ></select>
+                            </td>
+                            <td>
+                                <input
+                                    type="number"
+                                    name="soLuongMonAn0"
+                                    class="soLuongMonAn0"
+                                    value="0"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    value="0"
+                                    type="number"
+                                    name="phanTramKhuyenMai0"
+                                    class="phanTramKhuyenMai0"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    type="textarea"
+                                    name="ghiChu0"
+                                    id="ghiChu0"
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="more-dish btn btn-dark">
+                    Thêm món ăn
+                </button>
+                <button id="confirm-moreDishInput " class="btn btn-dark float-end mb-3">Xác nhận</button>
+            </div>
         </div>
         <script src="../toatMessage.js"></script>
         <script src="./postOrderItem&Order.js"></script>

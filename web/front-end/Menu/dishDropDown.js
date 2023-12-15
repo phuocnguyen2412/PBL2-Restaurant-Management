@@ -10,7 +10,10 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
     });
     dishes = dishes.join("");
     $$(".input-row-dish").forEach(function (input, index) {
-      $(`.idMonAn${index}`).innerHTML = dishes;
+      $$(`.idMonAn${index}`).forEach(function(a,index){
+        a.innerHTML = dishes;
+        
+      })
     });
     $$(".idMonAn").forEach(function (input) {
       input.onchange = function () {

@@ -7,13 +7,15 @@ function showBill() {
         .then(function (bills) {
             let bill_list = bills.map(function (bill) {
                 return `
-                            <div id="bill-${bill.maHoaDon}"class="col-3 card ">
-                                <div class="card-header">${bill.soBan}</div>
+                            <div id="bill-${bill.maHoaDon}"class="col-4 card ">
+                                <div class="card-header text-center">${bill.soBan}</div>
                                 <div class="card-body">
                                     Tạo bởi: ${bill.tenNV}<br />
                                     Trạng thái: ${bill.trangThai}
                                 </div>
                                 <div class="card-footer d-grid">
+                                <button id="${bill.maHoaDon}" class="btn btn-outline-success inputDish mb-2 ">Thêm món ăn</button>
+
                                     <button id="open-detail-bill-id${bill.maHoaDon}"class="btn btn-outline-success">Chi tiết</button>
                                 </div>
                             </div>
@@ -36,7 +38,6 @@ function showBill() {
                                     <i class="ti-close"></i>
                                 </button>
                                 <button id="${bill.maHoaDon}" class="btn btn-success bill-finish float-end p-1 m-1">Xuất hoá đơn</button>
-                                <button id="${bill.maHoaDon}" class="btn btn-success inputDish float-end p-1 m-1">Thêm món ăn</button>
                                 <h4 class="text-center">Hóa đơn ID${bill.maHoaDon}</h4>
                             </div>
                             <div class="card-body">
@@ -145,6 +146,7 @@ function showBill() {
             });
             $$(".inputDish").forEach(function (btn) {
                 btn.onclick = function (event) {
+                    
                     event.preventDefault();
                     const inputMoreDish = document.createElement("div");
                     inputMoreDish.id = "new-layer";
