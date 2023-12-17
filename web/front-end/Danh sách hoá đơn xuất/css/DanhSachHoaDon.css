@@ -3,11 +3,16 @@
     margin: 0;
     box-sizing: border-box;
 }
-.modal-header{
+.modal-header {
     display: block;
 }
 
-
+label {
+    left: 12px !important;
+}
+input {
+    width: 100%;
+}
 .new-layer {
     align-items: center;
     justify-content: center;

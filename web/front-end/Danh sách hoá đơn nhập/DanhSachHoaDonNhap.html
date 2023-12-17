@@ -5,12 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Danh sách hóa đơn nhập</title>
         <link
+            rel="icon"
+            href="https://cdn.iconscout.com/icon/premium/png-256-thumb/fresh-ingredients-9113978-7411057.png?f=webp"
+        />
+        <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="../Danh sách hoá đơn xuất/css/DanhSachHoaDon.css">
+        <link
+            rel="stylesheet"
+            href="../Danh sách hoá đơn xuất/css/DanhSachHoaDon.css"
+        />
         <link rel="stylesheet" href="../layer.css" />
-
 
         <link
             rel="stylesheet"
@@ -19,6 +25,208 @@
         <link rel="stylesheet" href="../toastMessage.css" />
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../Menu/MenuEmployee.html"
+                    >HOME</a
+                >
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarText"
+                    aria-controls="navbarText"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                aria-current="page"
+                                href="../Danh sách nhân viên/DanhSachNhanVien.html"
+                                >EMPLOYEE</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="../Danh sách bàn ăn/DanhSachBanAn.html"
+                                >ORDER</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Kho/Kho.html">STORE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="../Danh sách hoá đơn xuất/DanhSachHoaDonXuat.html"
+                                >EXPORT BILL</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">IMPORT BILL</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                        <a href="../../../index.html">LOG OUT</a>
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <!-- Button trigger modal -->
+        <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+        >
+            Them Hoa Don
+        </button>
+
+        <!-- Modal -->
+        <div
+            class="modal fade modal-lg"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1
+                            class="modal-title fs-5 d-inline"
+                            id="exampleModalLabel"
+                        >
+                            Them hoa don
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close float-end"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="resource-input" class="container part">
+                            <h2 class="text-center m-3">Nhập nguyên liệu</h2>
+                            <form action="">
+                                <div class="row">
+                                    <div class="col-6 form-floating mb-2">
+                                        <input
+                                            class="form-control"
+                                            type="text"
+                                            id="idHoaDonKho"
+                                            name="idHoaDonKho"
+                                            placeholder="Nhập ID hóa đơn kho"
+                                        />
+                                        <label class="ml-2" for="idHoaDonKho"
+                                            >Mã hoá đơn</label
+                                        >
+                                    </div>
+
+                                    <div class="col-6 form-floating mb-2">
+                                        <select
+                                            class="form-control"
+                                            type="text"
+                                            name="maNVResource"
+                                            id="maNVResource"
+                                            placeholder="Nhập ID nhà cung cấp"
+                                        ></select>
+                                        <label class="ml-2" for="maNVResource"
+                                            >Tên nhân viên</label
+                                        >
+                                    </div>
+                                    <div class="col-12 form-floating mb-2">
+                                        <select
+                                            class="form-control"
+                                            type="text"
+                                            name="idNhaCungCap"
+                                            id="idNhaCungCap"
+                                            placeholder="Nhập ID nhà cung cấp"
+                                        ></select>
+                                        <label class="ml-2" for="idNhaCungCap"
+                                            >Tên nhà cung cấp</label
+                                        >
+                                    </div>
+
+                                    <div class="col-12">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td
+                                                        style="
+                                                            padding-left: 10px;
+                                                        "
+                                                    >
+                                                        Tên nguyên liệu
+                                                    </td>
+                                                    <td align="center">
+                                                        Số lượng
+                                                    </td>
+                                                    <td align="center">
+                                                        Đơn giá
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="resource-input-table">
+                                                <tr class="input-row">
+                                                    <td>
+                                                        <select
+                                                            type="text"
+                                                            name="idNguyenLieu0"
+                                                            class="idNguyenLieu0"
+                                                        ></select>
+                                                    </td>
+                                                    <td>
+                                                        <input
+                                                            type="number"
+                                                            name="soLuong0"
+                                                            class="soLuong0"
+                                                        />
+                                                    </td>
+                                                    <td>
+                                                        <input
+                                                            type="number"
+                                                            name="donGia0"
+                                                            class="donGia0"
+                                                        />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark more">
+                            Thêm nguyên liệu
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="btn-submit-resource-bill"
+                        >
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <form class="container mt-4">
             <div class="row">
                 <div class="col-6">
@@ -68,13 +276,20 @@
         </div>
 
         <div class="detail-bill-list container"></div>
-       
 
         <script src="./scriptDanhSachNhap.js"></script>
+        <script src="./postResource.js"></script>
         <script src="../closeBtn.js"></script>
         <script src="./findInputBillById.js"></script>
         <script src="./findInputBillByDate.js"></script>
         <script src="../toatMessage.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./moreBtn.js"></script>
+        <script src="./postResource.js"></script>
     </body>
 </html>
