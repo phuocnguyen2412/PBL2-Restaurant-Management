@@ -1,15 +1,17 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+getInfo();
+function getInfo(){
+    fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (infor_list) {
+            show(infor_list);
+        });
+}
 
-fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (infor_list) {
-        showBill(infor_list);
-    });
-
-function showBill(infor_list) {
+function show(infor_list) {
     let infors = infor_list.map(function (infor) {
         return `
               <tr>
@@ -65,7 +67,7 @@ function showBill(infor_list) {
                         type: "success",
                         duration: 5000,
                     });
-                    showInfor();
+                   getInfo();
                 })
 
                 .catch((error) => {
@@ -93,92 +95,99 @@ function showBill(infor_list) {
                       <div class="col-6 mb-2 form-floating">
                           <input
                               class="form-control"
-                              id="hoVaTen"
+                              id="hoVaTenChange"
                               type="text"
                               placeholder="Nhập họ và tên"
                               value="${infor.hoTen}"
                           />
-                          <label class="ml-2" for="hoVaTen">Họ và tên</label>
+                          <label class="ml-2" for="hoVaTenChange">Họ và tên</label>
                       </div>
                       <div class="col-6 mb-2 form-floating">
-                          <select class="form-select" name="sex" id="sex" value = ${infor.gioiTinh}>
+                          <select class="form-select" name="sex" id="sexChange" value = ${infor.gioiTinh}>
                               <option value="male">Nam</option>
                               <option value="female">Nữ</option>
                           </select>
-                          <label class="ml-2" for="sex">Giới tính</label>
+                          <label class="ml-2" for="sexChange">Giới tính</label>
                       </div>
 
                       <div class="col-6 mb-2 form-floating">
                           <input
-                              id="email"
+                              id="emailChange"
                               class="form-control"
                               type="email"
                               placeholder="Nhập địa chỉ gmail"
                               value="${infor.email}"
                           />
-                          <label class="ml-2" for="email"
+                          <label class="ml-2" for="emailChange"
                               >Địa chỉ email</label
                           >
                       </div>
                       <div class="col-6 mb-2 form-floating">
                           <input
-                              id="birthday"
+                              id="birthdayChange"
                               class="form-control"
                               type="date"
                               value = "${infor.ngaySinh}"
                           />
-                          <label class="ml-2" for="birthday">Ngày sinh</label>
+                          <label class="ml-2" for="birthdayChange">Ngày sinh</label>
                       </div>
 
                       <div class="col-6 mb-2 form-floating">
                           <input
-                              id="CCCD"
+                              id="CCCDChange"
                               class="form-control"
                               type="text"
                               placeholder="Nhập số Căn cước công dân"
                               value ="${infor.cccd}"
                           />
-                          <label class="ml-2" for="CCCD">CCCD</label>
+                          <label class="ml-2" for="CCCDChange">CCCD</label>
                       </div>
-                      <div class="col-6 mb-2 form-floating">
-                          <input
-                              class="form-control"
-                              type="text"
-                              placeholder="Nhập địa chỉ thường trú"
-                              id="thuongTru"
-                              name="thuongTru"
-                              value = "${infor.thuongTru}"
-                          />
-                          <label class="ml-2" for="thuongTru"
-                              >Thường trú</label
-                          >
-                      </div>
+                      
 
                       <div class="col-6 mb-2 form-floating">
-                          <select class="form-select" name="job" id="job" value = "${infor.chucVu}">
+                          <select class="form-select" name="job" id="jobChange" value = "${infor.chucVu}">
                               <option value="Nhân viên phục vụ">
                                   Nhân viên phục vụ
                               </option>
                               <option value="Đầu bếp">Đầu bếp</option>
                               <option value="Thu ngân">Thu ngân</option>
+                              <option value="Quản lý">
+                                                Quản lý
+                                            </option>
+                                            <option value="Nhân viên kho">
+                                                Nhân viên kho
+                                            </option>
                           </select>
                           <label class="ml-2" for="job">Vị trí</label>
                       </div>
-                      <div class="col-6 mb-2 form-floating">
+                      <div class="col-6 mb-2 form-floating" style="display: none;">
                           <input
                               class="form-control"
                               type="text"
                               placeholder="Nhập mã NV = Chức vụ + stt"
                               name="id"
-                              id="id"
+                              id="idChange"
                               value="${infor.id}"
                               disabled
                           />
-                          <label class="ml-2" for="id">Mã Nhân viên</label>
+                          <label class="ml-2" for="idChange">Mã Nhân viên</label>
+                      </div>
+                      <div class="col-12 mb-2 form-floating">
+                          <input
+                              class="form-control"
+                              type="text"
+                              placeholder="Nhập địa chỉ thường trú"
+                              id="thuongTruChange"
+                              name="thuongTru"
+                              value = "${infor.thuongTru}"
+                          />
+                          <label class="ml-2" for="thuongTruChange"
+                              >Thường trú</label
+                          >
                       </div>
                   </div>
                   <button
-                      class="btn btn-dark employee-confirm mb-2 float-end"
+                      class="btn btn-dark employee-confirm-Change mb-2 float-end"
                   >
                       Xác nhận
                   </button>
@@ -187,16 +196,17 @@ function showBill(infor_list) {
           `;
 
             function handleSubmit(event) {
+                console.log(1)
                 event.preventDefault();
-                const maNV = $("#id").value;
-                const hoVaTen = $("#hoVaTen").value;
-                const gioiTinh = $("#sex").value;
-                const email = $("#email").value;
-                const birthday = $("#birthday").value;
-                const CCCD = $("#CCCD").value;
-                const thuongTru = $("#thuongTru").value;
-                const job = $("#job").value;
-                console.log($("#hoVaTen"));
+                const maNV = $("#idChange").value;
+                const hoVaTen = $("#hoVaTenChange").value;
+                const gioiTinh = $("#sexChange").value;
+                const email = $("#emailChange").value;
+                const birthday = $("#birthdayChange").value;
+                const CCCD = $("#CCCDChange").value;
+                const thuongTru = $("#thuongTruChange").value;
+                const job = $("#jobChange").value;
+                console.log($("#hoVaTenChange"));
                 let employee_infor = {
                     id: maNV,
                     hoTen: hoVaTen,
@@ -222,7 +232,7 @@ function showBill(infor_list) {
                         return response.json();
                     })
                     .then((orderItem) => {
-                        showInfor();
+                        getInfo()
                         toast({
                             title: "Thành công!",
                             message: "Thông tin nhân viên đã được cập nhật",
@@ -242,7 +252,7 @@ function showBill(infor_list) {
                     });
             }
 
-            $(".employee-confirm").addEventListener("click", function (event) {
+            $(".employee-confirm-Change").addEventListener("click", function (event) {
                 event.preventDefault();
                 handleSubmit(event);
             });

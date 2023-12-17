@@ -10,16 +10,17 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
         });
 
         dishes = dishes.join("");
-        $$(".more-dish").forEach(function (button, index) {
-            button.onclick = function (e) {
+        $$(".more-dish-bill").forEach(function (btn, index) {
+            btn.onclick = function (e) {
+                console.log(btn.name)
                 e.preventDefault();
-                $("#dish-input-table").innerHTML += `   
+                $(`#dish-input-table-${btn.name}`).innerHTML += `   
                   <tr class="more-input-row-dish">
                       <td>
                           <select
                               type="text"
-                              name="idMonAn${++index}"
-                              class="idMonAn${index} idMonAn"
+                              name="idMonAnMoreDishBill${btn.name}-${++index}"
+                              class="idMonAnMoreDishBill${btn.name}-${++index}"
                           >
                           </select>
                       </td>
@@ -27,7 +28,7 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
                           <input
                               type="number"
                               name="soLuongMonAn${index}"
-                              class="soLuongMonAn${index}"
+                              class="soLuongMonAnMoreDishBill${btn.name}-${++index}"
                               value="0"
                           />
                       </td>
@@ -35,17 +36,17 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
                           <input
                               value ="0";
                               type="number"
-                              name="phanTramKhuyenMai${index}"
-                              class="phanTramKhuyenMai${index}"
+                              name="phanTramKhuyenMaiMoreDishBill${btn.name}-${++index}"
+                              class="phanTramKhuyenMaiMoreDishBill${btn.name}-${++index}"
                           />
                       </td>
                       <td>
-                                <input type="textarea" name="ghiChu0" id="ghiChu${index}" />
+                                <input type="textarea" name="ghiChu0" id="ghiChuMoreDishBill${btn.name}-${++index}" />
                               </td>
                   </tr>
               `;
                 $$(".input-row-dish").forEach(function (input, index) {
-                    $(`.idMonAn${index}`).innerHTML = dishes;
+                    $(`.idMonAnMoreDishBill${btn.name}-${++index}`).innerHTML = dishes;
                 });
             };
         });

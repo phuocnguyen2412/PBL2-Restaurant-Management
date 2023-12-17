@@ -14,15 +14,18 @@ function User(username, password) {
             body: JSON.stringify({
                 username: this.username,
                 password: this.password,
+                maNV : 0,
+                chucVu : "string",
             }),
         })
             .then((response) => response.json())
             .then((data) => {
-                if (data.message == "1") {
+                console.log(data)
+                if (data.chucVu == "Quản lý") {
                     window.location.href =
                         "./web/front-end/Menu/MenuAdmin.html";
                 }
-                if (data.message == "2") {
+                if (data.chucVu == "Nhân viên phục vụ") {
                     window.location.href =
                         "./web/front-end/Menu/MenuEmployee.html";
                 } else {
@@ -136,5 +139,6 @@ function User(username, password) {
 $("#submit-login-btn").onclick = function (event) {
     event.preventDefault();
     const user = new User($("#username").value, $("#password").value);
+    console.log(user)
     user.Login();
 };

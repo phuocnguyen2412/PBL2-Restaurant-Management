@@ -7,7 +7,7 @@ fetch("http://localhost:5225/api/NguyenLieu/NguyenLieu")
             return `
                     <tr>
                         <td style="padding-left: 10px;">${resource.tenNguyenLieu}</td>
-                        <td align="center">${resource.soLuong}</td>
+                        <td align="center">${resource.soLuongTonKho}</td>
                         <td align="center">${resource.donVi}</td>
                     </tr>
                 `;

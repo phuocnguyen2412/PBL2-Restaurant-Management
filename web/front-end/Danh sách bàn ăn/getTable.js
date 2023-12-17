@@ -138,8 +138,8 @@ function showBill() {
                                             <td align="center">Ghi chú</td>
                                         </tr>
                                     </thead>
-                                    <tbody id="dish-input-table">
-                                        <tr class="input-row-dish MoreDish${bill.maHoaDon}">
+                                    <tbody id="dish-input-table-${bill.maHoaDon}">
+                                        <tr class="more-input-row-dish MoreDish${bill.maHoaDon}">
                                             <td>
                                                 <select
                                                     type="text"
@@ -173,14 +173,14 @@ function showBill() {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button class="more-dish btn btn-dark">Thêm món ăn</button>
+                                <button name="${bill.maHoaDon}" class="more-dish-bill btn btn-dark">Thêm món ăn</button>
                             </div>
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
                                 <button
                                     id="${bill.maHoaDon}"
-                                    class="btn btn-dark float-end confirm-moreDishInput"
+                                    class="btn btn-dark float-end confirm-moreDishInput-${bill.maHoaDon}"
                                 >
                                     Xác nhận
                                 </button>

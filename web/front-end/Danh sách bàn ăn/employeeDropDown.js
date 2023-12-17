@@ -1,4 +1,4 @@
-fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
+fetch("http://localhost:5225/api/NhanVien/GetNhanVienPhucVu")
     .then(function (response) {
         return response.json();
     })
@@ -8,8 +8,6 @@ fetch("http://localhost:5225/api/NhanVien/GetNhanVien")
             $(`#maNVorder`).innerHTML += `
         <option value="${infor.hoTen}">${infor.hoTen}</option>
       `;
-            $(`#maNVResource`).innerHTML += `
-        <option value="${infor.hoTen}">${infor.hoTen}</option>
-      `;
+   
         });
     });

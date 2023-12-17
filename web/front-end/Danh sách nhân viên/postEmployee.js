@@ -1,5 +1,5 @@
 function handleSubmit(event) {
-  const sdt = $("#sdt").value;
+  
   const hoVaTen = $("#hoVaTen").value;
   const gioiTinh = $("#sex").value;
   const email = $("#email").value;
@@ -16,7 +16,7 @@ function handleSubmit(event) {
     cccd: CCCD,
     thuongTru: thuongTru,
     chucVu: job,
-    sdt: sdt,
+    
   };
   console.log(employee_infor);
   fetch("http://localhost:5225/api/NhanVien/PostNhanVien", {
@@ -40,6 +40,8 @@ function handleSubmit(event) {
         type: "success",
         duration: 5000,
       });
+      
+      getInfo()
     })
     .catch((error) => {
       toast({

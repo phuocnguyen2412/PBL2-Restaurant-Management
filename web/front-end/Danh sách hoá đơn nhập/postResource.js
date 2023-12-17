@@ -25,34 +25,51 @@ function postHoaDon() {
         })
             .then((response) => response.json())
             .then((response) => {
-                console.log(response.message);
+         
                 if (response.message != "Đã tạo bản ghi!") {
                     throw "lỗi";
                 }
                 return response;
             })
             .then((message) => {
-                function showSuccessToast() {
+                
                     toast({
                         title: "Thành công!",
                         message: "Đã thêm hóa đơn thành công!",
                         type: "success",
                         duration: 5000,
                     });
-                }
-                showSuccessToast();
+                    fetch(`http://localhost:5225/api/NguyenLieu/UpdateNguyenLieu?Id=${postData.idNguyenLieu}&MaHoaDon=${postData.maHoaDon}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                       
+                    })
+                    .then(()=>{
+                        toast({
+                            title: "Thành công!",
+                            message: "Đã cập nhập kho!",
+                            type: "success",
+                            duration: 5000,
+                        });
+                    })
+              
+               
             })
             .catch((message) => {
-                function showErrorToast() {
+              
                     toast({
                         title: "Thất bại!",
                         message: "Không thể thêm hóa đơn do lỗi API!!!!",
                         type: "error",
                         duration: 5000,
                     });
-                }
-                showErrorToast();
+         
             });
+          
+            
+            
     });
 }
 
