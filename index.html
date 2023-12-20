@@ -14,6 +14,7 @@
             integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
             crossorigin="anonymous"
         />
+
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -28,11 +29,15 @@
             href="./web/front-end/Form đăngn nhâp/css/AccountChange.css"
         />
         <link rel="stylesheet" href="./web/front-end/toastMessage.css" />
-        <link rel="stylesheet" href="./web/front-end/layer.css" />
+
+        <link
+            rel="stylesheet"
+            href="./web/front-end/Form đăngn nhâp/css/dishes.css"
+        />
     </head>
     <body>
         <nav
-            class="navbar navbar-expand-lg bg-body-tertiary nav-underline position-fixed top-0 z-3 w-100 shadow"
+            class="navbar navbar-expand-lg bg-body-tertiary nav-underline position-fixed top-0 z-1   w-100 shadow"
         >
             <div class="container-fluid">
                 <a class="navbar-brand" href="./index.html"
@@ -58,7 +63,7 @@
                             <a
                                 class="nav-link"
                                 aria-current="page"
-                                href="../Danh sách nhân viên/DanhSachNhanVien.html"
+                                href="#dishes"
                                 >DISHES</a
                             >
                         </li>
@@ -295,6 +300,55 @@
                     </div>
                 </div>
             </div>
+            <div id="dishes">
+                <!-- Tab items -->
+                <div class="tabs">
+                    <div class="tab-item active" id="all">
+                        <i class="tab-icon fas fa-code"></i>
+                        All
+                    </div>
+                    <div class="tab-item" id="food">
+                        <i class="tab-icon fas fa-cog"></i>
+                        Food
+                    </div>
+                    <div class="tab-item" id="drink">
+                        <i class="tab-icon fas fa-plus-circle"></i>
+                        Drink
+                    </div>
+
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div>
+                <div class="row mt-3" id="dish_list">
+                    <div class="dish col-3">
+                        <div class="dish-img">
+                            <img
+                                class="w-100"
+                                src="https://static.vinwonders.com/production/mon-ngon-ha-dong-banner.jpg"
+                                alt=""
+                            />
+                        </div>
+                        <h2 class="dish-name text-center">Món ăn</h2>
+                        <h3 class="dish-prize text-center">500000 VND</h3>
+                    </div>
+                    <div class="dish col-3">
+                        <div class="dish-img">
+                            <img
+                                class="w-100"
+                                src="https://static.vinwonders.com/production/mon-ngon-ha-dong-banner.jpg"
+                                alt=""
+                            />
+                        </div>
+                        <h5 class="dish-name text-center m-2">
+                            Món ăn gia truyền
+                        </h5>
+                        <i class="dish-prize text-center d-block m-2"
+                            >500.000 VND</i
+                        >
+                    </div>
+                </div>
+            </div>
         </main>
         <footer class="bg-black" id="about-us">
             <div class="container pt-3 pb-3">
@@ -313,9 +367,9 @@
         </footer>
         <script src="./web/front-end/toatMessage.js"></script>
         <script src="./web/front-end/Form đăngn nhâp/Login.js"></script>
-        <script src="./web/front-end/closeBtn.js"></script>
-        <script src="./web/front-end/openBtn.js"></script>
+
         <script src="./web/front-end/Form đăngn nhâp/changePassword.js"></script>
+        <script src="./web/front-end/Form đăngn nhâp/dishes.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
