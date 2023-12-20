@@ -1,13 +1,14 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-
-fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (bills) {
-        showBill(bills);
-    });
+function getHoaDon() {
+    fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (bills) {
+            showBill(bills);
+        });
+}
 function showBill(bills) {
     let bill_list = bills.map(function (bill) {
         return `
@@ -111,12 +112,5 @@ function showBill(bills) {
                     `;
         });
         $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML = items.join("");
-
-        // $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
-        //     $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";
-        // };
-        // $(`.close-${bill.maHoaDon}`).onclick = function () {
-        //     $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
-        // };
     });
 }

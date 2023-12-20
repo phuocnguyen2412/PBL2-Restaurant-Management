@@ -2,20 +2,17 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    scroll-behavior: smooth;
 }
-
+main {
+    margin-top: 90px;
+}
 form {
     background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
 }
-
+nav-bar {
+    box-shadow: #333333 1px;
+}
 h2 {
     text-align: center;
     color: #333333;
@@ -23,17 +20,11 @@ h2 {
 
 label {
     display: block;
-    margin-bottom: 8px;
     color: #555555;
 }
 
 input {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
 }
 
 button {
@@ -47,6 +38,12 @@ button {
     margin-bottom: 10px;
 }
 
-button:hover {
+form button:hover {
     background-color: #45a049;
+}
+.modal-sm {
+    max-width: 400px;
+}
+.custom-box {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

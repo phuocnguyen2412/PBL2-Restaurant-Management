@@ -107,10 +107,9 @@ function showBill() {
                 };
             });
 
-
             //MoreDish
-            bills.forEach(function(bill){
-                $(".moreDishBill").innerHTML +=`
+            bills.forEach(function (bill) {
+                $(".moreDishBill").innerHTML += `
                     <div class="modal" id="modal-${bill.maHoaDon}">
                         <div class="modal-dialog modal-dialog-centered modal-xl ">
                             <div class="modal-content">
@@ -191,8 +190,7 @@ function showBill() {
                         </div>
                     </div>
                 `;
-                    
-            })
+            });
             return bills;
         })
 
@@ -230,60 +228,56 @@ function showBill() {
                     handleUpdateBill();
                 };
             });
-           
         })
-        .then(()=>{
-            console.log(document.querySelectorAll(".confirm-moreDishInput"))
-$$(".confirm-moreDishInput").forEach(function(btn){
- 
-    btn.onclick = function (event) {
-        
-        event.preventDefault();
-        $$(`.MoreDish${btn.id}`).forEach(function (dish, index) {
-            
-            console.log(data)
-            if (data.soLuong > 0) {
-                fetch("http://localhost:5225/api/Order/PostOrder", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                })
-                    .then((orderItem) => {
-                        toast({
-                            title: "thành công!",
-                            message:
-                                "Thêm món thành công!",
-                            type: "success",
-                            duration: 5000,
-                        });
-    
-                        showBill();
-                        const modal = new bootstrap.Modal(document.getElementById(`modal-${btn.id}`));
-modal.hide();
-                    })
-                    .catch((error) => {
-                        toast({
-                            title: "Thất bại!",
-                            message:
-                                "Thêm món thất bại",
-                            type: "error",
-                            duration: 5000,
-                        });
-                    });
-            } else {
-                toast({
-                    title: "Thất bại!",
-                    message: "Số lượng phải lớn hơn 0!",
-                    type: "error",
-                    duration: 5000,
-                });
-            }
-        });
-    };
-    
-})
+        .then(() => {
+            console.log(document.querySelectorAll(".confirm-moreDishInput"));
+            $$(".confirm-moreDishInput").forEach(function (btn) {
+                btn.onclick = function (event) {
+                    event.preventDefault();
+                    $$(`.MoreDish${btn.id}`).forEach(function (dish, index) {
+                        console.log(data);
+                        if (data.soLuong > 0) {
+                            fetch("http://localhost:5225/api/Order/PostOrder", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(data),
+                            })
+                                .then((orderItem) => {
+                                    toast({
+                                        title: "thành công!",
+                                        message: "Thêm món thành công!",
+                                        type: "success",
+                                        duration: 5000,
+                                    });
 
-        })
+                                    showBill();
+                                    const modal = new bootstrap.Modal(
+                                        document.getElementById(
+                                            `modal-${btn.id}`
+                                        )
+                                    );
+                                    modal.hide();
+                                })
+                                .catch((error) => {
+                                    toast({
+                                        title: "Thất bại!",
+                                        message: "Thêm món thất bại",
+                                        type: "error",
+                                        duration: 5000,
+                                    });
+                                });
+                        } else {
+                            toast({
+                                title: "Thất bại!",
+                                message: "Số lượng phải lớn hơn 0!",
+                                type: "error",
+                                duration: 5000,
+                            });
+                        }
+                    });
+                };
+            });
+        });
 }

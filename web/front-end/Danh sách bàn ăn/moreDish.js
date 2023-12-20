@@ -5,8 +5,8 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
     .then(function (dish_list) {
         let dishes = dish_list.map(function (dish) {
             return `
-            <option value="${dish.id}">${dish.tenMon}</option>
-          `;
+                <option value="${dish.id}">${dish.tenMon}</option>
+            `;
         });
 
         dishes = dishes.join("");

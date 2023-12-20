@@ -25,51 +25,44 @@ function postHoaDon() {
         })
             .then((response) => response.json())
             .then((response) => {
-         
                 if (response.message != "Đã tạo bản ghi!") {
                     throw "lỗi";
                 }
                 return response;
             })
             .then((message) => {
-                
-                    toast({
-                        title: "Thành công!",
-                        message: "Đã thêm hóa đơn thành công!",
-                        type: "success",
-                        duration: 5000,
-                    });
-                    fetch(`http://localhost:5225/api/NguyenLieu/UpdateNguyenLieu?Id=${postData.idNguyenLieu}&MaHoaDon=${postData.maHoaDon}`, {
+                getHoaDon();
+                toast({
+                    title: "Thành công!",
+                    message: "Đã thêm hóa đơn thành công!",
+                    type: "success",
+                    duration: 5000,
+                });
+                fetch(
+                    `http://localhost:5225/api/NguyenLieu/UpdateNguyenLieu?Id=${postData.idNguyenLieu}&MaHoaDon=${postData.maHoaDon}`,
+                    {
                         method: "PUT",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                       
-                    })
-                    .then(()=>{
-                        toast({
-                            title: "Thành công!",
-                            message: "Đã cập nhập kho!",
-                            type: "success",
-                            duration: 5000,
-                        });
-                    })
-              
-               
-            })
-            .catch((message) => {
-              
+                    }
+                ).then(() => {
                     toast({
-                        title: "Thất bại!",
-                        message: "Không thể thêm hóa đơn do lỗi API!!!!",
-                        type: "error",
+                        title: "Thành công!",
+                        message: "Đã cập nhập kho!",
+                        type: "success",
                         duration: 5000,
                     });
-         
+                });
+            })
+            .catch((message) => {
+                toast({
+                    title: "Thất bại!",
+                    message: "Không thể thêm hóa đơn do lỗi API!!!!",
+                    type: "error",
+                    duration: 5000,
+                });
             });
-          
-            
-            
     });
 }
 
