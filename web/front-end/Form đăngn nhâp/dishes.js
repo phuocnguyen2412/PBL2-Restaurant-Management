@@ -21,7 +21,7 @@ tabs.forEach((tab, index) => {
         this.classList.add("active");
     };
 });
-
+getDishes("http://localhost:5225/api/MonAn/MonAn");
 $("#all").onclick = function () {
     getDishes("http://localhost:5225/api/MonAn/MonAn");
 };
@@ -62,5 +62,5 @@ function showDish(dish_list) {
         `;
     });
 
-    $("#dish-list").innerHTML = dishes.join("");
+    $("#dish_list").innerHTML = dishes.join("");
 }

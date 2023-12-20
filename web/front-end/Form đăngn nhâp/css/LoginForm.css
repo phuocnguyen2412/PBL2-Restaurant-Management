@@ -47,3 +47,7 @@ form button:hover {
 .custom-box {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.min-heigt-100{
+    min-height: 100px;
+}
