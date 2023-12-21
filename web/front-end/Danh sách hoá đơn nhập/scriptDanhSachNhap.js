@@ -1,5 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+getHoaDon();
 function getHoaDon() {
     fetch("http://localhost:5225/api/HoaDonNhap/HoaDonNhap")
         .then(function (response) {

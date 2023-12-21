@@ -34,11 +34,17 @@ function showBill() {
                     >
                         <div class="container">
                             <div class="card-header">
-                                <button class="btn btn-danger close-${bill.maHoaDon} float-end p-1 m-1">
+                                <button class="btn btn-danger close-${
+                                    bill.maHoaDon
+                                } float-end p-1 m-1">
                                     <i class="ti-close"></i>
                                 </button>
-                                <button id="${bill.maHoaDon}" class="btn btn-success bill-finish float-end p-1 m-1">Xuất hoá đơn</button>
-                                <h4 class="text-center">Hóa đơn ID${bill.maHoaDon}</h4>
+                                <button id="${
+                                    bill.maHoaDon
+                                }" class="btn btn-success bill-finish float-end p-1 m-1">Xuất hoá đơn</button>
+                                <h4 class="text-center">Hóa đơn ID${
+                                    bill.maHoaDon
+                                }</h4>
                             </div>
                             <div class="card-body">
                                 <table class="table">
@@ -55,7 +61,9 @@ function showBill() {
                                         </tr>
                                     </thead>
                                     <tbody
-                                        class="table-detail-bill-${bill.maHoaDon}"
+                                        class="table-detail-bill-${
+                                            bill.maHoaDon
+                                        }"
                                     ></tbody>
                                 </table>
                                 <div class="row">
@@ -63,7 +71,9 @@ function showBill() {
                                         <img src="../Danh sách hoá đơn xuất/img/QRcode.jpg" alt="">
                                     </div>
                                     <div class="col-6">
-                                        <h4> Tổng tiền: </h4> <h2>${bill.tongCong} VNĐ </h2> <br />
+                                        <h4 class="text-center"> Tổng tiền: </h4> <h2  class="text-center">${
+                                            bill.tongCong / 1000
+                                        }.000 VNĐ </h2> <br />
                                     </div>
                                 </div>
                             </div>
@@ -178,8 +188,8 @@ function showBill() {
                             <!-- Modal footer -->
                             <div class="modal-footer">
                                 <button
-                                    id="${bill.maHoaDon}"
-                                    class="btn btn-dark float-end confirm-moreDishInput-${bill.maHoaDon}"
+                                    name="${bill.maHoaDon}"
+                                    class="btn btn-dark float-end confirm-moreDishInput"
                                 >
                                     Xác nhận
                                 </button>
@@ -193,88 +203,35 @@ function showBill() {
             });
             return bills;
         })
-
-        .then(function (bills) {
-            let date = new Date();
-            $$(".bill-finish").forEach(function (btn) {
-                function handleUpdateBill(event) {
-                    let order = {
-                        maHoaDon: btn.id,
-                        gio: `${date.getHours()}:${date.getMinutes()}`,
-                        ngay: `${date.getDate()}/${
-                            date.getMonth() + 1
-                        }/${date.getFullYear()}`,
-                    };
-                    console.log(order);
-                    fetch("http://localhost:5225/api/Order/Xuathoadonbutton", {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(order),
-                    }).then(() => {
-                        $(`#detail-bill-${btn.id}`).remove();
-                        showBill();
-                        toast({
-                            title: "Thành công!",
-                            message: "Đã xuất hóa đơn thành công ",
-                            type: "success",
-                            duration: 5000,
-                        });
-                    });
-                }
-                btn.onclick = function (event) {
-                    event.preventDefault();
-                    handleUpdateBill();
-                };
-            });
-        })
         .then(() => {
-            console.log(document.querySelectorAll(".confirm-moreDishInput"));
             $$(".confirm-moreDishInput").forEach(function (btn) {
                 btn.onclick = function (event) {
+                    console.log(btn.name);
                     event.preventDefault();
-                    $$(`.MoreDish${btn.id}`).forEach(function (dish, index) {
+                    $$(`.MoreDish${btn.name}`).forEach(function (input, index) {
+                        console.log(1);
+                        const date = new Date();
+                        const data = {
+                            maHoaDon: btn.name,
+                            tenNV: "string",
+                            soBan: "string",
+                            trangThaiMon: "undone",
+                            ngay: "null",
+                            gio: "null",
+                            phanTramKhuyenMai: $(
+                                `.phanTramKhuyenMaiMoreDish${btn.name}-${index}`
+                            ).value,
+                            ghiChu: $(`#ghiChuMoreDish${btn.name}-${index}`)
+                                .value,
+                            idMonAn: $(`.idMonAnMoreDish${btn.name}-${index}`)
+                                .value,
+                            soLuong: $(
+                                `.soLuongMonAnMoreDish${btn.name}-${index}`
+                            ).value,
+                        };
                         console.log(data);
                         if (data.soLuong > 0) {
-                            fetch("http://localhost:5225/api/Order/PostOrder", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify(data),
-                            })
-                                .then((orderItem) => {
-                                    toast({
-                                        title: "thành công!",
-                                        message: "Thêm món thành công!",
-                                        type: "success",
-                                        duration: 5000,
-                                    });
-
-                                    showBill();
-                                    const modal = new bootstrap.Modal(
-                                        document.getElementById(
-                                            `modal-${btn.id}`
-                                        )
-                                    );
-                                    modal.hide();
-                                })
-                                .catch((error) => {
-                                    toast({
-                                        title: "Thất bại!",
-                                        message: "Thêm món thất bại",
-                                        type: "error",
-                                        duration: 5000,
-                                    });
-                                });
-                        } else {
-                            toast({
-                                title: "Thất bại!",
-                                message: "Số lượng phải lớn hơn 0!",
-                                type: "error",
-                                duration: 5000,
-                            });
+                            postOrder(data);
                         }
                     });
                 };

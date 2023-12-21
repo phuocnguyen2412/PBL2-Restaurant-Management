@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2ub+rkzfKCDtf7+foWmYTSaoteMVXj1zL4xDOsWgrxbQ1mLTcraekUOveiCNHDA15l9fFTk62AKtjfVIJmjdpg==",
+  "dgSpecHash": "Eli+2Wuc/eNxb03mKeHh++9tdZ99uUGQPlTDOisXu+4Zc8bTBQlZE8q7uGwRPLkHN3xhhUG3EOllH+wKZoBOnw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hi\\Desktop\\Việt-Hóa-Dead-Island-2(meviethoa.com)\\PBL2-Restaurant-Management\\web\\back-end\\PBL2.csproj",
+  "projectFilePath": "C:\\Users\\Hi\\Desktop\\Việt-Hóa-Dead-Island-2(meviethoa.com)\\PBL2-Restaurant-Management\\web\\back-end\\C#\\PBL2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hi\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

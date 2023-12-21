@@ -8,12 +8,6 @@
             href="https://png.pngtree.com/template/20200704/ourmid/pngtree-restaurant-logo-design-vector-template-image_388753.jpg"
         />
         <title>Little Dragon | Lẩu băng chuyền hàng đầu Việt Nam</title>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-            integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-            crossorigin="anonymous"
-        />
 
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -23,7 +17,6 @@
             rel="stylesheet"
             href="./web/front-end/Form đăngn nhâp/css/LoginForm.css"
         />
-
         <link
             rel="stylesheet"
             href="./web/front-end/Form đăngn nhâp/css/AccountChange.css"
@@ -34,10 +27,19 @@
             rel="stylesheet"
             href="./web/front-end/Form đăngn nhâp/css/dishes.css"
         />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+        <link rel="stylesheet" href="./web/front-end/icon.css" />
     </head>
     <body>
         <nav
-            class="navbar navbar-expand-lg bg-body-tertiary nav-underline position-fixed top-0 z-1   w-100 shadow"
+            class="navbar navbar-expand-lg bg-body-tertiary nav-underline position-fixed top-0 z-1 w-100 shadow"
         >
             <div class="container-fluid">
                 <a class="navbar-brand" href="./index.html"
@@ -89,6 +91,137 @@
                 </div>
             </div>
         </nav>
+
+        <main class="container">
+            <div id="slider">
+                <div
+                    id="carouselExampleInterval"
+                    class="carousel slide mt-5"
+                    data-bs-ride="carousel"
+                >
+                    <div class="carousel-inner">
+                        <div
+                            class="carousel-item active"
+                            data-bs-interval="3000"
+                        >
+                            <img
+                                src="./web/front-end/Menu/img/img-restaurant/thiet-ke-nha-hang-chu-dimsum-house-1.jpg"
+                                class="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img
+                                src="./web/front-end/Menu/img/img-restaurant/thiet-ke-nha-hang-chu-dimsum-house-2.jpg"
+                                class="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img
+                                src="./web/front-end/Menu/img/img-restaurant/thiet-ke-nha-hang-chu-dimsum-house-3.jpg"
+                                class="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                    </div>
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="prev"
+                    >
+                        <span
+                            class="carousel-control-prev-icon"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="next"
+                    >
+                        <span
+                            class="carousel-control-next-icon"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div id="about-restaurant" class="mt-5 mb-5">
+                <div class="row">
+                    <div class="col-4">
+                        <h4 class="mt-5 mb-4">Lẩu băng chuyền Little Dragon</h4>
+                        <p class="text-start">
+                            Là chuỗi nhà hàng chuyên về Buffet lẩu hàng đầu Việt
+                            Nam. Các món ăn ngon và đa dạng được phục vụ với
+                            hình thức băng chuyền độc đáo, hiện đại, vốn là sự
+                            kết hợp của phong cách phục vụ Kaiten đến từ Nhật
+                            Bản với kiến trúc hiện đại. Chỉ với một giá cố định,
+                            khách hàng được thưởng thức không hạn chế gần 100
+                            sản phẩm nhúng lẩu đặc sắc như bò Mỹ nhập khẩu, cá
+                            hồi nguyên con, rau sạch, nấm tươi theo mùa,…
+                        </p>
+                    </div>
+                    <div class="col-8">
+                        <img
+                            class="w-100"
+                            src="./web/front-end/Menu/img/img-restaurant/Thiet-ke-nha-hang-lau-Little-Dragon-Ba-Bia-khu-vuc-ghe-ngoi-12.jpg"
+                            alt=""
+                        />
+                    </div>
+                </div>
+            </div>
+            <img
+                src="https://cmsbrandwebsites.ggg.com.vn/wp-content/uploads/2022/11/bang-gia-kichi-hn.png"
+                alt=""
+                class="w-100 mb-3"
+            />
+            <div id="dishes" class="mb-3">
+                <!-- Tab items -->
+                <div class="tabs">
+                    <div class="tab-item active" id="all">
+                        <span class="material-symbols-outlined">
+                            fastfood
+                        </span>
+                        All
+                    </div>
+                    <div class="tab-item" id="food">
+                        <span class="material-symbols-outlined">
+                            dinner_dining
+                        </span>
+                        Food
+                    </div>
+                    <div class="tab-item" id="drink">
+                        <span class="material-symbols-outlined"> liquor </span>
+                        Drink
+                    </div>
+
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div>
+                <div class="row mt-3 min-heigt-100" id="dish_list"></div>
+            </div>
+        </main>
+        <footer class="bg-black" id="about-us">
+            <div class="container pt-3 pb-3">
+                <div class="row">
+                    <div class="col-5 text-white">
+                        CÔNG TY CỔ PHẦN TẬP ĐOÀN GOLDEN GATE
+                        <p>
+                            Trụ sở chính: Số 60 Phố Giang Văn Minh, Phường Đội
+                            Cấn, Quận Ba Đình, Thành phố Hà Nội, Việt Nam GPĐK:
+                            0102721191 cấp ngày 09/04/2008 ĐT: 043 222 3000
+                            Email: support.hn@ggg.com.vn
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <div
             class="modal fade"
             id="exampleModalToggle"
@@ -96,7 +229,7 @@
             aria-labelledby="exampleModalToggleLabel"
             tabindex="-1"
         >
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
                         <button
@@ -188,7 +321,7 @@
                                 />
                                 <label for="username-change">Username</label>
                             </div>
-                            <div class="form-floating">
+                            <div class="form-floating mb-3">
                                 <input
                                     class="form-control"
                                     type="password"
@@ -200,11 +333,24 @@
                                 />
                                 <label for="password-change">Password</label>
                             </div>
+                            <div class="form-floating">
+                                <input
+                                    class="form-control"
+                                    type="password"
+                                    id="new-password-change"
+                                    name="password-change"
+                                    required
+                                    placeholder="..."
+                                />
+                                <label for="password-change"
+                                    >New Password</label
+                                >
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button class="changePassword" type="submit">
-                            Đổi mật khẩu
+                            SUBMIT
                         </button>
                         <button
                             class="btn btn-primary"
@@ -217,154 +363,6 @@
                 </div>
             </div>
         </div>
-        <main class="container">
-            <div id="slider">
-                <div
-                    id="carouselExampleInterval"
-                    class="carousel slide mt-5"
-                    data-bs-ride="carousel"
-                >
-                    <div class="carousel-inner">
-                        <div
-                            class="carousel-item active"
-                            data-bs-interval="3000"
-                        >
-                            <img
-                                src="./web/front-end/Menu/img/img-restaurant/thiet-ke-nha-hang-chu-dimsum-house-1.jpg"
-                                class="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img
-                                src="./web/front-end/Menu/img/img-restaurant/thiet-ke-nha-hang-chu-dimsum-house-2.jpg"
-                                class="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div class="carousel-item" data-bs-interval="3000">
-                            <img
-                                src="./web/front-end/Menu/img/img-restaurant/thiet-ke-nha-hang-chu-dimsum-house-3.jpg"
-                                class="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                    </div>
-                    <button
-                        class="carousel-control-prev"
-                        type="button"
-                        data-bs-target="#carouselExampleInterval"
-                        data-bs-slide="prev"
-                    >
-                        <span
-                            class="carousel-control-prev-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button
-                        class="carousel-control-next"
-                        type="button"
-                        data-bs-target="#carouselExampleInterval"
-                        data-bs-slide="next"
-                    >
-                        <span
-                            class="carousel-control-next-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-            <div id="about-restaurant" class="mt-5 mb-5">
-                <div class="row">
-                    <div class="col-4">
-                        <h4 class="mt-5 mb-4">Lẩu băng chuyền Little Dragon</h4>
-                        <p class="text-start">
-                            Là chuỗi nhà hàng chuyên về Buffet lẩu hàng đầu Việt
-                            Nam. Các món ăn ngon và đa dạng được phục vụ với
-                            hình thức băng chuyền độc đáo, hiện đại, vốn là sự
-                            kết hợp của phong cách phục vụ Kaiten đến từ Nhật
-                            Bản với kiến trúc hiện đại. Chỉ với một giá cố định,
-                            khách hàng được thưởng thức không hạn chế gần 100
-                            sản phẩm nhúng lẩu đặc sắc như bò Mỹ nhập khẩu, cá
-                            hồi nguyên con, rau sạch, nấm tươi theo mùa,…
-                        </p>
-                    </div>
-                    <div class="col-8">
-                        <img
-                            class="w-100"
-                            src="./web/front-end/Menu/img/img-restaurant/Thiet-ke-nha-hang-lau-Little-Dragon-Ba-Bia-khu-vuc-ghe-ngoi-12.jpg"
-                            alt=""
-                        />
-                    </div>
-                </div>
-            </div>
-            <div id="dishes">
-                <!-- Tab items -->
-                <div class="tabs">
-                    <div class="tab-item active" id="all">
-                        <i class="tab-icon fas fa-code"></i>
-                        All
-                    </div>
-                    <div class="tab-item" id="food">
-                        <i class="tab-icon fas fa-cog"></i>
-                        Food
-                    </div>
-                    <div class="tab-item" id="drink">
-                        <i class="tab-icon fas fa-plus-circle"></i>
-                        Drink
-                    </div>
-
-                    <div class="line"></div>
-                </div>
-            </div>
-            <div>
-                <div class="row mt-3 min-heigt-100 " id="dish_list">
-                    <div class="dish col-3">
-                        <div class="dish-img">
-                            <img
-                                class="w-100"
-                                src="https://static.vinwonders.com/production/mon-ngon-ha-dong-banner.jpg"
-                                alt=""
-                            />
-                        </div>
-                        <h2 class="dish-name text-center">Món ăn</h2>
-                        <h3 class="dish-prize text-center">500000 VND</h3>
-                    </div>
-                    <div class="dish col-3">
-                        <div class="dish-img">
-                            <img
-                                class="w-100"
-                                src="https://static.vinwonders.com/production/mon-ngon-ha-dong-banner.jpg"
-                                alt=""
-                            />
-                        </div>
-                        <h5 class="dish-name text-center m-2">
-                            Món ăn gia truyền
-                        </h5>
-                        <i class="dish-prize text-center d-block m-2"
-                            >500.000 VND</i
-                        >
-                    </div>
-                </div>
-            </div>
-        </main>
-        <footer class="bg-black" id="about-us">
-            <div class="container pt-3 pb-3">
-                <div class="row">
-                    <div class="col-5 text-white">
-                        CÔNG TY CỔ PHẦN TẬP ĐOÀN GOLDEN GATE
-                        <p>
-                            Trụ sở chính: Số 60 Phố Giang Văn Minh, Phường Đội
-                            Cấn, Quận Ba Đình, Thành phố Hà Nội, Việt Nam GPĐK:
-                            0102721191 cấp ngày 09/04/2008 ĐT: 043 222 3000
-                            Email: support.hn@ggg.com.vn
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
         <script src="./web/front-end/toatMessage.js"></script>
         <script src="./web/front-end/Form đăngn nhâp/Login.js"></script>
 

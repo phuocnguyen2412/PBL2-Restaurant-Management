@@ -44,7 +44,7 @@ function getDishes(url) {
 function showDish(dish_list) {
     let dishes = dish_list.map(function (dish) {
         return `
-            <div class="dish col-3">
+            <div class="dish col-3 mb-3">
                 <div class="dish-img">
                     <img
                         class="w-100"
