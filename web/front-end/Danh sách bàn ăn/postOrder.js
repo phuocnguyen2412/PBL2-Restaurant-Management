@@ -16,6 +16,7 @@ function postOrder(data) {
                 .then((response) => {
                     if (!response.ok) throw "error";
                     else {
+                        // location.reload();
                         toast({
                             title: "Đặt món thành công!",
                             message: `Món ăn ${
@@ -24,7 +25,8 @@ function postOrder(data) {
                             type: "success",
                             duration: 5000,
                         });
-                        showBill();
+                        getBill();
+                        $(".modal-backdrop").remove();
                         fetch(
                             `http://localhost:5225/api/NguyenLieu/CapNhatNguyenLieuTonKho?Id=${data.idMonAn}&MaHoaDon=${data.maHoaDon}`,
                             {

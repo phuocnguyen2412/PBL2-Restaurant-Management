@@ -1,12 +1,52 @@
-showBill();
-function showBill() {
+getBill();
+
+function getBill() {
     fetch("http://localhost:5225/api/HoaDonXuat/HoaDon")
         .then(function (response) {
             return response.json();
         })
         .then(function (bills) {
-            let bill_list = bills.map(function (bill) {
-                return `
+            showBill(bills);
+        })
+        .then(() => {
+            $$(".confirm-moreDishInput").forEach(function (btn) {
+                btn.onclick = function (event) {
+                    console.log(btn.name);
+                    event.preventDefault();
+                    $$(`.MoreDish${btn.name}`).forEach(function (input, index) {
+                        console.log(1);
+
+                        const data = {
+                            maHoaDon: btn.name,
+                            tenNV: "string",
+                            soBan: $(`#soBanMoreDish${btn.name}`).value,
+                            trangThaiMon: "string",
+                            ngay: "string",
+                            gio: "string",
+                            phanTramKhuyenMai: $(
+                                `.phanTramKhuyenMaiMoreDish${btn.name}-${index}`
+                            ).value,
+                            ghiChu: $(`#ghiChuMoreDish${btn.name}-${index}`)
+                                .value,
+                            idMonAn: $(`.idMonAnMoreDish${btn.name}-${index}`)
+                                .value,
+                            soLuong: $(
+                                `.soLuongMonAnMoreDish${btn.name}-${index}`
+                            ).value,
+                        };
+                        console.log(data);
+                        if (data.soLuong > 0) {
+                            postOrder(data);
+                        }
+                    });
+                };
+            });
+        });
+}
+
+function showBill(bills) {
+    let bill_list = bills.map(function (bill) {
+        return `
                             <div id="bill-${bill.maHoaDon}"class="col-4 card ">
                                 <div class="card-header text-center">${bill.soBan}</div>
                                 <div class="card-body">
@@ -20,13 +60,13 @@ function showBill() {
                                 </div>
                             </div>
                         `;
-            });
+    });
 
-            $("#bill-list").innerHTML = bill_list.join("");
+    $("#bill-list").innerHTML = bill_list.join("");
 
-            // detail bill
-            let detail_bill_list = bills.map(function (bill) {
-                return `
+    // detail bill
+    let detail_bill_list = bills.map(function (bill) {
+        return `
                     <div
                         id="detail-bill-${bill.maHoaDon}"
                         class="card new-layer detail-bill"
@@ -85,13 +125,13 @@ function showBill() {
                         </div>
                     </div>
                     `;
-            });
+    });
 
-            $(".detail-bill-list").innerHTML = detail_bill_list.join("");
+    $(".detail-bill-list").innerHTML = detail_bill_list.join("");
 
-            bills.forEach(function (bill) {
-                let items = bill.items.map(function (i) {
-                    return `
+    bills.forEach(function (bill) {
+        let items = bill.items.map(function (i) {
+            return `
                             <tr>
                                 <td style="padding-left: 10px">${i.tenMonAn}</td>
                                 <td>${i.soLuong}</td>
@@ -102,40 +142,39 @@ function showBill() {
         
                             </tr>
                         `;
-                });
-                $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
-                    items.join("") +
-                    ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.khuyenMai}</td></tr>`;
+        });
+        $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
+            items.join("") +
+            ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.khuyenMai}</td></tr>`;
 
-                $(`#open-detail-bill-id${bill.maHoaDon}`).onclick =
-                    function () {
-                        $(`#detail-bill-${bill.maHoaDon}`).style.display =
-                            "flex";
-                    };
-                $(`.close-${bill.maHoaDon}`).onclick = function () {
-                    $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
-                };
-            });
+        $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
+            $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";
+        };
+        $(`.close-${bill.maHoaDon}`).onclick = function () {
+            $(`#detail-bill-${bill.maHoaDon}`).style.display = "none";
+        };
+    });
 
-            //MoreDish
-            bills.forEach(function (bill) {
-                $(".moreDishBill").innerHTML += `
-                    <div class="modal" id="modal-${bill.maHoaDon}">
+    //MoreDish
+    let MoreInputDish = bills.map(function (bill) {
+        return `
+        <div class="modal" id="modal-${bill.maHoaDon}">
                         <div class="modal-dialog modal-dialog-centered modal-xl ">
                             <div class="modal-content">
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h4 class="modal-title">${bill.soBan}</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                
+                                <button type="button " class="btn-close float-end" data-bs-dismiss="modal"></button>
                             </div>
 
                             <!-- Modal body -->
                             <div class="modal-body">
+                            <h4 class="modal-title text-center mb-3">${bill.soBan}</h4>
                                 <input
                                 name=""
-                                id="idHoaDonMoreDish"
-                                value="${bill.maHoaDon}"
+                                id="soBanMoreDish${bill.maHoaDon}"
+                                value="${bill.soBan}"
                                 style="display: none;"
                                 />
                                 <table class="table table-bordered">
@@ -199,42 +238,8 @@ function showBill() {
                             </div>
                         </div>
                     </div>
-                `;
-            });
-            return bills;
-        })
-        .then(() => {
-            $$(".confirm-moreDishInput").forEach(function (btn) {
-                btn.onclick = function (event) {
-                    console.log(btn.name);
-                    event.preventDefault();
-                    $$(`.MoreDish${btn.name}`).forEach(function (input, index) {
-                        console.log(1);
-                        const date = new Date();
-                        const data = {
-                            maHoaDon: btn.name,
-                            tenNV: "string",
-                            soBan: "string",
-                            trangThaiMon: "undone",
-                            ngay: "null",
-                            gio: "null",
-                            phanTramKhuyenMai: $(
-                                `.phanTramKhuyenMaiMoreDish${btn.name}-${index}`
-                            ).value,
-                            ghiChu: $(`#ghiChuMoreDish${btn.name}-${index}`)
-                                .value,
-                            idMonAn: $(`.idMonAnMoreDish${btn.name}-${index}`)
-                                .value,
-                            soLuong: $(
-                                `.soLuongMonAnMoreDish${btn.name}-${index}`
-                            ).value,
-                        };
-                        console.log(data);
-                        if (data.soLuong > 0) {
-                            postOrder(data);
-                        }
-                    });
-                };
-            });
-        });
+    
+    `;
+    });
+    $(".moreDishBill").innerHTML = MoreInputDish.join("");
 }

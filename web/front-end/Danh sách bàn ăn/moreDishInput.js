@@ -10,17 +10,18 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
         });
 
         dishes = dishes.join("");
-        $$(".more-dish-bill").forEach(function (btn, index) {
+        $$(".more-dish-bill").forEach(function (btn) {
+            let index = 1;
             btn.onclick = function (e) {
                 console.log(btn.name);
                 e.preventDefault();
                 $(`#dish-input-table-${btn.name}`).innerHTML += `   
-					<tr class="more-input-row-dish.MoreDish${btn.name}">
+					<tr class="more-input-row-dish MoreDish${btn.name}">
 						<td>
 							<select
 								type="text"
-								name="idMonAnMoreDishBill${btn.name}-${++index}"
-								class="idMonAnMoreDishBill${btn.name}-${index}"
+								name="idMonAnMoreDish${btn.name}-${index}"
+								class="idMonAnMoreDish${btn.name}-${index}"
 							>
 							</select>
 						</td>
@@ -28,7 +29,7 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
 							<input
 								type="number"
 								name="soLuongMonAn${index}"
-								class="soLuongMonAnMoreDishBill${btn.name}-${index}"
+								class="soLuongMonAnMoreDish${btn.name}-${index}"
 								value="0"
 							/>
 						</td>
@@ -36,20 +37,18 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
 							<input
 								value ="0";
 								type="number"
-								name="phanTramKhuyenMaiMoreDishBill${btn.name}-${index}"
-								class="phanTramKhuyenMaiMoreDishBill${btn.name}-${index}"
+								name="phanTramKhuyenMaiMoreDish${btn.name}-${index}"
+								class="phanTramKhuyenMaiMoreDish${btn.name}-${index}"
 							/>
 						</td>
 						<td>
-                                <input type="textarea" name="ghiChu0" id="ghiChuMoreDishBill${
-                                    btn.name
-                                }-${index}" />
+                                <input type="textarea" name="ghiChu0" id="ghiChuMoreDish${btn.name}-${index}" />
 						</td>
 					</tr>
 				`;
 
-                $(`.idMonAnMoreDishBill${btn.name}-${index}`).innerHTML =
-                    dishes;
+                $(`.idMonAnMoreDish${btn.name}-${index}`).innerHTML = dishes;
+                index++;
             };
         });
     });
