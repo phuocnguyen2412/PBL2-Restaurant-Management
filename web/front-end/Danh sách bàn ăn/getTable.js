@@ -9,13 +9,26 @@ function getBill() {
             showBill(bills);
         })
         .then(() => {
+            $$(".bill-finish").forEach(function (btn) {
+                btn.onclick = function (event) {
+                    event.preventDefault();
+                    const date = new Date();
+                    const data = {
+                        maHoaDon: btn.name,
+                        ngay: `${date.getDate()}/${
+                            date.getMonth() + 1
+                        }/${date.getYear()}`,
+                        gio: `${date.getHours()}:${date.getMinutes()}`,
+                    };
+                    updateBill(data);
+                };
+            });
+
             $$(".confirm-moreDishInput").forEach(function (btn) {
                 btn.onclick = function (event) {
-                    console.log(btn.name);
                     event.preventDefault();
-                    $$(`.MoreDish${btn.name}`).forEach(function (input, index) {
-                        console.log(1);
-
+                    $$(`.MoreDish${btn.name}`).forEach(function (input, i) {
+                        console.log(index);
                         const data = {
                             maHoaDon: btn.name,
                             tenNV: "string",
@@ -24,14 +37,20 @@ function getBill() {
                             ngay: "string",
                             gio: "string",
                             phanTramKhuyenMai: $(
-                                `.phanTramKhuyenMaiMoreDish${btn.name}-${index}`
+                                `.phanTramKhuyenMaiMoreDish${btn.name}-${
+                                    index - i - 1
+                                }`
                             ).value,
-                            ghiChu: $(`#ghiChuMoreDish${btn.name}-${index}`)
-                                .value,
-                            idMonAn: $(`.idMonAnMoreDish${btn.name}-${index}`)
-                                .value,
+                            ghiChu: $(
+                                `#ghiChuMoreDish${btn.name}-${index - i - 1}`
+                            ).value,
+                            idMonAn: $(
+                                `.idMonAnMoreDish${btn.name}-${index - i - 1}`
+                            ).value,
                             soLuong: $(
-                                `.soLuongMonAnMoreDish${btn.name}-${index}`
+                                `.soLuongMonAnMoreDish${btn.name}-${
+                                    index - i - 1
+                                }`
                             ).value,
                         };
                         console.log(data);
@@ -79,7 +98,7 @@ function showBill(bills) {
                                 } float-end p-1 m-1">
                                     <i class="ti-close"></i>
                                 </button>
-                                <button id="${
+                                <button name="${
                                     bill.maHoaDon
                                 }" class="btn btn-success bill-finish float-end p-1 m-1">Xuất hoá đơn</button>
                                 <h4 class="text-center">Hóa đơn ID${
@@ -186,42 +205,12 @@ function showBill(bills) {
                                             <td align="center">Ghi chú</td>
                                         </tr>
                                     </thead>
-                                    <tbody id="dish-input-table-${bill.maHoaDon}">
-                                        <tr class="more-input-row-dish MoreDish${bill.maHoaDon}">
-                                            <td>
-                                                <select
-                                                    type="text"
-                                                    name="idMonAn0"
-                                                    class="idMonAnMoreDish${bill.maHoaDon}-0 idmonAn"
-                                                ></select>
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="number"
-                                                    name="soLuongMonAnMoreDish0"
-                                                    class="soLuongMonAnMoreDish${bill.maHoaDon}-0"
-                                                    value="0"
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    value="0"
-                                                    type="number"
-                                                    name="phanTramKhuyenMaiMoreDish0"
-                                                    class="phanTramKhuyenMaiMoreDish${bill.maHoaDon}-0"
-                                                />
-                                            </td>
-                                            <td>
-                                                <input
-                                                    type="textarea"
-                                                    name="ghiChuMoreDish0"
-                                                    id="ghiChuMoreDish${bill.maHoaDon}-0"
-                                                />
-                                            </td>
-                                        </tr>
+                                  
+                                    <tbody class="more-dish-bill-${bill.maHoaDon}">
                                     </tbody>
                                 </table>
                                 <button name="${bill.maHoaDon}" class="more-dish-bill btn btn-dark">Thêm món ăn</button>
+                                <button name="${bill.maHoaDon}" class="delete-dish-bill btn btn-dark">Xóa món ăn</button>
                             </div>
 
                             <!-- Modal footer -->

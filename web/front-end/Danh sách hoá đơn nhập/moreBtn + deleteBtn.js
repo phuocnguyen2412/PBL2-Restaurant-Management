@@ -51,7 +51,8 @@ $(`#idNhaCungCap`).onchange = function () {
                 ++index;
             };
 
-            $(".deleteMore").onclick = function () {
+            $(".deleteMore").onclick = function (event) {
+                event.preventDefault();
                 index = 1;
                 $(".moreResource").innerHTML = ` `;
             };

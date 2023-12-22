@@ -1,3 +1,4 @@
+let index = 1;
 fetch(`http://localhost:5225/api/MonAn/MonAn`)
     .then(function (response) {
         return response.json();
@@ -10,12 +11,12 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
         });
 
         dishes = dishes.join("");
+
         $$(".more-dish-bill").forEach(function (btn) {
-            let index = 1;
             btn.onclick = function (e) {
                 console.log(btn.name);
                 e.preventDefault();
-                $(`#dish-input-table-${btn.name}`).innerHTML += `   
+                $(`.more-dish-bill-${btn.name}`).innerHTML += `   
 					<tr class="more-input-row-dish MoreDish${btn.name}">
 						<td>
 							<select
@@ -49,6 +50,13 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
 
                 $(`.idMonAnMoreDish${btn.name}-${index}`).innerHTML = dishes;
                 index++;
+                console.log(index);
+            };
+        });
+        $$(".delete-dish-bill").forEach(function (btn) {
+            btn.onclick = function () {
+                $(`.more-dish-bill-${btn.name}`).innerHTML = ` `;
+                index = 1;
             };
         });
     });

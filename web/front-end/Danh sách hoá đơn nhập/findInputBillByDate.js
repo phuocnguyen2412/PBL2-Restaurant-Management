@@ -1,4 +1,5 @@
-function findInputBillByDate() {
+$("#findInputBillByDate").onclick = function (event) {
+    event.preventDefault();
     const id = $("#date").value;
 
     if (!id) {
@@ -11,7 +12,7 @@ function findInputBillByDate() {
 
         return;
     }
-    console.log(id)
+    console.log(id);
 
     fetch(
         `http://localhost:5225/api/HoaDonNhap/FindHoaDonNhapByDate?Ngay=${id}`,
@@ -45,10 +46,4 @@ function findInputBillByDate() {
                 duration: 5000,
             });
         });
-}
-
-$("#findInputBillByDate").onclick = function (event) {
-    console.log(1)
-    event.preventDefault();
-    findInputBillByDate();
 };

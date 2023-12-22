@@ -26,7 +26,7 @@ function postOrder(data) {
                             duration: 5000,
                         });
                         getBill();
-                        $(".modal-backdrop").remove();
+
                         fetch(
                             `http://localhost:5225/api/NguyenLieu/CapNhatNguyenLieuTonKho?Id=${data.idMonAn}&MaHoaDon=${data.maHoaDon}`,
                             {
