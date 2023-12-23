@@ -13,7 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PBL2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f90d0ea8de5d38ce6a8fa514a12510b31ca3add")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3cf41e9f3795dccc3d55ce36374d79efe46412f")]
+>>>>>>> bc0d1e7671a976746fa908dcbff1ec19741d017e
 [assembly: System.Reflection.AssemblyProductAttribute("PBL2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PBL2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

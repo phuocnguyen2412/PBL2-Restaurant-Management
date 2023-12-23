@@ -7,10 +7,7 @@
     display: flex;
     font-family: "Poppins", sans-serif;
 }
-body > div {
-    margin: 5% auto 0;
-    max-width: 720px;
-}
+
 .tabs {
     display: flex;
     position: relative;
@@ -22,7 +19,7 @@ body > div {
     width: 0;
     height: 6px;
     border-radius: 15px;
-    background-color: #c23564;
+    background-color: #333;
     transition: all 0.2s ease;
 }
 .tab-item {
@@ -30,7 +27,7 @@ body > div {
     padding: 16px 20px 11px 20px;
     font-size: 20px;
     text-align: center;
-    color: #c23564;
+    color: #333;
     background-color: #fff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -66,4 +63,8 @@ body > div {
 .tab-pane h2 {
     font-size: 24px;
     margin-bottom: 8px;
+}
+
+.dish-img img {
+    height: 200px;
 }

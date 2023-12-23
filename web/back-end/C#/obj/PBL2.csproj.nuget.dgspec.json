@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "/Users/ttcenter/Documents/back up /PBL2/PBL2/web/back-end/C#/PBL2.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "/Users/ttcenter/Documents/back up /PBL2/PBL2/web/back-end/C#/PBL2.csproj",
         "packagesPath": "/Users/ttcenter/.nuget/packages/",
         "outputPath": "/Users/ttcenter/Documents/back up /PBL2/PBL2/web/back-end/C#/obj/",
+=======
+    "C:\\Users\\Hi\\Desktop\\Việt-Hóa-Dead-Island-2(meviethoa.com)\\PBL2-Restaurant-Management\\web\\back-end\\C#\\PBL2.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Hi\\Desktop\\Việt-Hóa-Dead-Island-2(meviethoa.com)\\PBL2-Restaurant-Management\\web\\back-end\\C#\\PBL2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hi\\Desktop\\Việt-Hóa-Dead-Island-2(meviethoa.com)\\PBL2-Restaurant-Management\\web\\back-end\\C#\\PBL2.csproj",
+        "projectName": "PBL2",
+        "projectPath": "C:\\Users\\Hi\\Desktop\\Việt-Hóa-Dead-Island-2(meviethoa.com)\\PBL2-Restaurant-Management\\web\\back-end\\C#\\PBL2.csproj",
+        "packagesPath": "C:\\Users\\Hi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hi\\Desktop\\Việt-Hóa-Dead-Island-2(meviethoa.com)\\PBL2-Restaurant-Management\\web\\back-end\\C#\\obj\\",
+>>>>>>> bc0d1e7671a976746fa908dcbff1ec19741d017e
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ttcenter/.nuget/NuGet/NuGet.Config"

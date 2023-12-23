@@ -5,6 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Danh sách bàn ăn</title>
         <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+            integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+            crossorigin="anonymous"
+        />
+
+        <link
             rel="icon"
             href="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/orange_travelpictdinner_1484336833.png"
         />
@@ -139,7 +146,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="dish-input-table">
-                                            <tr class="input-row-dish">
+                                            <!-- <tr class="input-row-dish">
                                                 <td>
                                                     <select
                                                         type="text"
@@ -170,7 +177,7 @@
                                                         id="ghiChu0"
                                                     />
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -178,6 +185,9 @@
                         </form>
                         <button class="more-dish btn btn-dark">
                             Thêm món ăn
+                        </button>
+                        <button class="delete-dish btn btn-dark">
+                            Xóa món ăn
                         </button>
                         <button
                             class="btn btn-dark orderForm-submit-btn float-end"
@@ -189,7 +199,7 @@
                         <br />
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-6 container">
                     <div class="container">
                         <h2 class="title text-center mt-5 mb-4">
                             Danh sách bàn ăn
@@ -211,8 +221,10 @@
     <script src="./employeeDropDown.js"></script>
     <script src="./moreDish.js"></script>
     <script src="./postOrder.js"></script>
-    <script src="./UpdateBill.js"></script>
+    <script src="./updateBill.js"></script>
     <script src="./dishDropDown.js"></script>
     <script src="../toatMessage.js"></script>
     <script src="./moreDishInput.js"></script>
+    <script src="./postMoreOrder.js"></script>
+    <script src="./deleteDishInput.js"></script>
 </html>

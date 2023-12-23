@@ -1,4 +1,5 @@
-function findOutputBillByDate() {
+$("#findOutputBillByDate").onclick = function (event) {
+    event.preventDefault();
     const id = $("#date").value;
 
     if (!id) {
@@ -44,9 +45,4 @@ function findOutputBillByDate() {
                 duration: 5000,
             });
         });
-}
-
-$("#findOutputBillByDate").onclick = function (event) {
-    event.preventDefault();
-    findOutputBillByDate();
 };

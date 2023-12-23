@@ -11,7 +11,7 @@ namespace PBL2.Models
         [Required]
         public string TenMon { get; set; }
         public int GiaMon { get; set; }
-        public int IdNhomMonAn { get; set; }
+        public int IdNhomThucPham { get; set; }
         public string LinkAnh { get; set; }
         public string ThanhPhan {  get; set; }
     }

@@ -37,6 +37,7 @@ namespace PBL2.Controllers
                          "[Order].Ngay," +
                          "[Order].Gio," +
                          "[QuanLyBan].SoBan," +
+                         "[OrderItems].IdOrder, " +
                          "[Order].TenNV," +
                          "[MonAn].TenMon," +
                          "[MonAn].GiaMon," +
@@ -59,6 +60,7 @@ namespace PBL2.Controllers
                 var existingItem = models.FirstOrDefault(item => item.MaHoaDon == mahoadon);
                 MonAnItem monAn = new MonAnItem
                 {
+                    IdOrder = Convert.ToInt32("IdOrder");
                     TenMonAn = row["TenMon"].ToString(),
                     GiaMon = Convert.ToInt32(row["GiaMon"]),
                     SoLuong = Convert.ToInt32(row["SoLuong"]),
@@ -71,7 +73,7 @@ namespace PBL2.Controllers
                     model = new HoaDonXuat();
                     model.MaHoaDon = mahoadon;
                     model.Id = Convert.ToInt32(row["Id"]);
-                    model.SoBan = row["SoBan"].ToString();
+                    model.SoBan = Convert.ToInt32(row["SoBan"]);
                     model.Ngay = row["Ngay"].ToString();
                     model.Gio = row["Gio"].ToString();
                     model.TenNV = row["TenNV"].ToString();
@@ -150,7 +152,7 @@ namespace PBL2.Controllers
                     model = new HoaDonXuat();
                     model.MaHoaDon = mahoadon;
                     model.Id = Convert.ToInt32(row["Id"]);
-                    model.SoBan = row["SoBan"].ToString();
+                    model.SoBan = Convert.ToInt32(row["SoBan"]);
                     model.Ngay = row["Ngay"].ToString();
                     model.Gio = row["Gio"].ToString();
                     model.TenNV = row["TenNV"].ToString();
@@ -232,7 +234,7 @@ namespace PBL2.Controllers
                     model = new HoaDonXuat();
                     model.MaHoaDon = mahoadon;
                     model.Id = Convert.ToInt32(row["Id"]);
-                    model.SoBan = row["SoBan"].ToString();
+                    model.SoBan = Convert.ToInt32(row["SoBan"]);
                     model.Ngay = row["Ngay"].ToString();
                     model.Gio = row["Gio"].ToString();
                     model.TenNV = row["TenNV"].ToString();
@@ -313,7 +315,7 @@ namespace PBL2.Controllers
                     model = new HoaDonXuat();
                     model.MaHoaDon = mahoadon;
                     model.Id = Convert.ToInt32(row["Id"]);
-                    model.SoBan = row["SoBan"].ToString();
+                    model.SoBan = Convert.ToInt32(row["SoBan"]);
                     model.Ngay = row["Ngay"].ToString();
                     model.Gio = row["Gio"].ToString();
                     model.TenNV = row["TenNV"].ToString();

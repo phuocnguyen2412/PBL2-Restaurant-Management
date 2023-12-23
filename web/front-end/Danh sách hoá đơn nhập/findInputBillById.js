@@ -1,4 +1,5 @@
-function findInputBillById() {
+$("#findBillByID").onclick = function (event) {
+    event.preventDefault();
     const id = $("#billID").value;
 
     if (!id) {
@@ -44,9 +45,4 @@ function findInputBillById() {
                 duration: 5000,
             });
         });
-}
-
-$("#findBillByID").onclick = function (event) {
-    event.preventDefault();
-    findInputBillById();
 };

@@ -1,5 +1,6 @@
-function findInputBillById() {
-    const id = $("#hoVaTen-timkiem").value;
+$("#findEmployeeByName").onclick = function (event) {
+    event.preventDefault();
+    let id = $("#hoVaTen-timkiem").value;
 
     if (!id) {
         toast({
@@ -11,16 +12,14 @@ function findInputBillById() {
 
         return;
     }
-
-    fetch(
-        `http://localhost:5225/api/HoaDonNhap/FindHoaDonNhapByMaHoaDon?MaHoaDon=${id}`,
-        {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }
-    )
+    idAPI = encodeURIComponent(id);
+    console.log(id);
+    fetch(`http://localhost:5225/api/NhanVien/GetNhanVienByName?TenNV=${id}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
         .then((response) => {
             return response.json();
         })
@@ -28,10 +27,10 @@ function findInputBillById() {
             if (infor.length == 0) {
                 throw new Error(`Error: ${response.status}`);
             }
-            showBill(infor);
+            show(infor);
             toast({
                 title: "Thành công!",
-                message: "Đã tìm được hóa đơn!",
+                message: `Đã tìm được nhân viên có tên ${id}!`,
                 type: "success",
                 duration: 5000,
             });
@@ -39,14 +38,9 @@ function findInputBillById() {
         .catch((error) => {
             toast({
                 title: "Thất bại!",
-                message: "Không tồn tại hóa đơn đã nhập",
+                message: `Không tồn tại nhân viên có tên ${id}!`,
                 type: "error",
                 duration: 5000,
             });
         });
-}
-
-$("#findEmployeeByName").onclick = function (event) {
-    event.preventDefault();
-    findInputBillById();
 };

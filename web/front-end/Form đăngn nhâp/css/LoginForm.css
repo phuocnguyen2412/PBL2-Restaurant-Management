@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fff;
     margin: 0;
     scroll-behavior: smooth;
 }
@@ -48,6 +48,6 @@ form button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.min-heigt-100{
+.min-heigt-100 {
     min-height: 100px;
 }
