@@ -932,3 +932,6 @@ C:\Users\Hi\Desktop\Việt-Hóa-Dead-Island-2(meviethoa.com)\PBL2-Restaurant-Man
 C:\Users\Hi\Desktop\Việt-Hóa-Dead-Island-2(meviethoa.com)\PBL2-Restaurant-Management\web\back-end\C#\obj\Debug\net7.0\PBL2.pdb
 C:\Users\Hi\Desktop\Việt-Hóa-Dead-Island-2(meviethoa.com)\PBL2-Restaurant-Management\web\back-end\C#\obj\Debug\net7.0\PBL2.genruntimeconfig.cache
 C:\Users\Hi\Desktop\Việt-Hóa-Dead-Island-2(meviethoa.com)\PBL2-Restaurant-Management\web\back-end\C#\obj\Debug\net7.0\ref\PBL2.dll
+C:\Users\USER\Documents\Github\PBL_2-RESTAURANT-MANEGEMENT\PBL_2-RESTAURANT-MANEGEMENT\web\back-end\C#\obj\Debug\net7.0\PBL2.dll
+C:\Users\USER\Documents\Github\PBL_2-RESTAURANT-MANEGEMENT\PBL_2-RESTAURANT-MANEGEMENT\web\back-end\C#\obj\Debug\net7.0\refint\PBL2.dll
+C:\Users\USER\Documents\Github\PBL_2-RESTAURANT-MANEGEMENT\PBL_2-RESTAURANT-MANEGEMENT\web\back-end\C#\obj\Debug\net7.0\PBL2.pdb
