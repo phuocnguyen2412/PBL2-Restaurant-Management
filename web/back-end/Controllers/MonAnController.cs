@@ -35,7 +35,55 @@ namespace PBL2.Controllers
                 model.Id = Convert.ToInt32(dt.Rows[i]["Id"]);
                 model.TenMon = dt.Rows[i]["TenMon"].ToString();
                 model.GiaMon = Convert.ToInt32(dt.Rows[i]["GiaMon"]);
-                model.IdNhomMonAn = Convert.ToInt32(dt.Rows[i]["IdNhomMonAn"]);
+                model.IdNhomThucPham = Convert.ToInt32(dt.Rows[i]["IdNhomThucPham"]);
+                model.LinkAnh = dt.Rows[i]["LinkAnh"].ToString();
+                model.ThanhPhan = dt.Rows[i]["ThanhPhan"].ToString();
+                models.Add(model);
+            }
+            return Ok(models);
+        }
+        [Route("DoAn")]
+        [AllowCrossSiteJson]
+        [HttpGet]
+        public async Task<IActionResult> GetDoAn()
+        {
+            List<MonAn> models = new List<MonAn>();
+            DataTable dt = new DataTable();
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM MonAn WHERE IdNhomThucPham = 1 ", con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                MonAn model = new MonAn();
+                model.Id = Convert.ToInt32(dt.Rows[i]["Id"]);
+                model.TenMon = dt.Rows[i]["TenMon"].ToString();
+                model.GiaMon = Convert.ToInt32(dt.Rows[i]["GiaMon"]);
+                model.IdNhomThucPham = Convert.ToInt32(dt.Rows[i]["IdNhomThucPham"]);
+                model.LinkAnh = dt.Rows[i]["LinkAnh"].ToString();
+                model.ThanhPhan = dt.Rows[i]["ThanhPhan"].ToString();
+                models.Add(model);
+            }
+            return Ok(models);
+        }
+        [Route("DoUong")]
+        [AllowCrossSiteJson]
+        [HttpGet]
+        public async Task<IActionResult> GetDoUong()
+        {
+            List<MonAn> models = new List<MonAn>();
+            DataTable dt = new DataTable();
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM MonAn WHERE IdNhomThucPham = 2 ", con);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                MonAn model = new MonAn();
+                model.Id = Convert.ToInt32(dt.Rows[i]["Id"]);
+                model.TenMon = dt.Rows[i]["TenMon"].ToString();
+                model.GiaMon = Convert.ToInt32(dt.Rows[i]["GiaMon"]);
+                model.IdNhomThucPham = Convert.ToInt32(dt.Rows[i]["IdNhomThucPham"]);
                 model.LinkAnh = dt.Rows[i]["LinkAnh"].ToString();
                 model.ThanhPhan = dt.Rows[i]["ThanhPhan"].ToString();
                 models.Add(model);

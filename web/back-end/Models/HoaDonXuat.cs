@@ -9,7 +9,7 @@ namespace PBL2.Models
         public int Id { get; set; }
         [Required]
         public string MaHoaDon { get; set; }
-        public string SoBan { get; set; }
+        public int SoBan { get; set; }
         public string Ngay { get; set; }
         public string Gio { get; set; }
         public string TenNV { get; set; }

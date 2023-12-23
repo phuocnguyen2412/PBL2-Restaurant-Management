@@ -155,6 +155,7 @@ namespace PBL2.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        //GET NVPV
         [Route("GetNhanVienPhucVu")]
         [AllowCrossSiteJson]
         [HttpGet]
@@ -186,6 +187,7 @@ namespace PBL2.Controllers
             }
             return Ok(models);
         }
+        //GET PVK
         [Route("GetNhanVienKho")]
         [AllowCrossSiteJson]
         [HttpGet]
@@ -214,6 +216,64 @@ namespace PBL2.Controllers
                         }
                     }
                 }
+            }
+            return Ok(models);
+        }
+        //GET NVB MaNV
+        [Route("GetNhanVienByMaNV")]
+        [AllowCrossSiteJson]
+        [HttpGet]
+        public async Task<IActionResult> GetNhanVienByMaNV(int MaNV)
+        {
+            List<NhanVien> models = new List<NhanVien>();
+            DataTable dt = new DataTable();
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM NhanVien WHERE Id = @MaNV ", con);
+            cmd.Parameters.AddWithValue("@MaNV", MaNV);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                NhanVien model = new NhanVien();
+                model.HoTen = dt.Rows[i]["HoTen"].ToString();
+                model.GioiTinh = dt.Rows[i]["GioiTinh"].ToString();
+                model.Email = dt.Rows[i]["Email"].ToString();
+                model.NgaySinh = dt.Rows[i]["NgaySinh"].ToString();
+                model.CCCD = dt.Rows[i]["CCCD"].ToString();
+                model.ThuongTru = dt.Rows[i]["ThuongTru"].ToString();
+                model.ChucVu = dt.Rows[i]["ChucVu"].ToString();
+                model.Id = Convert.ToInt32(dt.Rows[i]["Id"]);
+
+                models.Add(model);
+            }
+            return Ok(models);
+        }
+        // GET NV by TEN
+        [Route("GetNhanVienByName")]
+        [AllowCrossSiteJson]
+        [HttpGet]
+        public async Task<IActionResult> GetNhanVienByName(string TenNV)
+        {
+            List<NhanVien> models = new List<NhanVien>();
+            DataTable dt = new DataTable();
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+            SqlCommand cmd = new SqlCommand("SELECT * FROM NhanVien WHERE HoTen LIKE '%' + @TenNV + '%' ", con);
+            cmd.Parameters.AddWithValue("@TenNV", TenNV);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                NhanVien model = new NhanVien();
+                model.HoTen = dt.Rows[i]["HoTen"].ToString();
+                model.GioiTinh = dt.Rows[i]["GioiTinh"].ToString();
+                model.Email = dt.Rows[i]["Email"].ToString();
+                model.NgaySinh = dt.Rows[i]["NgaySinh"].ToString();
+                model.CCCD = dt.Rows[i]["CCCD"].ToString();
+                model.ThuongTru = dt.Rows[i]["ThuongTru"].ToString();
+                model.ChucVu = dt.Rows[i]["ChucVu"].ToString();
+                model.Id = Convert.ToInt32(dt.Rows[i]["Id"]);
+
+                models.Add(model);
             }
             return Ok(models);
         }
