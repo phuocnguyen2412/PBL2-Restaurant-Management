@@ -3,34 +3,10 @@ fetch("http://localhost:5225/api/NhaCC/GetNhaCC")
         return response.json();
     })
     .then(function (infor_list) {
-        infor_list.forEach(function (infor) {
-            $(`#idNhaCungCap`).innerHTML += `
-                    <option value="${infor.id}">${infor.tenNhaCC}</option>
-            `;
+        nhaCC_list = infor_list.map(function (infor) {
+            return `<option value="${infor.id}">${infor.tenNhaCC}</option>`;
         });
-        return infor_list;
-    })
-    .then(function () {
-        $(`#idNhaCungCap`).onchange = function () {
-            let id = $("#idNhaCungCap").value;
-            fetch(`http://localhost:5225/api/NhaCC/GetNguyenLieuByNhaCC/${id}`)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (resource_list) {
-                    let resources = resource_list.map(function (resource) {
-                        return `
-                            <option value="${resource.id}">${resource.tenNguyenLieu}</option>
-                        `;
-                    });
+        $(`#idNhaCungCap`).innerHTML += nhaCC_list.join("");
 
-                    $$(".input-row").forEach(function (input, index) {
-                        resource_list.forEach(function (infor) {
-                            $(`.idNguyenLieu${index}`).innerHTML =
-                                resources.join("");
-                        });
-                    });
-                    return resource_list;
-                });
-        };
+        return infor_list;
     });

@@ -14,39 +14,38 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
             button.onclick = function (e) {
                 e.preventDefault();
                 $("#dish-input-table").innerHTML += `   
-                  <tr class="more-input-row-dish">
-                      <td>
-                          <select
-                              type="text"
-                              name="idMonAn${++index}"
-                              class="idMonAn${index} idMonAn"
-                          >
-                          </select>
-                      </td>
-                      <td>
-                          <input
-                              type="number"
-                              name="soLuongMonAn${index}"
-                              class="soLuongMonAn${index}"
-                              value="0"
-                          />
-                      </td>
-                      <td>
-                          <input
-                              value ="0";
-                              type="number"
-                              name="phanTramKhuyenMai${index}"
-                              class="phanTramKhuyenMai${index}"
-                          />
-                      </td>
-                      <td>
-                                <input type="textarea" name="ghiChu0" id="ghiChu${index}" />
-                              </td>
-                  </tr>
-              `;
-                $$(".input-row-dish").forEach(function (input, index) {
-                    $(`.idMonAn${index}`).innerHTML = dishes;
-                });
+                    <tr class="input-row-dish">
+                        <td>
+                            <select
+                                type="text"
+                                name="idMonAn${++index}"
+                                class="idMonAn${index} idMonAn"
+                            >
+                            </select>
+                        </td>
+                        <td>
+                            <input
+                                type="number"
+                                name="soLuongMonAn${index}"
+                                class="soLuongMonAn${index}"
+                                value="0"
+                            />          
+                        </td>
+                        <td>
+                            <input
+                                value ="0";
+                                type="number"
+                                name="phanTramKhuyenMai${index}"
+                                class="phanTramKhuyenMai${index}"
+                            />
+                        </td>
+                        <td>
+                                    <input type="textarea" name="ghiChu0" id="ghiChu${index}" />
+                                </td>
+                    </tr>
+                `;
+
+                $(`.idMonAn${index}`).innerHTML = dishes;
             };
         });
     });

@@ -1,4 +1,7 @@
-function findOutputBillById() {
+function findOutputBillById() {}
+
+$("#findOutputBillByID").onclick = function (event) {
+    event.preventDefault();
     const id = $("#id").value;
 
     if (!id) {
@@ -11,7 +14,7 @@ function findOutputBillById() {
 
         return;
     }
-    console.log(id)
+    console.log(id);
     fetch(
         `http://localhost:5225/api/HoaDonXuat/FindHoaDonXuatByMaHoaDon?MaHoaDon=${id}`,
         {
@@ -44,9 +47,4 @@ function findOutputBillById() {
                 duration: 5000,
             });
         });
-}
-
-$("#findOutputBillByID").onclick = function (event) {
-    event.preventDefault();
-    findOutputBillById();
 };
