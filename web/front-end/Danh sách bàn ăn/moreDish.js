@@ -1,3 +1,4 @@
+let index_input = 0;
 fetch(`http://localhost:5225/api/MonAn/MonAn`)
     .then(function (response) {
         return response.json();
@@ -10,7 +11,7 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
         });
 
         dishes = dishes.join("");
-        $$(".more-dish").forEach(function (button, index) {
+        $$(".more-dish").forEach(function (button) {
             button.onclick = function (e) {
                 e.preventDefault();
                 $("#dish-input-table").innerHTML += `   
@@ -18,16 +19,16 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
                         <td>
                             <select
                                 type="text"
-                                name="idMonAn${++index}"
-                                class="idMonAn${index} idMonAn"
+                                name="idMonAn${index_input}"
+                                class="idMonAn${index_input} idMonAn"
                             >
                             </select>
                         </td>
                         <td>
                             <input
                                 type="number"
-                                name="soLuongMonAn${index}"
-                                class="soLuongMonAn${index}"
+                                name="soLuongMonAn${index_input}"
+                                class="soLuongMonAn${index_input}"
                                 value="0"
                             />          
                         </td>
@@ -35,17 +36,18 @@ fetch(`http://localhost:5225/api/MonAn/MonAn`)
                             <input
                                 value ="0";
                                 type="number"
-                                name="phanTramKhuyenMai${index}"
-                                class="phanTramKhuyenMai${index}"
+                                name="phanTramKhuyenMai${index_input}"
+                                class="phanTramKhuyenMai${index_input}"
                             />
                         </td>
                         <td>
-                                    <input type="textarea" name="ghiChu0" id="ghiChu${index}" />
+                                    <input type="textarea" name="ghiChu0" id="ghiChu${index_input}" />
                                 </td>
                     </tr>
                 `;
 
-                $(`.idMonAn${index}`).innerHTML = dishes;
+                $(`.idMonAn${index_input}`).innerHTML = dishes;
+                index_input++;
             };
         });
     });

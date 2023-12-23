@@ -1,10 +1,11 @@
-function findInputBillById() {
-    const id = $("#id").value;
+$("#findEmployeeById").onclick = function (event) {
+    event.preventDefault();
+    const id = $("#idNV").value;
 
     if (!id) {
         toast({
             title: "Thất bại!",
-            message: "Vui lòng nhập ngày! ",
+            message: "Vui lòng nhập ID! ",
             type: "error",
             duration: 5000,
         });
@@ -12,15 +13,12 @@ function findInputBillById() {
         return;
     }
 
-    fetch(
-        `http://localhost:5225/api/HoaDonNhap/FindHoaDonNhapByMaHoaDon?MaHoaDon=${id}`,
-        {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }
-    )
+    fetch(`http://localhost:5225/api/NhanVien/GetNhanVienByMaNV?MaNV=${id}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
         .then((response) => {
             return response.json();
         })
@@ -28,7 +26,7 @@ function findInputBillById() {
             if (infor.length == 0) {
                 throw new Error(`Error: ${response.status}`);
             }
-            showBill(infor);
+            show(infor);
             toast({
                 title: "Thành công!",
                 message: "Đã tìm được hóa đơn!",
@@ -44,9 +42,4 @@ function findInputBillById() {
                 duration: 5000,
             });
         });
-}
-
-$("#findOutputBillByID").onclick = function (event) {
-    event.preventDefault();
-    findInputBillById();
 };

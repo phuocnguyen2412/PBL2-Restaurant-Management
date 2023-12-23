@@ -16,7 +16,6 @@ function postOrder(data) {
                 .then((response) => {
                     if (!response.ok) throw "error";
                     else {
-                        // location.reload();
                         toast({
                             title: "Đặt món thành công!",
                             message: `Món ăn ${
@@ -35,7 +34,24 @@ function postOrder(data) {
                                     "Content-Type": "application/json",
                                 },
                             }
-                        );
+                        )
+                            .then((response) => {
+                                if (!response.ok) throw "error";
+                                toast({
+                                    title: "Thành công !",
+                                    message: `Đã trừ nguyên liệu của món ăn!`,
+                                    type: "success",
+                                    duration: 5000,
+                                });
+                            })
+                            .catch((error) => {
+                                toast({
+                                    title: "Thất bại!",
+                                    message: `Đã trừ nguyên liệu của món ăn!`,
+                                    type: "error",
+                                    duration: 5000,
+                                });
+                            });
                     }
                 })
                 .catch((error) => {

@@ -1,5 +1,4 @@
 getBill();
-
 function getBill() {
     fetch("http://localhost:5225/api/HoaDonXuat/HoaDon")
         .then(function (response) {
@@ -28,7 +27,6 @@ function getBill() {
                 btn.onclick = function (event) {
                     event.preventDefault();
                     $$(`.MoreDish${btn.name}`).forEach(function (input, i) {
-                        console.log(index);
                         const data = {
                             maHoaDon: btn.name,
                             tenNV: "string",
@@ -56,6 +54,7 @@ function getBill() {
                         console.log(data);
                         if (data.soLuong > 0) {
                             postOrder(data);
+                            $(".modal-backdrop").style.display = "none";
                         }
                     });
                 };
@@ -67,7 +66,7 @@ function showBill(bills) {
     let bill_list = bills.map(function (bill) {
         return `
                             <div id="bill-${bill.maHoaDon}"class="col-4 card ">
-                                <div class="card-header text-center">${bill.soBan}</div>
+                                <div class="card-header text-center"> Bàn số ${bill.soBan}</div>
                                 <div class="card-body">
                                     Tạo bởi: ${bill.tenNV}<br />
                                     Trạng thái: ${bill.trangThai}
@@ -189,7 +188,7 @@ function showBill(bills) {
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                            <h4 class="modal-title text-center mb-3">${bill.soBan}</h4>
+                            <h4 class="modal-title text-center mb-3">Bàn số ${bill.soBan}</h4>
                                 <input
                                 name=""
                                 id="soBanMoreDish${bill.maHoaDon}"

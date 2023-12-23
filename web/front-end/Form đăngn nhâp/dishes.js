@@ -26,10 +26,10 @@ $("#all").onclick = function () {
     getDishes("http://localhost:5225/api/MonAn/MonAn");
 };
 $("#food").onclick = function () {
-    getDishes();
+    getDishes("http://localhost:5225/api/MonAn/DoAn");
 };
 $("#drink").onclick = function () {
-    getDishes();
+    getDishes("http://localhost:5225/api/MonAn/DoUong ");
 };
 
 function getDishes(url) {
