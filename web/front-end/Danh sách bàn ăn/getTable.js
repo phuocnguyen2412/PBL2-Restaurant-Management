@@ -1,3 +1,5 @@
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 getBill();
 function getBill() {
     fetch("http://localhost:5225/api/HoaDonXuat/HoaDon")
@@ -7,7 +9,12 @@ function getBill() {
         .then(function (bills) {
             showBill(bills);
         })
+        .then(function () {
+            moreDishInput();
+            if ($(".modal-backdrop")) $(".modal-backdrop").remove();
+        })
         .then(() => {
+            //XUẤT HÓA ĐƠN
             $$(".bill-finish").forEach(function (btn) {
                 btn.onclick = function (event) {
                     event.preventDefault();
@@ -23,6 +30,7 @@ function getBill() {
                 };
             });
 
+            // POST_ORDERITEM
             $$(".confirm-moreDishInput").forEach(function (btn) {
                 btn.onclick = function (event) {
                     event.preventDefault();
@@ -54,9 +62,17 @@ function getBill() {
                         console.log(data);
                         if (data.soLuong > 0) {
                             postOrder(data);
-                            $(".modal-backdrop").style.display = "none";
                         }
                     });
+                };
+            });
+
+            //DELETE_ORDERITEM
+
+            $$(".delete-orderItem").forEach(function (btn) {
+                btn.onclick = function (event) {
+                    event.preventDefault();
+                    deleteOrderItem(btn.name);
                 };
             });
         });
@@ -116,6 +132,7 @@ function showBill(bills) {
                                             <th>% Khuyến mãi</th>
                                             <th>Thành tiền</th>
                                             <th>Khuyến mãi</th>
+                                            <th>Xóa món </th>
                                         </tr>
                                     </thead>
                                     <tbody
@@ -157,7 +174,8 @@ function showBill(bills) {
                                 <td>${i.phanTramKhuyenMaiItem}</td>
                                 <td>${i.thanhTienItem}</td>
                                 <td>${i.khuyenMaiItem}</td>
-        
+                                <td> <button name="${i.idOrder}" class="btn btn-danger delete-orderItem"></button> </td>
+
                             </tr>
                         `;
         });
@@ -202,6 +220,8 @@ function showBill(bills) {
                                             <td align="center">Số lượng</td>
                                             <td align="center">% khuyến mãi</td>
                                             <td align="center">Ghi chú</td>
+                                      
+                                            
                                         </tr>
                                     </thead>
                                   

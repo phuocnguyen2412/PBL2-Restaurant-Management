@@ -8,7 +8,6 @@ namespace PBL2.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdOrder { get; set; }
         public string MaHoaDon { get; set; }
         public int SoBan { get; set; }
         public string Ngay { get; set; }
@@ -22,6 +21,7 @@ namespace PBL2.Models
     }
     public class MonAnItem
     {
+        public int IdOrder { get; set; }
         public string TenMonAn { get; set; }
         public int GiaMon { get; set; }
         public int SoLuong { get; set; }

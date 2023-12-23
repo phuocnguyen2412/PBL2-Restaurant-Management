@@ -37,7 +37,7 @@ namespace PBL2.Controllers
                          "[Order].Ngay," +
                          "[Order].Gio," +
                          "[QuanLyBan].SoBan," +
-                         "[OrderItems].IdOrder, " +
+                         "[OrderItems].Id, " +
                          "[Order].TenNV," +
                          "[MonAn].TenMon," +
                          "[MonAn].GiaMon," +
@@ -60,7 +60,7 @@ namespace PBL2.Controllers
                 var existingItem = models.FirstOrDefault(item => item.MaHoaDon == mahoadon);
                 MonAnItem monAn = new MonAnItem
                 {
-                    IdOrder = Convert.ToInt32("IdOrder");
+                    IdOrder = Convert.ToInt32(row["Id"]),
                     TenMonAn = row["TenMon"].ToString(),
                     GiaMon = Convert.ToInt32(row["GiaMon"]),
                     SoLuong = Convert.ToInt32(row["SoLuong"]),
@@ -346,6 +346,33 @@ namespace PBL2.Controllers
             }
 
             return Ok(models);
+        }
+        //DELETE
+        [Route("DeleteOrder")]
+        [AllowCrossSiteJson]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteOrder(int IdOrder, int Id)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+                con.Open();
+                {
+                    SqlCommand cmd = new SqlCommand(
+                        "DELETE FROM [OrderItems] WHERE IdOrder = @IdOrder " +
+                        "DELETE FROM [Order] WHERE Id=@Id  ", con);
+                    cmd.Parameters.AddWithValue("Id", Id);
+                    cmd.Parameters.AddWithValue("IdOrder", IdOrder);
+
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+                return Ok(new { Message = "Da xoa Order!" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

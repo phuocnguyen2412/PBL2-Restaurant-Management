@@ -1,5 +1,3 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
 function postOrder(data) {
     fetch(`http://localhost:5225/api/MonAn/MonAn`)
         .then(function (response) {
@@ -25,7 +23,7 @@ function postOrder(data) {
                             duration: 5000,
                         });
                         getBill();
-
+                  
                         fetch(
                             `http://localhost:5225/api/NguyenLieu/CapNhatNguyenLieuTonKho?Id=${data.idMonAn}&MaHoaDon=${data.maHoaDon}`,
                             {
@@ -34,24 +32,7 @@ function postOrder(data) {
                                     "Content-Type": "application/json",
                                 },
                             }
-                        )
-                            .then((response) => {
-                                if (!response.ok) throw "error";
-                                toast({
-                                    title: "Thành công !",
-                                    message: `Đã trừ nguyên liệu của món ăn!`,
-                                    type: "success",
-                                    duration: 5000,
-                                });
-                            })
-                            .catch((error) => {
-                                toast({
-                                    title: "Thất bại!",
-                                    message: `Đã trừ nguyên liệu của món ăn!`,
-                                    type: "error",
-                                    duration: 5000,
-                                });
-                            });
+                        );
                     }
                 })
                 .catch((error) => {
@@ -74,7 +55,7 @@ $(".orderForm-submit-btn").onclick = function (event) {
         const data = {
             maHoaDon: `${date.getDate()}${
                 date.getMonth() + 1
-            }${date.getFullYear()}${date.getHours()}${date.getMinutes()}-${i}`,
+            }${date.getFullYear()}-${date.getHours()}${date.getMinutes()}-${i}`,
             tenNV: $("#maNVorder").value,
             soBan: $("#soBan").value,
             trangThaiMon: "undone",
@@ -82,7 +63,6 @@ $(".orderForm-submit-btn").onclick = function (event) {
             gio: "null",
             phanTramKhuyenMai: $(`.phanTramKhuyenMai${index}`).value,
             ghiChu: $(`#ghiChu${index}`).value,
-
             idMonAn: $(`.idMonAn${index}`).value,
             soLuong: $(`.soLuongMonAn${index}`).value,
         };

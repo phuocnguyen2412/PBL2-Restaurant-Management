@@ -1,4 +1,3 @@
-moreDishInput();
 let index = 1;
 function moreDishInput() {
     fetch(`http://localhost:5225/api/MonAn/MonAn`)
