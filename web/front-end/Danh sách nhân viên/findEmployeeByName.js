@@ -5,7 +5,7 @@ $("#findEmployeeByName").onclick = function (event) {
     if (!id) {
         toast({
             title: "Thất bại!",
-            message: "Vui lòng nhập ngày! ",
+            message: "Vui lòng nhập họ tên! ",
             type: "error",
             duration: 5000,
         });

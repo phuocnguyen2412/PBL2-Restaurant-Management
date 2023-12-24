@@ -71,8 +71,9 @@ function getBill() {
 
             $$(".delete-orderItem").forEach(function (btn) {
                 btn.onclick = function (event) {
+                    console.log(btn);
                     event.preventDefault();
-                    deleteOrderItem(btn.name);
+                    deleteOrderItem(btn.id);
                 };
             });
         });
@@ -116,7 +117,7 @@ function showBill(bills) {
                                 <button name="${
                                     bill.maHoaDon
                                 }" class="btn btn-success bill-finish float-end p-1 m-1">Xuất hoá đơn</button>
-                                <h4 class="text-center">Hóa đơn ID${
+                                <h4 class="text-center">Hóa đơn ID ${
                                     bill.maHoaDon
                                 }</h4>
                             </div>
@@ -127,12 +128,13 @@ function showBill(bills) {
                                             <th style="padding-left: 10px">
                                                 Tên món ăn
                                             </th>
-                                            <th>Số lượng</th>
-                                            <th>Đơn giá</th>
-                                            <th>% Khuyến mãi</th>
-                                            <th>Thành tiền</th>
-                                            <th>Khuyến mãi</th>
-                                            <th>Xóa món </th>
+                                            <th class="text-center" >Số lượng</th>
+                                            <th class="text-center" >Đơn giá</th>
+                                            <th class="text-center" >% Khuyến mãi</th>
+                                            <th class="text-center" >Thành tiền</th>
+                                            <th class="text-center" >Khuyến mãi</th>
+                                            <th class="text-center" ></th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody
@@ -168,20 +170,38 @@ function showBill(bills) {
         let items = bill.items.map(function (i) {
             return `
                             <tr>
-                                <td style="padding-left: 10px">${i.tenMonAn}</td>
-                                <td>${i.soLuong}</td>
-                                <td>${i.giaMon}</td>
-                                <td>${i.phanTramKhuyenMaiItem}</td>
-                                <td>${i.thanhTienItem}</td>
-                                <td>${i.khuyenMaiItem}</td>
-                                <td> <button name="${i.idOrder}" class="btn btn-danger delete-orderItem"></button> </td>
+                                <td style="padding-left: 10px">${
+                                    i.tenMonAn
+                                }</td>
+                                <td class="text-center" >${i.soLuong}</td>
+                                <td class="text-center" >${
+                                    i.giaMon / 1000
+                                }.000 </td>
+                                <td class="text-center" >${
+                                    i.phanTramKhuyenMaiItem
+                                }</td>
+                                <td class="text-center" >${
+                                    i.thanhTienItem / 1000
+                                }.000</td>
+                                <td class="text-center" >${
+                                    i.khuyenMaiItem / 1000
+                                }.000</td>
+                                <td class="text-center" > <span id="${
+                                    i.idOrder
+                                }" class="material-symbols-outlined delete-orderItem">
+                                close
+                                </span> </td>
 
                             </tr>
                         `;
         });
         $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
             items.join("") +
-            ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.khuyenMai}</td></tr>`;
+            ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td class="text-center" >${
+                bill.thanhTien / 1000
+            }.000</td> <td class="text-center" >${
+                bill.khuyenMai / 1000
+            }.000</td></tr>`;
 
         $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
             $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";

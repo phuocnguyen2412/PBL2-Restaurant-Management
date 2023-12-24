@@ -9,7 +9,6 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PBL2
 build_property.RootNamespace = PBL2
-<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Hi\Desktop\Việt-Hóa-Dead-Island-2(meviethoa.com)\PBL2-Restaurant-Management\web\back-end\C#\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
@@ -17,21 +16,4 @@ build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\Hi\Desktop\Việt-Hóa-Dead-Island-2(meviethoa.com)\PBL2-Restaurant-Management\web\back-end\C#
-=======
-<<<<<<< HEAD
-build_property.ProjectDir = /Users/ttcenter/Documents/back up /PBL2/PBL2/web/back-end/C#/
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.RazorLangVersion = 7.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/ttcenter/Documents/back up /PBL2/PBL2/web/back-end/C#
-=======
-build_property.ProjectDir = C:\Users\USER\Documents\Github\PBL_2-RESTAURANT-MANEGEMENT\PBL_2-RESTAURANT-MANEGEMENT\web\back-end\C#\
-build_property.RazorLangVersion = 7.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\USER\Documents\Github\PBL_2-RESTAURANT-MANEGEMENT\PBL_2-RESTAURANT-MANEGEMENT\web\back-end\C#
->>>>>>> bc0d1e7671a976746fa908dcbff1ec19741d017e
->>>>>>> 6eddd9a9061cbb40ce814646b7cb490838dea4f6
 build_property._RazorSourceGeneratorDebug = 

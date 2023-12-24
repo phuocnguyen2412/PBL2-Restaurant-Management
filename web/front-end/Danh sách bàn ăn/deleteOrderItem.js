@@ -1,4 +1,5 @@
 function deleteOrderItem(maHoaDon) {
+    console.log(maHoaDon)
     fetch(
         `http://localhost:5225/api/HoaDonXuat/DeleteOrder?IdOrder=${maHoaDon}&Id=${maHoaDon}`,
         {

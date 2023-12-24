@@ -29,7 +29,7 @@ $("#findEmployeeById").onclick = function (event) {
             show(infor);
             toast({
                 title: "Thành công!",
-                message: "Đã tìm được hóa đơn!",
+                message: "Đã tìm được nhân viên!",
                 type: "success",
                 duration: 5000,
             });
@@ -37,7 +37,7 @@ $("#findEmployeeById").onclick = function (event) {
         .catch((error) => {
             toast({
                 title: "Thất bại!",
-                message: "Không tồn tại hóa đơn đã nhập",
+                message: "Không tồn tại nhân viên đã nhập",
                 type: "error",
                 duration: 5000,
             });
