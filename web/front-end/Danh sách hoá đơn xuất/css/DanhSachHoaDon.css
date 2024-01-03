@@ -6,7 +6,9 @@
 .modal-header {
     display: block;
 }
-
+.mt-120 {
+    margin-top: 120px;
+}
 label {
     left: 12px !important;
 }

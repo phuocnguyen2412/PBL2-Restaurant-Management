@@ -21,11 +21,15 @@
         <link rel="stylesheet" href="./DanhSachNhanVien.css" />
         <link rel="stylesheet" href="./new-layer.css" />
         <link rel="stylesheet" href="../toastMessage.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
     </head>
 
     <body>
         <nav
-            class="navbar navbar-expand-lg bg-body-tertiary nav-underline shadow"
+            class="navbar navbar-expand-lg bg-body-tertiary nav-underline shadow position-fixed top-0 w-100 z-1"
         >
             <div class="container-fluid">
                 <a class="navbar-brand" href="../Menu/MenuEmployee.html"
@@ -81,19 +85,61 @@
                         </li>
                     </ul>
                     <span class="navbar-text">
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#employeeInput"
+                        >
+                            Thêm nhân viên
+                        </button>
+                    </span>
+                    <span class="navbar-text w-25 me-3 ms-3">
+                        <div class="col-6 input-group form-floating">
+                            <input
+                                type="number"
+                                class="form-control"
+                                placeholder="Nhập ngày/tháng/năm hóa đơn"
+                                name="idNV"
+                                id="idNV"
+                            />
+                            <label for="idNV">Tìm kiếm bằng ID nhân viên</label>
+                            <button
+                                id="findEmployeeById"
+                                class="btn btn-success"
+                                type="submit"
+                            >
+                                Go
+                            </button>
+                        </div>
+                    </span>
+                    <span class="navbar-text w-25 me-3 ms-3">
+                        <div class="input-group form-floating">
+                            <input
+                                id="hoVaTen-timkiem"
+                                type="text"
+                                class="form-control"
+                                placeholder="TÌm kiếm bằng tên nhân viên"
+                                name="hoVaTen"
+                            />
+                            <label for="hoVaTen"
+                                >TÌm kiếm bằng tên nhân viên</label
+                            >
+                            <button
+                                id="findEmployeeByName"
+                                class="btn btn-success"
+                                type="submit"
+                            >
+                                Go
+                            </button>
+                        </div>
+                    </span>
+                    <span class="navbar-text text-center">
                         <a href="../../../index.html">LOG OUT</a>
                     </span>
                 </div>
             </div>
         </nav>
-        <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#employeeInput"
-        >
-            Them nhan vien
-        </button>
 
         <!-- Modal -->
         <div
@@ -110,7 +156,7 @@
                             class="modal-title fs-5 text-center"
                             id="exampleModalLabel"
                         >
-                            Them nhan vien
+                            Thêm nhân viên
                         </h1>
                         <button
                             type="button"
@@ -243,51 +289,10 @@
                 </div>
             </div>
         </div>
-        <form class="container mt-4">
-            <div class="row">
-                <div class="col-6">
-                    <div class="col-6 input-group form-floating">
-                        <input
-                            type="number"
-                            class="form-control"
-                            placeholder="Nhập ngày/tháng/năm hóa đơn"
-                            name="idNV"
-                            id="idNV"
-                        />
-                        <label for="idNV">Tìm kiếm bằng ID nhân viên</label>
-                        <button
-                            id="findEmployeeById"
-                            class="btn btn-success"
-                            type="submit"
-                        >
-                            Go
-                        </button>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="input-group form-floating">
-                        <input
-                            id="hoVaTen-timkiem"
-                            type="text"
-                            class="form-control"
-                            placeholder="TÌm kiếm bằng tên nhân viên"
-                            name="hoVaTen"
-                        />
-                        <label for="hoVaTen">TÌm kiếm bằng tên nhân viên</label>
-                        <button
-                            id="findEmployeeByName"
-                            class="btn btn-success"
-                            type="submit"
-                        >
-                            Go
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <div class="container mt-5">
+
+        <div class="container mt-120">
             <h2 class="text-center text-uppercase">Danh sách nhân viên</h2>
-            <table class="table table-bordered mt-5" id="employee-info-list">
+            <table class="table table-bordered mt-4" id="employee-info-list">
                 <thead class="table-danger">
                     <th class="text-center">Mã nhân viên</th>
                     <th class="text-center">Họ và tên</th>
@@ -317,5 +322,6 @@
         <script src="./postEmployee.js"></script>
         <script src="./findEmployeeById.js"></script>
         <script src="./findEmployeeByName.js"></script>
+        <script src="./close.js"></script>
     </body>
 </html>
