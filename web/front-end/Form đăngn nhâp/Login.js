@@ -8,17 +8,23 @@ function Login(user) {
         },
         body: JSON.stringify(user),
     })
-        .then((response) => response.json())
+        .then((response) => {
+            console.log(response)
+            if(!response.ok) throw "error";
+            return response.json();
+        })
         .then((data) => {
             console.log(data);
             if (data.chucVu == "Quản lý") {
                 window.location.href = "./web/front-end/Menu/MenuAdmin.html";
             }
-            if (data.chucVu == "Nhân viên phục vụ") {
+            if (data.chucVu == "Nhân viên phục vụ" || data.chucVu == "Thu ngân") {
                 window.location.href = "./web/front-end/Menu/MenuEmployee.html";
-            } else {
-                throw data.message;
             }
+            if (data.chucVu == "Nhân viên kho") {
+                window.location.href = "./web/front-end/Menu/MenuNhanVienKho.html";
+            }
+
         })
         .catch((error) => {
             toast({
