@@ -1,6 +1,3 @@
-const tabs = $$(".tab-item");
-const panes = $$(".tab-pane");
-
 const tabActive = $(".tab-item.active");
 const line = $(".tabs .line");
 
@@ -9,11 +6,10 @@ requestIdleCallback(function () {
     line.style.width = tabActive.offsetWidth + "px";
 });
 
-tabs.forEach((tab, index) => {
-    const pane = panes[index];
-
+$$(".tab-item").forEach((tab) => {
     tab.onclick = function () {
-        console.log(10);
+        console.log(1);
+        $(".tab-item.active").classList.remove("active");
 
         line.style.left = this.offsetLeft + "px";
         line.style.width = this.offsetWidth + "px";

@@ -30,7 +30,7 @@ function getInfo() {
                         <div class="container">
                            
                             <span 
-                                class="material-symbols-outlined close float-end mt-3">
+                                class="material-symbols-outlined close float-end mt-3 " style="cursor: pointer;">
                             close
                             </span>
                             
@@ -178,8 +178,12 @@ function show(infor_list) {
                     <td
                         class="d-flex align-items-center justify-content-center"
                     >
-                        <button id="update-${infor.id}" class="btn btn-info me-2"></button
-                        ><button id="delete-${infor.id}" class="btn btn-danger"></button>
+                        <span  id="update-${infor.id}" class=" me-2 material-symbols-outlined cursor-pointer text-info" style="cursor: pointer;">
+                        manage_accounts
+                        </span> 
+                        <span id="delete-${infor.id}" class=" material-symbols-outlined text-danger cursor-pointer" style="cursor: pointer;" >
+                        close
+                        </span> 
                     </td>
                 </tr>
             `;
