@@ -43,7 +43,8 @@ namespace PBL2.Controllers
                 "Join  [HoaDonKhoItems]  On [HoaDonKho].Id       = [HoaDonKhoItems].IdHoaDonKho " +
                 "Join  [NguyenLieu]      On [NguyenLieu].Id      = [HoaDonKhoItems].IdNguyenLieu " +
                 "Join  [NhaCungCap]      On [NhaCungCap].Id      = [NguyenLieu].IdNhaCC " +
-                "Join  [DonViNguyenLieu] ON [DonViNguyenLieu].Id = [NguyenLieu].IdDonViNguyenLieu ", con);
+                "Join  [DonViNguyenLieu] ON [DonViNguyenLieu].Id = [NguyenLieu].IdDonViNguyenLieu "+
+                "ORDER BY [HoaDonKho].Id DESC", con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dt);
             foreach (DataRow row in dt.Rows)

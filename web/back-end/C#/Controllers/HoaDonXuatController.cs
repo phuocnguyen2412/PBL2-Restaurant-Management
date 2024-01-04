@@ -129,7 +129,8 @@ namespace PBL2.Controllers
                 "JOIN   [OrderItems] ON [Order].Id     = [OrderItems].IdOrder " +
                 "JOIN   [MonAn]      ON [MonAn].Id     = [OrderItems].IdMonAn " +
                 "JOIN   [QuanLyBan]  ON [QuanLyBan].Id = [Order].SoBan " +
-                "WHERE  [Order].TrangThaiThanhToan = N'Đã Thanh Toán'", con);
+                "WHERE  [Order].TrangThaiThanhToan = N'Đã Thanh Toán'" +
+                "ORDER BY [Order].Id DESC", con);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dt);
 
