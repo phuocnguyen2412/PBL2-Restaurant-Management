@@ -44,9 +44,9 @@ function showBill(bills) {
                     <button class="btn btn-danger close-${bill.maHoaDon} float-end p-1 m-1">
                         <i class="ti-close"></i>
                     </button>
-                    <p class="float-start">${bill.ngay} ${bill.gio} <br/>
+                    <p class="float-start">${bill.ngay} - ${bill.gio} <br/>
                     ${bill.tenNV}
-                     </p>
+                    </p>
                     <h4 class="text-center">Hóa đơn ID${bill.maHoaDon}</h4>
                 </div>
                 <div class="card-body">
@@ -82,9 +82,8 @@ function showBill(bills) {
         </div>
         `;
     });
-    
-    $(".detail-bill-list").innerHTML = detail_bill_list.join("");
 
+    $(".detail-bill-list").innerHTML = detail_bill_list.join("");
 
     bills.forEach(function (bill) {
         let items = bill.items.map(function (i) {
@@ -99,9 +98,9 @@ function showBill(bills) {
                 </tr>
             `;
         });
-        $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML = items.join("")                  +
+        $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
+            items.join("") +
             ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.khuyenMai}</td></tr>`;
-
 
         $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
             $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";

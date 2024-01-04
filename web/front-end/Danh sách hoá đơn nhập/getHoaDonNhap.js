@@ -55,9 +55,9 @@ function showBill(bills) {
                             SĐT: ${bill.diaChi} <br />
 
                             <br />
-                            Tên khách hành: Nhà hàng ... <br />
-                            Địa chỉ:... <br />
-                            SĐT:.... <br />
+                            Tên khách hành: Nhà hàng Little Dragon <br />
+                            Địa chỉ: Số 60 Phố Giang Văn Minh, Phường Đội Cấn, Quận Ba Đình, Thành phố Hà Nội, Việt Nam <br />
+                            SĐT: 043 222 3000 <br />
                             <br />
                             <table class="table">
                                 <thead>

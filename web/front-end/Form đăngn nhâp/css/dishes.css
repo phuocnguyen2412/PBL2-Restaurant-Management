@@ -3,11 +3,10 @@
     margin: 0;
     box-sizing: border-box;
 }
-#dishes {
-    display: flex;
-    font-family: "Poppins", sans-serif;
-}
 
+.dish-img img {
+    height: 200px;
+}
 .tabs {
     display: flex;
     position: relative;
@@ -19,7 +18,7 @@
     width: 0;
     height: 6px;
     border-radius: 15px;
-    background-color: #333;
+    background-color: #000;
     transition: all 0.2s ease;
 }
 .tab-item {
@@ -27,7 +26,7 @@
     padding: 16px 20px 11px 20px;
     font-size: 20px;
     text-align: center;
-    color: #333;
+    color: #000;
     background-color: #fff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -50,21 +49,7 @@
 .tab-item.active {
     opacity: 1;
 }
-.tab-content {
-    padding: 28px 0;
-}
-.tab-pane {
-    color: #333;
-    display: none;
-}
+
 .tab-pane.active {
     display: block;
-}
-.tab-pane h2 {
-    font-size: 24px;
-    margin-bottom: 8px;
-}
-
-.dish-img img {
-    height: 200px;
 }

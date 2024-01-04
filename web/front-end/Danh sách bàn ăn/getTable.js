@@ -23,7 +23,7 @@ function getBill() {
                         maHoaDon: btn.name,
                         ngay: `${date.getDate()}/${
                             date.getMonth() + 1
-                        }/${date.getYear()}`,
+                        }/${date.getFullYear()}`,
                         gio: `${date.getHours()}:${date.getMinutes()}`,
                     };
                     updateBill(data);
@@ -188,7 +188,7 @@ function showBill(bills) {
                                 }.000</td>
                                 <td class="text-center" > <span id="${
                                     i.idOrder
-                                }" class="material-symbols-outlined delete-orderItem">
+                                }" class="material-symbols-outlined delete-orderItem" style="cursor: pointer;">
                                 close
                                 </span> </td>
 
