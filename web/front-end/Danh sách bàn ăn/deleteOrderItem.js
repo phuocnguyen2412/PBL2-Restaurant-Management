@@ -1,5 +1,5 @@
 function deleteOrderItem(maHoaDon) {
-    console.log(maHoaDon)
+    console.log(maHoaDon);
     fetch(
         `http://localhost:5225/api/HoaDonXuat/DeleteOrder?IdOrder=${maHoaDon}&Id=${maHoaDon}`,
         {
@@ -20,6 +20,7 @@ function deleteOrderItem(maHoaDon) {
                 duration: 5000,
             });
             getBill();
+            postTable();
         })
 
         .catch((error) => {
