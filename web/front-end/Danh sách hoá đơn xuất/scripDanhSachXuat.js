@@ -19,11 +19,13 @@ function showBill(bills) {
                         Giờ: ${bill.gio} <br />
                         Tạo bởi: ${bill.tenNV}<br />
                     
-                        Thành tiền: ${bill.tongCong}<br />
+                        Thành tiền: ${bill.tongCong.toLocaleString()}<br />
                         Trạng thái: ${bill.trangThai}
                     </div>
                     <div class="card-footer d-grid">
-                        <button id="open-detail-bill-id${bill.maHoaDon}"class="btn btn-outline-success">Chi tiết</button>
+                        <button id="open-detail-bill-id${
+                            bill.maHoaDon
+                        }"class="btn btn-outline-success">Chi tiết</button>
                     </div>
                 </div>
             `;
@@ -41,7 +43,9 @@ function showBill(bills) {
         >
             <div class="container">
                 <div class="card-header">
-                    <button class="btn btn-danger close-${bill.maHoaDon} float-end p-1 m-1">
+                    <button class="btn btn-danger close-${
+                        bill.maHoaDon
+                    } float-end p-1 m-1">
                         <i class="ti-close"></i>
                     </button>
                     <p class="float-start">${bill.ngay} - ${bill.gio} <br/>
@@ -73,7 +77,7 @@ function showBill(bills) {
                         
                       
                             
-                            <h4 class="text-center"> Tổng tiền: </h4> <h2 class="text-center">${bill.tongCong} VNĐ </h2> <br />
+                            <h4 class="text-center"> Tổng tiền: </h4> <h2 class="text-center">${bill.tongCong.toLocaleString()} VNĐ </h2> <br />
                         
                     </div>
                 </div>
@@ -91,16 +95,16 @@ function showBill(bills) {
                 <tr>
                     <td style="padding-left: 10px">${i.tenMonAn}</td>
                     <td>${i.soLuong}</td>
-                    <td>${i.giaMon}</td>
+                    <td>${i.giaMon.toLocaleString()}</td>
                     <td>${i.phanTramKhuyenMaiItem}</td>
-                    <td>${i.thanhTienItem}</td>
-                    <td>${i.khuyenMaiItem}</td>
+                    <td>${i.thanhTienItem.toLocaleString()}</td>
+                    <td>${i.khuyenMaiItem.toLocaleString()}</td>
                 </tr>
             `;
         });
         $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
             items.join("") +
-            ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien}</td> <td>${bill.khuyenMai}</td></tr>`;
+            ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td>${bill.thanhTien.toLocaleString()}</td> <td>${bill.khuyenMai.toLocaleString()}</td></tr>`;
 
         $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
             $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";

@@ -1,14 +1,11 @@
 function deleteOrderItem(maHoaDon) {
     console.log(maHoaDon);
-    fetch(
-        `http://localhost:5225/api/HoaDonXuat/DeleteOrder?IdOrder=${maHoaDon}&Id=${maHoaDon}`,
-        {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }
-    )
+    fetch(`http://localhost:5225/api/HoaDonXuat/DeleteOrder?Id=${maHoaDon}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Delete failed.");
@@ -26,7 +23,7 @@ function deleteOrderItem(maHoaDon) {
         .catch((error) => {
             toast({
                 title: "Thất bại!",
-                message: "Xóa nhân viên thất bại do lỗi API!",
+                message: "Xóa order thất bại do lỗi API!",
                 type: "error",
                 duration: 5000,
             });

@@ -42,7 +42,7 @@ $("#findOutputBillByID").onclick = function (event) {
         .catch((error) => {
             toast({
                 title: "Thất bại!",
-                message: "Không tồn tại hóa đơn đã nhập",
+                message: `Không tồn tại hóa đơn ${id}`,
                 type: "error",
                 duration: 5000,
             });

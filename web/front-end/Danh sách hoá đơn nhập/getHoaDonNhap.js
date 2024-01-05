@@ -14,16 +14,20 @@ function showBill(bills) {
     let bill_list = bills.map(function (bill) {
         return `
                         <div class="col-3 card">
-                            <div class="card-header">ID hóa đơn nhập: ${bill.maHoaDon}</div>
+                            <div class="card-header">ID hóa đơn nhập: ${
+                                bill.maHoaDon
+                            }</div>
                             <div class="card-body">
                                 Nhà cung cấp: ${bill.tenNhaCC}<br />
                                 Ngày: ${bill.ngay} <br />
                                 Giờ: ${bill.gio} <br />
                                 Tạo bởi: ${bill.tenNV}<br />   
-                                Thành tiền: ${bill.thanhTien}<br />
+                                Thành tiền: ${bill.thanhTien.toLocaleString()}<br />
                             </div>
                             <div class="card-footer d-grid">
-                            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-bill-${bill.maHoaDon}">
+                            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#detail-bill-${
+                                bill.maHoaDon
+                            }">
                                     Chi tiết
                                 </button>
                             </div>
@@ -74,7 +78,9 @@ function showBill(bills) {
                                 </thead>
                                 <tbody
                                     class="table-detail-bill-${bill.maHoaDon}"
-                                ></tbody>
+                                >
+                                
+                                </tbody>
                             </table>
                             <div class="float-end text-center pb-3">
                                 ${bill.gio}, ${bill.ngay} <br />
@@ -104,14 +110,18 @@ function showBill(bills) {
         let items = bill.items.map(function (i) {
             return `
                         <tr>
-                            <td style="padding-left: 10px">${i.tenNguyenLieu}</td>
+                            <td style="padding-left: 10px">${
+                                i.tenNguyenLieu
+                            }</td>
                             <td>${i.soLuong}</td>
                             <td>${i.donVi}</td>
-                            <td>${i.donGia}</td>
-                            <td>${i.thanhTienItem}</td>
+                            <td>${i.donGia.toLocaleString()}</td>
+                            <td>${i.thanhTienItem.toLocaleString()}</td>
                         </tr>
                     `;
         });
-        $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML = items.join("");
+        $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
+            items.join("") +
+            `<tr> <td ></td><td></td><td></td><td></td><td>${bill.thanhTien.toLocaleString()}</td></tr>`;
     });
 }

@@ -31,18 +31,27 @@ $(".changePassword").onclick = function (event) {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(newUser),
-                }).then((response) => {
-                    console.log(response);
-                    if (!response.ok) throw "error";
-                    else {
+                })
+                    .then((response) => {
+                        console.log(response);
+                        if (!response.ok) throw "error";
+                        else {
+                            toast({
+                                title: "Thành công!",
+                                message: "Đổi mật khẩu thành công!",
+                                type: "success",
+                                duration: 5000,
+                            });
+                        }
+                    })
+                    .catch((error) => {
                         toast({
-                            title: "Thành công!",
-                            message: "Đổi mật khẩu thành công!",
-                            type: "success",
+                            title: "Thất bại!",
+                            message: "Mật khẩu phải ít nhất 8 kí tự!",
+                            type: "error",
                             duration: 5000,
                         });
-                    }
-                });
+                    });
             }
         })
 

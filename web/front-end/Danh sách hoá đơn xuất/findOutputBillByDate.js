@@ -40,7 +40,7 @@ $("#findOutputBillByDate").onclick = function (event) {
         .catch((error) => {
             toast({
                 title: "Thất bại!",
-                message: "Không tồn tại hóa đơn đã nhập",
+                message: `Không tồn tại hóa đơn trong ngày ${$("#date").value}`,
                 type: "error",
                 duration: 5000,
             });
