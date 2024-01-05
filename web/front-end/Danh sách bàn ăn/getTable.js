@@ -149,9 +149,7 @@ function showBill(bills) {
                                         <img src="../Danh sách hoá đơn xuất/img/QRcode.jpg" alt="">
                                     </div>
                                     <div class="col-6">
-                                        <h4 class="text-center"> Tổng tiền: </h4> <h2  class="text-center">${
-                                            bill.tongCong / 1000
-                                        }.000 VNĐ </h2> <br />
+                                        <h4 class="text-center"> Tổng tiền: </h4> <h2  class="text-center">${bill.tongCong.toLocaleString()} VNĐ </h2> <br />
                                     </div>
                                 </div>
                             </div>
@@ -175,18 +173,12 @@ function showBill(bills) {
                                     i.tenMonAn
                                 }</td>
                                 <td class="text-center" >${i.soLuong}</td>
-                                <td class="text-center" >${
-                                    i.giaMon / 1000
-                                }.000 </td>
+                                <td class="text-center" >${i.giaMon.toLocaleString()} </td>
                                 <td class="text-center" >${
                                     i.phanTramKhuyenMaiItem
                                 }</td>
-                                <td class="text-center" >${
-                                    i.thanhTienItem / 1000
-                                }.000</td>
-                                <td class="text-center" >${
-                                    i.khuyenMaiItem / 1000
-                                }.000</td>
+                                <td class="text-center" >${i.thanhTienItem.toLocaleString()}</td>
+                                <td class="text-center" >${i.khuyenMaiItem.toLocaleString()}</td>
                                 <td class="text-center" > <span id="${
                                     i.idOrder
                                 }" class="material-symbols-outlined delete-orderItem" style="cursor: pointer;">
@@ -197,11 +189,7 @@ function showBill(bills) {
         });
         $(`.table-detail-bill-${bill.maHoaDon}`).innerHTML =
             items.join("") +
-            ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td class="text-center" >${
-                bill.thanhTien / 1000
-            }.000</td> <td class="text-center" >${
-                bill.khuyenMai / 1000
-            }.000</td></tr>`;
+            ` <tr><td style="padding-left: 10px"></td><td></td> <td></td> <td></td><td class="text-center" >${bill.thanhTien.toLocaleString()}</td> <td class="text-center" >${bill.khuyenMai.toLocaleString()}</td></tr>`;
 
         $(`#open-detail-bill-id${bill.maHoaDon}`).onclick = function () {
             $(`#detail-bill-${bill.maHoaDon}`).style.display = "flex";
