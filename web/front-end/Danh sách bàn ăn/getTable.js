@@ -8,12 +8,14 @@ function getBill() {
         })
         .then(function (bills) {
             showBill(bills);
+            return bills;
         })
-        .then(function () {
+        .then(function (bills) {
             moreDishInput();
             if ($(".modal-backdrop")) $(".modal-backdrop").remove();
+            return bills;
         })
-        .then(() => {
+        .then((bills) => {
             //XUẤT HÓA ĐƠN
             $$(".bill-finish").forEach(function (btn) {
                 btn.onclick = function (event) {
@@ -37,7 +39,7 @@ function getBill() {
                     $$(`.MoreDish${btn.name}`).forEach(function (input, i) {
                         const data = {
                             maHoaDon: btn.name,
-                            tenNV: "string",
+                            tenNV: $(`#tenNVMoreDish${btn.name}`).value,
                             soBan: $(`#soBanMoreDish${btn.name}`).value,
                             trangThaiMon: "string",
                             ngay: "string",
@@ -71,7 +73,6 @@ function getBill() {
 
             $$(".delete-orderItem").forEach(function (btn) {
                 btn.onclick = function (event) {
-                    console.log(btn);
                     event.preventDefault();
                     deleteOrderItem(btn.id);
                 };
@@ -220,7 +221,7 @@ function showBill(bills) {
 
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                
+                                <span>Thêm món ăn</span>
                                 <button type="button " class="btn-close float-end" data-bs-dismiss="modal"></button>
                             </div>
 
@@ -228,9 +229,15 @@ function showBill(bills) {
                             <div class="modal-body">
                             <h4 class="modal-title text-center mb-3">Bàn số ${bill.soBan}</h4>
                                 <input
+                                    name=""
+                                    id="tenNVMoreDish${bill.maHoaDon}"
+                                    value="${bill.tenNV}"
+                                    style="display: none;"
+                                />
+                                <input
                                 name=""
                                 id="soBanMoreDish${bill.maHoaDon}"
-                                value="${bill.soBan}"
+                                value=""${bill.soBan}"
                                 style="display: none;"
                                 />
                                 <table class="table table-bordered">
@@ -256,7 +263,7 @@ function showBill(bills) {
                             <div class="modal-footer">
                                 <button
                                     name="${bill.maHoaDon}"
-                                    class="btn btn-dark float-end confirm-moreDishInput"
+                                    class="btn btn-primary float-end confirm-moreDishInput"
                                 >
                                     Xác nhận
                                 </button>

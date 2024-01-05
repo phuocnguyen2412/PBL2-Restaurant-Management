@@ -17,6 +17,7 @@ function updateBill(bill) {
                     duration: 5000,
                 });
                 getBill();
+                postTable();
             }
         })
         .catch((error) => {
