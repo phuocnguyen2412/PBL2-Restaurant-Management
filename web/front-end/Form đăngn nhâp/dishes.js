@@ -1,31 +1,24 @@
-const tabActive = $(".tab-item.active");
-const line = $(".tabs .line");
+function active(tab) {
+    $(".tab-item.active").classList.remove("active");
 
-requestIdleCallback(function () {
-    line.style.left = tabActive.offsetLeft + "px";
-    line.style.width = tabActive.offsetWidth + "px";
-});
+    $(".tabs .line").style.left = tab.offsetLeft + "px";
+    $(".tabs .line").style.width = tab.offsetWidth + "px";
 
-$$(".tab-item").forEach((tab) => {
-    tab.onclick = function () {
-        console.log(1);
-        $(".tab-item.active").classList.remove("active");
-
-        line.style.left = this.offsetLeft + "px";
-        line.style.width = this.offsetWidth + "px";
-
-        this.classList.add("active");
-    };
-});
+    tab.classList.add("active");
+}
 getDishes("http://localhost:5225/api/MonAn/MonAn");
+active($("#all"));
 $("#all").onclick = function () {
     getDishes("http://localhost:5225/api/MonAn/MonAn");
+    active($("#all"));
 };
 $("#food").onclick = function () {
     getDishes("http://localhost:5225/api/MonAn/DoAn");
+    active($("#food"));
 };
 $("#drink").onclick = function () {
     getDishes("http://localhost:5225/api/MonAn/DoUong ");
+    active($("#drink"));
 };
 
 function getDishes(url) {
