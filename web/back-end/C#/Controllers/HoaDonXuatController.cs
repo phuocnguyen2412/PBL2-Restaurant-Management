@@ -33,17 +33,17 @@ namespace PBL2.Controllers
             SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
             SqlCommand cmd = new SqlCommand(
                 "SELECT   [Order].Id," +
-                         "[Order].MaHoaDon," +
-                         "[Order].Ngay," +
-                         "[Order].Gio," +
-                         "[QuanLyBan].SoBan," +
-                         "[OrderItems].Id, " +
-                         "[Order].TenNV," +
-                         "[MonAn].TenMon," +
-                         "[MonAn].GiaMon," +
-                         "[OrderItems].SoLuong," +
-                         "[OrderItems].PhanTramKhuyenMai," +
-                         "[Order].TrangThaiThanhToan " +
+                            "[Order].MaHoaDon," +
+                            "[Order].Ngay," +
+                            "[Order].Gio," +
+                            "[QuanLyBan].SoBan," +
+                            "[OrderItems].Id, " +
+                            "[Order].TenNV," +
+                            "[MonAn].TenMon," +
+                            "[MonAn].GiaMon," +
+                            "[OrderItems].SoLuong," +
+                            "[OrderItems].PhanTramKhuyenMai," +
+                            "[Order].TrangThaiThanhToan " +
                 "FROM     [Order]  " +
                 "JOIN     [OrderItems] ON [Order].Id     = [OrderItems].IdOrder " +
                 "JOIN     [MonAn]      ON [MonAn].Id     = [OrderItems].IdMonAn " +
@@ -115,16 +115,16 @@ namespace PBL2.Controllers
             SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
             SqlCommand cmd = new SqlCommand(
                 "SELECT [Order].Id," +
-                       "[Order].MaHoaDon," +
-                       "[Order].Ngay," +
-                       "[Order].Gio," +
-                       "[QuanLyBan].SoBan," +
-                       "[Order].TenNV," +
-                       "[MonAn].TenMon," +
-                       "[MonAn].GiaMon," +
-                       "[OrderItems].SoLuong," +
-                       "[OrderItems].PhanTramKhuyenMai," +
-                       "[Order].TrangThaiThanhToan " +
+                        "[Order].MaHoaDon," +
+                        "[Order].Ngay," +
+                        "[Order].Gio," +
+                        "[QuanLyBan].SoBan," +
+                        "[Order].TenNV," +
+                        "[MonAn].TenMon," +
+                        "[MonAn].GiaMon," +
+                        "[OrderItems].SoLuong," +
+                        "[OrderItems].PhanTramKhuyenMai," +
+                        "[Order].TrangThaiThanhToan " +
                 "FROM   [Order]  " +
                 "JOIN   [OrderItems] ON [Order].Id     = [OrderItems].IdOrder " +
                 "JOIN   [MonAn]      ON [MonAn].Id     = [OrderItems].IdMonAn " +
@@ -352,7 +352,7 @@ namespace PBL2.Controllers
         [Route("DeleteOrder")]
         [AllowCrossSiteJson]
         [HttpDelete]
-        public async Task<IActionResult> DeleteOrder(int IdOrder, int Id)
+        public async Task<IActionResult> DeleteOrder(int Id)
         {
             try
             {
@@ -365,12 +365,11 @@ namespace PBL2.Controllers
                         "From [NguyenLieu] Join [MonAnItems] on [MonAnItems].IdNguyenLieu = [NguyenLieu].Id " +
                         "Join [MonAn] on [MonAn].Id = [MonAnItems].IdMonAn " +
                         "Join [OrderItems] on [OrderItems].IdMonAn = [MonAn].Id " +
-                        "WHERE [OrderItems].Id = @IdOrder" +
-                        "DELETE FROM [OrderItems] WHERE IdOrder = @IdOrder " +
+                        "WHERE [OrderItems].IdOrder = @Id " +
+                        "DELETE FROM [OrderItems] WHERE IdOrder = @Id " +
                         "DELETE FROM [Order] WHERE Id=@Id" , con);
                     cmd.Parameters.AddWithValue("Id", Id);
-                    cmd.Parameters.AddWithValue("IdOrder", IdOrder);
-                   
+                  
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
