@@ -369,7 +369,6 @@ namespace PBL2.Controllers
                         "DELETE FROM [OrderItems] WHERE IdOrder = @Id " +
                         "DELETE FROM [Order] WHERE Id=@Id" , con);
                     cmd.Parameters.AddWithValue("Id", Id);
-                  
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();

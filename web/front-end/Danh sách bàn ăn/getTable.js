@@ -74,11 +74,6 @@ function getBill() {
             $$(".delete-orderItem").forEach(function (btn) {
                 btn.onclick = function (event) {
                     event.preventDefault();
-                    const OrderItem = {
-                        id: btn.id,
-                        idMonAn: $(`#idMonAn${btn.id}`).value,
-                        soLuong: $(`#soLuong${btn.id}`).value,
-                    };
                     deleteOrderItem(btn.id);
                 };
             });
@@ -140,7 +135,7 @@ function showBill(bills) {
                                             <th class="text-center" >Thành tiền</th>
                                             <th class="text-center" >Khuyến mãi</th>
                                             <th class="text-center" ></th>
-                                           
+
                                         </tr>
                                     </thead>
                                     <tbody
@@ -197,17 +192,6 @@ function showBill(bills) {
                                 }" class="material-symbols-outlined delete-orderItem" style="cursor: pointer;">
                                 close
                                 </span> </td>
-                                <input
-                                    
-                                    id= "idMoAn${i.idOrder}"
-                                    value="${i.idMonAn}"
-                                    style="display: none;"
-                                /><input
-                                    
-                                    id="soLuong${i.idOrder}"
-                                    value="${i.soLuong}"
-                                    style="display: none;"
-                                />
                             </tr>
                         `;
         });
