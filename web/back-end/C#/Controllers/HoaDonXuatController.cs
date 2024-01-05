@@ -360,11 +360,17 @@ namespace PBL2.Controllers
                 con.Open();
                 {
                     SqlCommand cmd = new SqlCommand(
+                        "UPDATE [NguyenLieu] " +
+                        "SET SoLuongTonKho = SoLuongTonKho + [OrderItems].SoLuong * [MonAnItems].SoLuongCan " +
+                        "From [NguyenLieu] Join [MonAnItems] on [MonAnItems].IdNguyenLieu = [NguyenLieu].Id " +
+                        "Join [MonAn] on [MonAn].Id = [MonAnItems].IdMonAn " +
+                        "Join [OrderItems] on [OrderItems].IdMonAn = [MonAn].Id " +
+                        "WHERE [OrderItems].Id = @IdOrder" +
                         "DELETE FROM [OrderItems] WHERE IdOrder = @IdOrder " +
-                        "DELETE FROM [Order] WHERE Id=@Id  ", con);
+                        "DELETE FROM [Order] WHERE Id=@Id" , con);
                     cmd.Parameters.AddWithValue("Id", Id);
                     cmd.Parameters.AddWithValue("IdOrder", IdOrder);
-
+                   
                     cmd.ExecuteNonQuery();
                 }
                 con.Close();
