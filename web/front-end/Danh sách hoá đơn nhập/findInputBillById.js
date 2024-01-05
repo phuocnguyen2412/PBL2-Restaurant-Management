@@ -40,7 +40,7 @@ $("#findBillByID").onclick = function (event) {
         .catch((error) => {
             toast({
                 title: "Thất bại!",
-                message: "Không tồn tại tên nhân viên đã nhập",
+                message: `Không tồn tại hóa đơn ${$("#billID").value} `,
                 type: "error",
                 duration: 5000,
             });

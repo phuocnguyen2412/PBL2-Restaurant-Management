@@ -51,8 +51,8 @@ function showBill(bills) {
                         </div>
                         <div class="modal-body pb-3">
                             Tên công ty: ${bill.tenNhaCC} <br />
-                            Địa chỉ: ${bill.sdt} <br />
-                            SĐT: ${bill.diaChi} <br />
+                            Địa chỉ: ${bill.diaChi}<br />
+                            SĐT: ${bill.sdt} <br />
 
                             <br />
                             Tên khách hành: Nhà hàng Little Dragon <br />
