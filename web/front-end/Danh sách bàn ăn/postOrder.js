@@ -23,7 +23,7 @@ function postOrder(data) {
                             duration: 5000,
                         });
                         getBill();
-                  
+                        postTable();
                         fetch(
                             `http://localhost:5225/api/NguyenLieu/CapNhatNguyenLieuTonKho?Id=${data.idMonAn}&MaHoaDon=${data.maHoaDon}`,
                             {
@@ -48,28 +48,50 @@ function postOrder(data) {
         });
 }
 let i = 0;
-$(".orderForm-submit-btn").onclick = function (event) {
-    event.preventDefault();
-    $$(".input-row-dish").forEach(function (input, index) {
-        const date = new Date();
-        const data = {
-            maHoaDon: `${date.getDate()}${
-                date.getMonth() + 1
-            }${date.getFullYear()}-${date.getHours()}${date.getMinutes()}-${i}`,
-            tenNV: $("#maNVorder").value,
-            soBan: $("#soBan").value,
-            trangThaiMon: "undone",
-            ngay: "null",
-            gio: "null",
-            phanTramKhuyenMai: $(`.phanTramKhuyenMai${index}`).value,
-            ghiChu: $(`#ghiChu${index}`).value,
-            idMonAn: $(`.idMonAn${index}`).value,
-            soLuong: $(`.soLuongMonAn${index}`).value,
-        };
-        console.log(data);
-        if (data.soLuong > 0) {
-            postOrder(data);
-        }
-    });
-    i++;
-};
+postTable();
+function postTable() {
+    fetch("http://localhost:5225/api/HoaDonXuat/HoaDon")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (bills) {
+            const tableList = [];
+            bills.forEach((bill) => {
+                tableList[bill.soBan] = bill;
+            });
+            console.log(tableList);
+            $(".orderForm-submit-btn").onclick = function (event) {
+                event.preventDefault();
+                $$(".input-row-dish").forEach(function (input, index) {
+                    const date = new Date();
+                    const data = {
+                        maHoaDon: `${date.getDate()}${
+                            date.getMonth() + 1
+                        }${date.getFullYear()}-${date.getHours()}${date.getMinutes()}-${i}`,
+                        tenNV: $("#maNVorder").value,
+                        soBan: $("#soBan").value,
+                        trangThaiMon: "undone",
+                        ngay: "null",
+                        gio: "null",
+                        phanTramKhuyenMai: $(`.phanTramKhuyenMai${index}`)
+                            .value,
+                        ghiChu: $(`#ghiChu${index}`).value,
+                        idMonAn: $(`.idMonAn${index}`).value,
+                        soLuong: $(`.soLuongMonAn${index}`).value,
+                    };
+                    console.log(data);
+                    if (tableList[data.soBan]) {
+                        toast({
+                            title: "Thất bại!",
+                            message: `Không thể đặt bàn vì đã tồn tại bàn ${data.soBan}`,
+                            type: "error",
+                            duration: 5000,
+                        });
+                    } else if (data.soLuong > 0) {
+                        postOrder(data);
+                    }
+                });
+                i++;
+            };
+        });
+}
